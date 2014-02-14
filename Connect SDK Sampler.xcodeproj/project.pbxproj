@@ -28,11 +28,29 @@
 		EA7E00B0184402B20089FA62 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA7E00AF184402B20089FA62 /* Foundation.framework */; };
 		EA7E00B2184402B20089FA62 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA7E00B1184402B20089FA62 /* CoreGraphics.framework */; };
 		EA7E00B4184402B20089FA62 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA7E00B3184402B20089FA62 /* UIKit.framework */; };
+		EA9CB31618AD84110053B354 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9CB31518AD84110053B354 /* SystemConfiguration.framework */; };
 		EA9E48AA186DFCFD002DE134 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA9E489A186DFCFD002DE134 /* InfoPlist.strings */; };
 		EA9E48AB186DFCFD002DE134 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9E489C186DFCFD002DE134 /* Images.xcassets */; };
 		EA9E48B0186DFCFD002DE134 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9E48A5186DFCFD002DE134 /* main.m */; };
 		EADD38201899C48000877C17 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EADD381F1899C48000877C17 /* MobileCoreServices.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EA9CB30918AD82FE0053B354 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EA9CB30518AD82FE0053B354 /* ConnectSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F6F234CC17F1E0EB00575BDD;
+			remoteInfo = ConnectSDK;
+		};
+		EA9CB30B18AD83040053B354 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EA9CB30518AD82FE0053B354 /* ConnectSDK.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F6F234CB17F1E0EB00575BDD;
+			remoteInfo = ConnectSDK;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		EA099894185146830072824C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -68,6 +86,7 @@
 		EA7E00B1184402B20089FA62 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		EA7E00B3184402B20089FA62 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EA7E00CE184402B20089FA62 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		EA9CB31518AD84110053B354 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		EA9E489B186DFCFD002DE134 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EA9E489C186DFCFD002DE134 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		EA9E48A5186DFCFD002DE134 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -81,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA9CB31618AD84110053B354 /* SystemConfiguration.framework in Frameworks */,
 				EADD38201899C48000877C17 /* MobileCoreServices.framework in Frameworks */,
 				EA0998A2185147070072824C /* libicucore.dylib in Frameworks */,
 				EA099895185146830072824C /* libz.dylib in Frameworks */,
@@ -157,6 +177,7 @@
 		EA7E00AE184402B20089FA62 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EA9CB31518AD84110053B354 /* SystemConfiguration.framework */,
 				EADD381F1899C48000877C17 /* MobileCoreServices.framework */,
 				EA0998A1185147070072824C /* libicucore.dylib */,
 				EA099894185146830072824C /* libz.dylib */,
@@ -225,7 +246,7 @@
 				ORGANIZATIONNAME = LGE;
 				TargetAttributes = {
 					EA7E00AB184402B20089FA62 = {
-						DevelopmentTeam = RY8724HGH3;
+						DevelopmentTeam = DC4CN8HG54;
 					};
 				};
 			};
@@ -331,9 +352,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "";
+				PROVISIONING_PROFILE = "E9E4AEAE-997B-46AC-BF37-403D0B44D032";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -365,8 +387,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "";
+				PROVISIONING_PROFILE = "E9E4AEAE-997B-46AC-BF37-403D0B44D032";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -389,7 +412,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
 				INFOPLIST_FILE = "Connect SDK Sampler/Connect SDK Sampler-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "Connect SDK Sampler";
@@ -417,7 +440,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
 				INFOPLIST_FILE = "Connect SDK Sampler/Connect SDK Sampler-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "Connect SDK Sampler";
