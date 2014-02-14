@@ -17,9 +17,12 @@
 @property (nonatomic, strong) IBOutlet UIStepper *channelStepper;
 @property (nonatomic, strong) IBOutlet UITableView *channels;
 
+@property (weak, nonatomic) IBOutlet UIButton *toastButton;
+
 -(IBAction)volumeStepperChange:(id)sender;
 -(IBAction)volumeSliderChange:(id)sender;
 -(IBAction)muteSwitchChange:(id)sender;
 -(IBAction)channelStepperChange:(id)sender;
+- (IBAction)showToast:(id)sender;
 
 @end
