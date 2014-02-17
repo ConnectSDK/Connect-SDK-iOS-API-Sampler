@@ -35,23 +35,6 @@
 		EADD38201899C48000877C17 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EADD381F1899C48000877C17 /* MobileCoreServices.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		EA9CB30918AD82FE0053B354 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EA9CB30518AD82FE0053B354 /* ConnectSDK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F6F234CC17F1E0EB00575BDD;
-			remoteInfo = ConnectSDK;
-		};
-		EA9CB30B18AD83040053B354 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EA9CB30518AD82FE0053B354 /* ConnectSDK.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = F6F234CB17F1E0EB00575BDD;
-			remoteInfo = ConnectSDK;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		EA099894185146830072824C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		EA0998A1185147070072824C /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
@@ -447,8 +430,8 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Connect SDK Sampler/Connect SDK Sampler-Prefix.pch";
