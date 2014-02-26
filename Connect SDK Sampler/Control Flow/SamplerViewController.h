@@ -8,7 +8,7 @@
 
 #import <ConnectSDK/ConnectSDK.h>
 
-@interface SamplerViewController : UITabBarController <ConnectableDeviceDelegate, DiscoveryManagerDelegate, UITabBarControllerDelegate, DevicePickerDelegate>
+@interface SamplerViewController : UITabBarController <ConnectableDeviceDelegate, DiscoveryManagerDelegate, UITabBarControllerDelegate, UINavigationControllerDelegate, DevicePickerDelegate>
 
 
 

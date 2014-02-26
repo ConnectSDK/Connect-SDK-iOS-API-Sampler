@@ -1,20 +1,91 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="rWd-RT-4cr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5051" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="rWd-RT-4cr">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Five Way View Controller - Fiveway-->
+        <!--Web App View Controller - Web App-->
+        <scene sceneID="EaK-ms-x1W">
+            <objects>
+                <viewController title="Web App" id="wbl-1H-d5x" customClass="WebAppViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ey4-5U-NAF">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EYB-J2-agO">
+                                <rect key="frame" x="90" y="20" width="141" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Launch web app">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="homeClicked:" destination="aPk-l6-Ae1" eventType="touchUpInside" id="tHV-vH-HAN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5GJ-vz-2qo">
+                                <rect key="frame" x="96" y="152" width="129" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Close web app">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="homeClicked:" destination="aPk-l6-Ae1" eventType="touchUpInside" id="vea-Oq-At9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="apm-Vh-4Rn">
+                                <rect key="frame" x="68" y="64" width="175" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Send text to web app">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="homeClicked:" destination="aPk-l6-Ae1" eventType="touchUpInside" id="w4w-ke-u8j"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gFW-4c-jK1">
+                                <rect key="frame" x="61" y="108" width="189" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Send JSON to web app">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="homeClicked:" destination="aPk-l6-Ae1" eventType="touchUpInside" id="qaL-Jo-qVe"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="alC-uV-JtE">
+                                <rect key="frame" x="0.0" y="231" width="320" height="136"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Messages received" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qnk-Ub-yP4">
+                                <rect key="frame" x="20" y="202" width="148" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <tabBarItem key="tabBarItem" title="Web  App" image="icon_12676.png" id="H8H-P7-nRR"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FHq-Pl-hbj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="896" y="-254"/>
+        </scene>
+        <!--Five Way View Controller - Five Way-->
         <scene sceneID="40H-Sb-dZz">
             <objects>
-                <viewController id="aPk-l6-Ae1" customClass="FiveWayViewController" sceneMemberID="viewController">
+                <viewController title="Five Way" id="aPk-l6-Ae1" customClass="FiveWayViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fDJ-xr-8Ax">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gwO-18-xAp">
-                                <rect key="frame" x="128" y="14" width="65" height="30"/>
+                                <rect key="frame" x="128" y="20" width="65" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Up">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -26,7 +97,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="U0N-Xn-Hhq">
-                                <rect key="frame" x="128" y="37" width="65" height="30"/>
+                                <rect key="frame" x="128" y="64" width="65" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Click">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -36,7 +107,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="iT3-4q-hTk">
-                                <rect key="frame" x="128" y="58" width="64" height="30"/>
+                                <rect key="frame" x="128" y="108" width="64" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Down">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -48,7 +119,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gCd-z2-SXb">
-                                <rect key="frame" x="55" y="37" width="65" height="30"/>
+                                <rect key="frame" x="38" y="64" width="65" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Left">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -60,7 +131,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hPh-EE-nFZ">
-                                <rect key="frame" x="201" y="37" width="65" height="30"/>
+                                <rect key="frame" x="213" y="64" width="65" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Right">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -72,7 +143,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EQz-yJ-bZ7">
-                                <rect key="frame" x="70" y="58" width="35" height="30"/>
+                                <rect key="frame" x="40" y="108" width="60" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Back">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -82,7 +153,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WyD-7g-4Kb">
-                                <rect key="frame" x="213" y="58" width="41" height="30"/>
+                                <rect key="frame" x="212" y="108" width="66" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Home">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -91,8 +162,18 @@
                                     <action selector="homeClicked:" destination="aPk-l6-Ae1" eventType="touchUpInside" id="KFD-W5-CAF"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wEc-vw-Sa4">
+                                <rect key="frame" x="199" y="20" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Keyboard">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="homeClicked:" destination="aPk-l6-Ae1" eventType="touchUpInside" id="2yO-ej-Kcb"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" id="tKU-TQ-yju" customClass="TouchpadView">
-                                <rect key="frame" x="0.0" y="96" width="320" height="271"/>
+                                <rect key="frame" x="0.0" y="146" width="320" height="221"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
@@ -115,7 +196,7 @@
                         <gestureRecognizers/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="Fiveway" image="mouse.png" id="qOa-y5-ucD"/>
+                    <tabBarItem key="tabBarItem" title="Control" image="icon_3330.png" id="qOa-y5-ucD"/>
                     <connections>
                         <outlet property="backButton" destination="EQz-yJ-bZ7" id="dqz-jc-br5"/>
                         <outlet property="clickButton" destination="U0N-Xn-Hhq" id="QBt-rw-5Yh"/>
@@ -136,18 +217,19 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="519" y="2123"/>
+            <point key="canvasLocation" x="1270" y="-254"/>
         </scene>
-        <!--Media View Controller - Media player-->
+        <!--Media View Controller - Media Player-->
         <scene sceneID="yxu-UI-0Bg">
             <objects>
-                <viewController wantsFullScreenLayout="YES" id="wHY-Js-EUt" customClass="MediaViewController" sceneMemberID="viewController">
+                <viewController title="Media Player" id="wHY-Js-EUt" customClass="MediaViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vTI-9c-Zxw">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qhf-xs-vfO">
-                                <rect key="frame" x="125" y="10" width="43" height="30"/>
+                                <rect key="frame" x="126" y="64" width="68" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Pause">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -156,7 +238,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pUK-Wi-aqc">
-                                <rect key="frame" x="263" y="10" width="33" height="30"/>
+                                <rect key="frame" x="230" y="64" width="58" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Stop">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -165,7 +248,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UFe-8W-6XQ">
-                                <rect key="frame" x="19" y="10" width="30" height="30"/>
+                                <rect key="frame" x="20" y="64" width="55" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Play">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -174,7 +258,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dnB-mo-VXJ">
-                                <rect key="frame" x="19" y="45" width="52" height="30"/>
+                                <rect key="frame" x="53" y="108" width="77" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Rewind">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -183,7 +268,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="t7P-Cr-aNE">
-                                <rect key="frame" x="115" y="45" width="91" height="30"/>
+                                <rect key="frame" x="137" y="108" width="117" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Fast Forward">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -191,37 +277,81 @@
                                     <action selector="fastForwardClicked:" destination="wHY-Js-EUt" eventType="touchUpInside" id="C9z-2N-L0b"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="XKL-4O-mZm">
-                                <rect key="frame" x="236" y="45" width="63" height="30"/>
-                                <state key="normal" title="3D Mode">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1qj-E5-DAO">
+                                <rect key="frame" x="20" y="20" width="66" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Photo">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="tv3D:" destination="wHY-Js-EUt" eventType="touchUpInside" id="ie3-OX-FDl"/>
+                                    <action selector="simpleImagePressed:" destination="pyF-HD-7Jf" eventType="touchUpInside" id="mW7-BN-A2K"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="4wY-WI-ItP">
-                                <rect key="frame" x="0.0" y="85" width="320" height="282"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="oN5-T4-2VZ">
+                                <rect key="frame" x="128" y="20" width="64" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Video">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
-                                    <outlet property="dataSource" destination="wHY-Js-EUt" id="ADG-ys-wLz"/>
-                                    <outlet property="delegate" destination="wHY-Js-EUt" id="X9y-pA-Olw"/>
+                                    <action selector="simpleVideoPressed:" destination="pyF-HD-7Jf" eventType="touchUpInside" id="jzi-XL-pEr"/>
                                 </connections>
-                            </tableView>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VZW-P1-nZA">
+                                <rect key="frame" x="224" y="20" width="64" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Close">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="simpleVideoPressed:" destination="pyF-HD-7Jf" eventType="touchUpInside" id="ppd-H7-kxb"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--:--" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ajk-00-ICk">
+                                <rect key="frame" x="20" y="182" width="100" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--:--" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XeI-cd-9bl">
+                                <rect key="frame" x="200" y="182" width="100" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" id="4G9-x6-uVY">
+                                <rect key="frame" x="18" y="211" width="284" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" id="CQX-KG-adi">
+                                <rect key="frame" x="18" y="292" width="284" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </slider>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stream volume" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QHd-w2-82D">
+                                <rect key="frame" x="102" y="274" width="116" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seek" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ve3-m6-aKn">
+                                <rect key="frame" x="141" y="182" width="39" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="Media player" image="play.png" id="i0i-az-hKz"/>
+                    <tabBarItem key="tabBarItem" title="Media" image="icon_15307.png" id="i0i-az-hKz"/>
                     <connections>
                         <outlet property="fastForwardButton" destination="t7P-Cr-aNE" id="Ahk-23-aw8"/>
-                        <outlet property="mediaList" destination="4wY-WI-ItP" id="EkH-Sw-ecS"/>
                         <outlet property="pauseButton" destination="qhf-xs-vfO" id="GM9-rV-1bC"/>
                         <outlet property="playButton" destination="UFe-8W-6XQ" id="t5U-6p-f58"/>
                         <outlet property="rewindButton" destination="dnB-mo-VXJ" id="VJt-ee-Tvn"/>
                         <outlet property="stopButton" destination="pUK-Wi-aqc" id="uZ7-yH-ckZ"/>
-                        <outlet property="tv3DButton" destination="XKL-4O-mZm" id="zs7-IB-Anb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MTb-nL-7n8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -231,13 +361,13 @@
         <!--Input View Controller - Inputs-->
         <scene sceneID="Sco-M8-MvZ">
             <objects>
-                <viewController id="jwQ-mp-yYL" customClass="InputViewController" sceneMemberID="viewController">
+                <viewController title="Inputs" id="jwQ-mp-yYL" customClass="InputViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uLL-mb-gu2">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FGQ-K1-YW4">
-                                <rect key="frame" x="0.0" y="31" width="320" height="44"/>
+                                <rect key="frame" x="73" y="251" width="175" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Launch Input Picker">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -246,8 +376,8 @@
                                     <action selector="launchPicker:" destination="jwQ-mp-yYL" eventType="touchUpInside" id="lDS-62-Wbf"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QsH-Pd-zOI">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QsH-Pd-zOI">
+                                <rect key="frame" x="88" y="295" width="144" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Close Input Picker">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -257,7 +387,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ECF-nF-lTh">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="366"/>
+                                <rect key="frame" x="0.0" y="208" width="320" height="159"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -265,11 +395,96 @@
                                     <outlet property="delegate" destination="jwQ-mp-yYL" id="7ts-YL-HAu"/>
                                 </connections>
                             </tableView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" id="gfJ-2K-gxq">
+                                <rect key="frame" x="17" y="69" width="177" height="34"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="volumeSliderChange:" destination="R5e-Zm-0dj" eventType="valueChanged" id="NiG-iJ-dSc"/>
+                                </connections>
+                            </slider>
+                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Ghq-Yi-Q8s">
+                                <rect key="frame" x="251" y="18" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="muteSwitchChange:" destination="R5e-Zm-0dj" eventType="valueChanged" id="AQN-7U-lGH"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Mute" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="L76-ae-id5">
+                                <rect key="frame" x="169" y="23" width="40" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" maximumValue="100" id="eQ5-55-ijL">
+                                <rect key="frame" x="205" y="71" width="94" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="volumeStepperChange:" destination="R5e-Zm-0dj" eventType="valueChanged" id="pOq-9u-3Fe"/>
+                                </connections>
+                            </stepper>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volume" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MSb-O7-LYq">
+                                <rect key="frame" x="19" y="24" width="57" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3zC-FQ-bAf">
+                                <rect key="frame" x="125" y="118" width="68" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Pause">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pauseClicked:" destination="wHY-Js-EUt" eventType="touchUpInside" id="XQU-N1-4V7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8mA-0e-GDt">
+                                <rect key="frame" x="241" y="118" width="58" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Stop">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="stopClicked:" destination="wHY-Js-EUt" eventType="touchUpInside" id="sUy-tC-asD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ElZ-Hp-njA">
+                                <rect key="frame" x="6" y="118" width="55" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Play">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playClicked:" destination="wHY-Js-EUt" eventType="touchUpInside" id="3fq-x8-EtV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gWD-fG-1mY">
+                                <rect key="frame" x="53" y="162" width="77" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Rewind">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="rewindClicked:" destination="wHY-Js-EUt" eventType="touchUpInside" id="7e4-tx-f2w"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vR6-ES-oUc">
+                                <rect key="frame" x="156" y="162" width="117" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Fast Forward">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="fastForwardClicked:" destination="wHY-Js-EUt" eventType="touchUpInside" id="mi3-We-3IU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <tabBarItem key="tabBarItem" title="Inputs" image="input.png" id="wWJ-00-CWg"/>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <tabBarItem key="tabBarItem" title="System" image="icon_17183.png" id="wWJ-00-CWg"/>
                     <connections>
                         <outlet property="closePickerButton" destination="QsH-Pd-zOI" id="yVn-tO-E1Q"/>
                         <outlet property="inputs" destination="ECF-nF-lTh" id="Brj-af-NRp"/>
@@ -278,18 +493,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Fe-VC-HOP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="519" y="1505"/>
+            <point key="canvasLocation" x="896" y="321"/>
         </scene>
         <!--App View Controller - Apps-->
         <scene sceneID="meF-mr-wIc">
             <objects>
-                <viewController id="pyF-HD-7Jf" customClass="AppViewController" sceneMemberID="viewController">
+                <viewController title="Apps" id="pyF-HD-7Jf" customClass="AppViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="frJ-rC-Vg5">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="hZK-k1-W8u">
-                                <rect key="frame" x="0.0" y="130" width="320" height="237"/>
+                                <rect key="frame" x="0.0" y="116" width="320" height="250"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -298,7 +513,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hKc-WC-0Xi">
-                                <rect key="frame" x="52" y="10" width="57" height="30"/>
+                                <rect key="frame" x="52" y="20" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Browser">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -307,28 +522,8 @@
                                     <action selector="browserPressed:" destination="pyF-HD-7Jf" eventType="touchUpInside" id="e8b-NY-k7g"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8BC-nV-eW9">
-                                <rect key="frame" x="186" y="10" width="94" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Simple Image">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="simpleImagePressed:" destination="pyF-HD-7Jf" eventType="touchUpInside" id="16P-bM-wcp"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KPh-Ii-p46">
-                                <rect key="frame" x="188" y="48" width="90" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Simple Video">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="simpleVideoPressed:" destination="pyF-HD-7Jf" eventType="touchUpInside" id="zAy-U7-tXC"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vJQ-O5-dw7">
-                                <rect key="frame" x="58" y="48" width="44" height="30"/>
+                                <rect key="frame" x="58" y="64" width="69" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Netflix">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -337,18 +532,8 @@
                                     <action selector="netflixPressed:" destination="pyF-HD-7Jf" eventType="touchUpInside" id="sXK-nX-x6Y"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rYm-cs-D1t">
-                                <rect key="frame" x="64" y="86" width="32" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Hulu">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="huluPressed:" destination="pyF-HD-7Jf" eventType="touchUpInside" id="1DP-hu-Dqc"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8Mm-03-0cB">
-                                <rect key="frame" x="204" y="86" width="59" height="30"/>
+                                <rect key="frame" x="178" y="64" width="85" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="YouTube">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -357,24 +542,31 @@
                                     <action selector="youtubePressed:" destination="pyF-HD-7Jf" eventType="touchUpInside" id="f5j-Jm-NKX"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mSu-pk-y7b">
+                                <rect key="frame" x="167" y="20" width="106" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Show Toast">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showToast:" destination="R5e-Zm-0dj" eventType="touchUpInside" id="6o9-AN-4HR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="Apps" image="windows.png" id="zUR-7x-SFh"/>
+                    <tabBarItem key="tabBarItem" title="Apps" image="icon_17114.png" id="zUR-7x-SFh"/>
                     <connections>
                         <outlet property="apps" destination="hZK-k1-W8u" id="e5q-1j-jh9"/>
                         <outlet property="browserButton" destination="hKc-WC-0Xi" id="VHg-GK-0yl"/>
-                        <outlet property="huluButton" destination="rYm-cs-D1t" id="3CX-u3-9gc"/>
                         <outlet property="netflixButton" destination="vJQ-O5-dw7" id="hGO-Py-fAk"/>
-                        <outlet property="simpleImageButton" destination="8BC-nV-eW9" id="ahG-I9-OgJ"/>
-                        <outlet property="simpleVideoButton" destination="KPh-Ii-p46" id="r9i-oz-71T"/>
                         <outlet property="youtubeButton" destination="8Mm-03-0cB" id="u9e-jS-njk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4kh-vr-xZZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="519" y="892"/>
+            <point key="canvasLocation" x="519" y="321"/>
         </scene>
         <!--Sampler Navigation View Controller-->
         <scene sceneID="QPu-2C-f69">
@@ -406,9 +598,10 @@
                     </tabBar>
                     <connections>
                         <segue destination="wHY-Js-EUt" kind="relationship" relationship="viewControllers" id="97n-qX-9kd"/>
-                        <segue destination="R5e-Zm-0dj" kind="relationship" relationship="viewControllers" id="COM-fc-53g"/>
-                        <segue destination="pyF-HD-7Jf" kind="relationship" relationship="viewControllers" id="PSE-az-ZpK"/>
+                        <segue destination="wbl-1H-d5x" kind="relationship" relationship="viewControllers" id="O5f-z2-lX7"/>
                         <segue destination="aPk-l6-Ae1" kind="relationship" relationship="viewControllers" id="kMC-7m-vXY"/>
+                        <segue destination="pyF-HD-7Jf" kind="relationship" relationship="viewControllers" id="PSE-az-ZpK"/>
+                        <segue destination="R5e-Zm-0dj" kind="relationship" relationship="viewControllers" id="COM-fc-53g"/>
                         <segue destination="jwQ-mp-yYL" kind="relationship" relationship="viewControllers" id="ty9-wC-Zzy"/>
                     </connections>
                 </tabBarController>
@@ -419,62 +612,27 @@
         <!--Channel View Controller - TV-->
         <scene sceneID="qbQ-Ns-sIy">
             <objects>
-                <viewController id="R5e-Zm-0dj" customClass="ChannelViewController" sceneMemberID="viewController">
+                <viewController title="TV" id="R5e-Zm-0dj" customClass="ChannelViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YWT-Pc-wqi">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" maximumValue="100" id="mup-68-NPp">
-                                <rect key="frame" x="91" y="56" width="94" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="96" y="64" width="94" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="channelStepperChange:" destination="R5e-Zm-0dj" eventType="valueChanged" id="Azk-qL-AOf"/>
                                 </connections>
                             </stepper>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" id="gfJ-2K-gxq">
-                                <rect key="frame" x="18" y="15" width="284" height="34"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="volumeSliderChange:" destination="R5e-Zm-0dj" eventType="valueChanged" id="NiG-iJ-dSc"/>
-                                </connections>
-                            </slider>
-                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Ghq-Yi-Q8s">
-                                <rect key="frame" x="251" y="57" width="51" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="muteSwitchChange:" destination="R5e-Zm-0dj" eventType="valueChanged" id="AQN-7U-lGH"/>
-                                </connections>
-                            </switch>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Mute:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="L76-ae-id5">
-                                <rect key="frame" x="199" y="62" width="44" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" maximumValue="100" id="eQ5-55-ijL">
-                                <rect key="frame" x="91" y="98" width="94" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="volumeStepperChange:" destination="R5e-Zm-0dj" eventType="valueChanged" id="pOq-9u-3Fe"/>
-                                </connections>
-                            </stepper>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Channel:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6hm-GZ-hQt">
-                                <rect key="frame" x="15" y="60" width="68" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volume:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MSb-O7-LYq">
-                                <rect key="frame" x="21" y="106" width="62" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Channel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6hm-GZ-hQt">
+                                <rect key="frame" x="20" y="68" width="64" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Is0-7e-UuC">
-                                <rect key="frame" x="0.0" y="145" width="320" height="222"/>
+                                <rect key="frame" x="0.0" y="116" width="320" height="250"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -482,41 +640,53 @@
                                     <outlet property="delegate" destination="R5e-Zm-0dj" id="UdX-WE-25e"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TaY-aM-Qse">
-                                <rect key="frame" x="208" y="98" width="80" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Show Toast">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Eo7-U7-BxX">
+                                <rect key="frame" x="206" y="20" width="94" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Power Off">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="showToast:" destination="R5e-Zm-0dj" eventType="touchUpInside" id="fpm-2T-Dvx"/>
-                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lXn-Jc-1eS">
+                                <rect key="frame" x="20" y="20" width="120" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Incoming Call">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LIa-IO-Zli">
+                                <rect key="frame" x="211" y="64" width="88" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="3D Mode">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="TV" image="sound.png" id="HEn-AN-rXa"/>
+                    <tabBarItem key="tabBarItem" title="TV" image="icon_15111.png" id="HEn-AN-rXa"/>
+                    <navigationItem key="navigationItem" id="X76-V5-ZsK"/>
                     <connections>
                         <outlet property="channelStepper" destination="mup-68-NPp" id="EcR-vA-FLs"/>
                         <outlet property="channels" destination="Is0-7e-UuC" id="5p4-aB-odd"/>
                         <outlet property="muteSwitch" destination="Ghq-Yi-Q8s" id="fd4-w2-TM8"/>
-                        <outlet property="toastButton" destination="TaY-aM-Qse" id="fi6-4D-hne"/>
                         <outlet property="volSlider" destination="gfJ-2K-gxq" id="x1l-QO-GeE"/>
                         <outlet property="volStepper" destination="eQ5-55-ijL" id="YOB-rm-Vz2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dl4-vF-Ry3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="519" y="316"/>
+            <point key="canvasLocation" x="1270" y="321"/>
         </scene>
     </scenes>
     <resources>
-        <image name="input.png" width="30" height="30"/>
-        <image name="mouse.png" width="30" height="30"/>
-        <image name="play.png" width="30" height="30"/>
-        <image name="sound.png" width="30" height="30"/>
-        <image name="windows.png" width="30" height="30"/>
+        <image name="icon_12676.png" width="30" height="30"/>
+        <image name="icon_15111.png" width="30" height="30"/>
+        <image name="icon_15307.png" width="30" height="30"/>
+        <image name="icon_17114.png" width="30" height="30"/>
+        <image name="icon_17183.png" width="30" height="30"/>
+        <image name="icon_3330.png" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

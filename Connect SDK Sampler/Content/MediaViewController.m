@@ -22,27 +22,6 @@
 
 #pragma mark - UIViewController creation/destruction methods
 
-- (void) viewDidLoad
-{
-    [super viewDidLoad];
-    
-    _off = [[UIBarButtonItem alloc] initWithTitle:@"Off" style:UIBarButtonItemStylePlain target:self action:@selector(offClicked:)];
-}
-
-- (void) viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    self.navigationController.navigationBar.topItem.leftBarButtonItem = _off;
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-    
-    self.navigationController.navigationBar.topItem.leftBarButtonItem = nil;
-}
-
 - (void) addSubscriptions
 {
     if (self.device)
@@ -52,7 +31,6 @@
         [_stopButton setEnabled:YES];
         [_rewindButton setEnabled:YES];
         [_fastForwardButton setEnabled:YES];
-        [_off setEnabled:YES];
         [_tv3DButton setEnabled:YES];
 
         _channelInfoSubscription = [self.device.tvControl subscribeChannelInfoWithSuccess:^(ChannelInfo *channelInfo)
@@ -101,7 +79,6 @@
     [_stopButton setEnabled:NO];
     [_rewindButton setEnabled:NO];
     [_fastForwardButton setEnabled:NO];
-    [_off setEnabled:NO];
     [_tv3DButton setEnabled:NO];
 
     dispatch_async(dispatch_get_main_queue(), ^{

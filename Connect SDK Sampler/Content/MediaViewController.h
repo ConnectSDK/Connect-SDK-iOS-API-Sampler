@@ -10,7 +10,6 @@
 
 @interface MediaViewController : ContentViewController
 
-@property (nonatomic, strong) UIBarButtonItem *off;
 @property (nonatomic, strong) IBOutlet UIButton *playButton;
 @property (nonatomic, strong) IBOutlet UIButton *pauseButton;
 @property (nonatomic, strong) IBOutlet UIButton *stopButton;
@@ -24,7 +23,6 @@
 -(IBAction)stopClicked:(id)sender;
 -(IBAction)rewindClicked:(id)sender;
 -(IBAction)fastForwardClicked:(id)sender;
--(void) offClicked:(id)sender;
 - (IBAction)tv3D:(id)sender;
 
 @end
