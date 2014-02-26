@@ -170,7 +170,7 @@
                                      title:@"LG Logo"
                                description:@"The Logo of LG"
                                   mimeType:@"image/jpeg"
-                                   success:^(LaunchSession *launchSession)
+                                   success:^(LaunchSession *launchSession, id<MediaControl> mediaControl)
         {
             NSLog(@"media opened %@", launchSession);
 
@@ -213,7 +213,7 @@
                                description:@"Blender Open Movie Project"
                                   mimeType:@"video/mp4"
                                 shouldLoop:NO
-                                   success:^(LaunchSession *launchSession)
+                                   success:^(LaunchSession *launchSession, id<MediaControl> mediaControl)
          {
              NSLog(@"media opened %@", launchSession);
              
