@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 LG Electronics. All rights reserved.
 //
 
-#import "ContentViewController.h"∂
+#import "ContentViewController.h"
 #import "TouchpadView.h"
 
 @interface FiveWayViewController : ContentViewController<UITextFieldDelegate>
