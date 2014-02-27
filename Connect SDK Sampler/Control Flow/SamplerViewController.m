@@ -105,6 +105,8 @@
 
 - (UIViewController *) visibleViewController
 {
+    // TODO: cover case where we come back to More view controller
+    
     UIViewController *viewController;
     
     if ([self.selectedViewController isKindOfClass:[BaseViewController class]])
