@@ -87,12 +87,20 @@
     if ([self.device hasCapability:kMediaControlPositionSubscribe])
     {
         [_mediaControl subscribePositionWithSuccess:^(NSTimeInterval position) {
-            // TODO: implement position
+            [_currentTimeLabel setText:[NSString stringWithFormat:@"%@", @(position)]];
         } failure:^(NSError *error) {
             NSLog(@"subscribe position failure: %@", error.localizedDescription);
         }];
     }
-    
+
+    if ([self.device hasCapability:kMediaControlPlayStateSubscribe])
+    {
+        // TODO: do something with play state?
+    }
+
+    if ([self.device hasCapability:kMediaControlDuration] && [self.device hasCapability:kMediaControlSeek])
+        [_seekSlider setEnabled:YES];
+
     // TODO: subscribe to volume
     
     // TODO: subscribe to mute
@@ -262,8 +270,22 @@
         [self resetMediaControlComponents];
         return;
     }
-    
-    // TODO: implement seek
+
+    [_mediaControl getDurationWithSuccess:^(NSTimeInterval duration)
+    {
+        NSTimeInterval newTime = duration * _seekSlider.value;
+
+        [_mediaControl seek:newTime success:^(id responseObject)
+        {
+            NSLog(@"seek success");
+        } failure:^(NSError *error)
+        {
+            NSLog(@"seek failure: %@", error.localizedDescription);
+        }];
+    } failure:^(NSError *error)
+    {
+        NSLog(@"get duration failure: %@", error.localizedDescription);
+    }];
 }
 
 - (IBAction)volumeChanged:(id)sender
