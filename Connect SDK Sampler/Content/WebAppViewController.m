@@ -46,4 +46,12 @@
 }
 */
 
+- (IBAction)launchWebApp:(id)sender {
+}
+
+- (IBAction)sendMessage:(id)sender {
+}
+
+- (IBAction)closeWebApp:(id)sender {
+}
 @end

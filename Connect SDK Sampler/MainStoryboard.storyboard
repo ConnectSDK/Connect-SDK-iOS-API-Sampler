@@ -20,7 +20,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="homeClicked:" destination="aPk-l6-Ae1" eventType="touchUpInside" id="tHV-vH-HAN"/>
+                                    <action selector="launchWebApp:" destination="wbl-1H-d5x" eventType="touchUpInside" id="Qqn-pD-h6u"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5GJ-vz-2qo">
@@ -30,7 +30,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="homeClicked:" destination="aPk-l6-Ae1" eventType="touchUpInside" id="vea-Oq-At9"/>
+                                    <action selector="closeWebApp:" destination="wbl-1H-d5x" eventType="touchUpInside" id="5Ux-X5-z8K"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="apm-Vh-4Rn">
@@ -40,7 +40,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="homeClicked:" destination="aPk-l6-Ae1" eventType="touchUpInside" id="w4w-ke-u8j"/>
+                                    <action selector="sendMessage:" destination="wbl-1H-d5x" eventType="touchUpInside" id="uaB-gf-PcK"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gFW-4c-jK1">
@@ -50,10 +50,10 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="homeClicked:" destination="aPk-l6-Ae1" eventType="touchUpInside" id="qaL-Jo-qVe"/>
+                                    <action selector="sendMessage:" destination="wbl-1H-d5x" eventType="touchUpInside" id="aXU-0Y-qwe"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="alC-uV-JtE">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" id="alC-uV-JtE">
                                 <rect key="frame" x="0.0" y="231" width="320" height="136"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -71,6 +71,13 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Web  App" image="icon_12676.png" id="H8H-P7-nRR"/>
+                    <connections>
+                        <outlet property="closeButton" destination="5GJ-vz-2qo" id="ofo-D7-87A"/>
+                        <outlet property="launchButton" destination="EYB-J2-agO" id="QGq-h5-LXJ"/>
+                        <outlet property="sendButton" destination="apm-Vh-4Rn" id="UKf-s5-mIv"/>
+                        <outlet property="sendJSONButton" destination="gFW-4c-jK1" id="mGk-LD-WSv"/>
+                        <outlet property="statusTextView" destination="alC-uV-JtE" id="COm-Jm-TI3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FHq-Pl-hbj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -169,10 +176,10 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="homeClicked:" destination="aPk-l6-Ae1" eventType="touchUpInside" id="2yO-ej-Kcb"/>
+                                    <action selector="toggleKeyboard:" destination="aPk-l6-Ae1" eventType="touchUpInside" id="Jt2-hY-JjE"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" id="tKU-TQ-yju" customClass="TouchpadView">
+                            <view multipleTouchEnabled="YES" contentMode="scaleToFill" id="tKU-TQ-yju" customClass="TouchpadView">
                                 <rect key="frame" x="0.0" y="146" width="320" height="221"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -203,6 +210,7 @@
                         <outlet property="downButton" destination="iT3-4q-hTk" id="jZp-zR-h0x"/>
                         <outlet property="homeButton" destination="WyD-7g-4Kb" id="Ywe-1Y-ChC"/>
                         <outlet property="keyboard" destination="0Dm-yD-xMN" id="ySG-hO-HHJ"/>
+                        <outlet property="keyboardButton" destination="wEc-vw-Sa4" id="QQC-iX-4Uh"/>
                         <outlet property="leftButton" destination="gCd-z2-SXb" id="fDb-NG-UZw"/>
                         <outlet property="rightButton" destination="hPh-EE-nFZ" id="Avu-48-pQT"/>
                         <outlet property="touchpad" destination="tKU-TQ-yju" id="p2N-cQ-RaN"/>
@@ -284,7 +292,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="simpleImagePressed:" destination="pyF-HD-7Jf" eventType="touchUpInside" id="mW7-BN-A2K"/>
+                                    <action selector="displayPhoto:" destination="wHY-Js-EUt" eventType="touchUpInside" id="VCj-Zb-uNY"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="oN5-T4-2VZ">
@@ -294,7 +302,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="simpleVideoPressed:" destination="pyF-HD-7Jf" eventType="touchUpInside" id="jzi-XL-pEr"/>
+                                    <action selector="displayVideo:" destination="wHY-Js-EUt" eventType="touchUpInside" id="iqX-n8-Trg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VZW-P1-nZA">
@@ -304,7 +312,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="simpleVideoPressed:" destination="pyF-HD-7Jf" eventType="touchUpInside" id="ppd-H7-kxb"/>
+                                    <action selector="closeMedia:" destination="wHY-Js-EUt" eventType="touchUpInside" id="tSu-b8-O7m"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--:--" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ajk-00-ICk">
@@ -321,11 +329,11 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" id="4G9-x6-uVY">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" continuous="NO" id="4G9-x6-uVY">
                                 <rect key="frame" x="18" y="211" width="284" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" id="CQX-KG-adi">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" continuous="NO" id="CQX-KG-adi">
                                 <rect key="frame" x="18" y="292" width="284" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </slider>
@@ -347,9 +355,11 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Media" image="icon_15307.png" id="i0i-az-hKz"/>
                     <connections>
+                        <outlet property="closeMediaButton" destination="VZW-P1-nZA" id="mmH-vF-AIP"/>
+                        <outlet property="displayPhotoButton" destination="1qj-E5-DAO" id="SiM-jz-vYC"/>
+                        <outlet property="displayVideoButton" destination="oN5-T4-2VZ" id="WLd-dK-ZYB"/>
                         <outlet property="fastForwardButton" destination="t7P-Cr-aNE" id="Ahk-23-aw8"/>
                         <outlet property="pauseButton" destination="qhf-xs-vfO" id="GM9-rV-1bC"/>
-                        <outlet property="playButton" destination="UFe-8W-6XQ" id="t5U-6p-f58"/>
                         <outlet property="rewindButton" destination="dnB-mo-VXJ" id="VJt-ee-Tvn"/>
                         <outlet property="stopButton" destination="pUK-Wi-aqc" id="uZ7-yH-ckZ"/>
                     </connections>
@@ -395,18 +405,18 @@
                                     <outlet property="delegate" destination="jwQ-mp-yYL" id="7ts-YL-HAu"/>
                                 </connections>
                             </tableView>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" id="gfJ-2K-gxq">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" continuous="NO" id="gfJ-2K-gxq">
                                 <rect key="frame" x="17" y="69" width="177" height="34"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <action selector="volumeSliderChange:" destination="R5e-Zm-0dj" eventType="valueChanged" id="NiG-iJ-dSc"/>
+                                    <action selector="volumeSliderChange:" destination="jwQ-mp-yYL" eventType="valueChanged" id="hlW-kb-dF9"/>
                                 </connections>
                             </slider>
                             <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Ghq-Yi-Q8s">
                                 <rect key="frame" x="251" y="18" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <action selector="muteSwitchChange:" destination="R5e-Zm-0dj" eventType="valueChanged" id="AQN-7U-lGH"/>
+                                    <action selector="muteSwitchChange:" destination="jwQ-mp-yYL" eventType="valueChanged" id="P5a-6d-ei6"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Mute" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="L76-ae-id5">
@@ -420,7 +430,7 @@
                                 <rect key="frame" x="205" y="71" width="94" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <action selector="volumeStepperChange:" destination="R5e-Zm-0dj" eventType="valueChanged" id="pOq-9u-3Fe"/>
+                                    <action selector="volumeStepperChange:" destination="jwQ-mp-yYL" eventType="valueChanged" id="Mca-MP-wao"/>
                                 </connections>
                             </stepper>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volume" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MSb-O7-LYq">
@@ -437,7 +447,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="pauseClicked:" destination="wHY-Js-EUt" eventType="touchUpInside" id="XQU-N1-4V7"/>
+                                    <action selector="pauseClicked:" destination="jwQ-mp-yYL" eventType="touchUpInside" id="6dW-Wm-g5h"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8mA-0e-GDt">
@@ -447,7 +457,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="stopClicked:" destination="wHY-Js-EUt" eventType="touchUpInside" id="sUy-tC-asD"/>
+                                    <action selector="stopClicked:" destination="jwQ-mp-yYL" eventType="touchUpInside" id="Cm3-ib-QVN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ElZ-Hp-njA">
@@ -457,7 +467,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="playClicked:" destination="wHY-Js-EUt" eventType="touchUpInside" id="3fq-x8-EtV"/>
+                                    <action selector="playClicked:" destination="jwQ-mp-yYL" eventType="touchUpInside" id="hxh-vW-vPZ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gWD-fG-1mY">
@@ -467,7 +477,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="rewindClicked:" destination="wHY-Js-EUt" eventType="touchUpInside" id="7e4-tx-f2w"/>
+                                    <action selector="rewindClicked:" destination="jwQ-mp-yYL" eventType="touchUpInside" id="2D3-ip-vq5"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vR6-ES-oUc">
@@ -477,7 +487,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="fastForwardClicked:" destination="wHY-Js-EUt" eventType="touchUpInside" id="mi3-We-3IU"/>
+                                    <action selector="fastForwardClicked:" destination="jwQ-mp-yYL" eventType="touchUpInside" id="xit-lh-AEY"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -487,8 +497,16 @@
                     <tabBarItem key="tabBarItem" title="System" image="icon_17183.png" id="wWJ-00-CWg"/>
                     <connections>
                         <outlet property="closePickerButton" destination="QsH-Pd-zOI" id="yVn-tO-E1Q"/>
+                        <outlet property="fastForwardButton" destination="vR6-ES-oUc" id="WhE-Fc-0of"/>
                         <outlet property="inputs" destination="ECF-nF-lTh" id="Brj-af-NRp"/>
                         <outlet property="launchPickerButton" destination="FGQ-K1-YW4" id="uZD-zh-7qu"/>
+                        <outlet property="muteSwitch" destination="Ghq-Yi-Q8s" id="pzc-qq-DFZ"/>
+                        <outlet property="pauseButton" destination="3zC-FQ-bAf" id="MBz-Ym-Wcc"/>
+                        <outlet property="playButton" destination="ElZ-Hp-njA" id="1vh-5k-k2d"/>
+                        <outlet property="rewindButton" destination="gWD-fG-1mY" id="q0V-M6-z5h"/>
+                        <outlet property="stopButton" destination="8mA-0e-GDt" id="Cql-63-TMZ"/>
+                        <outlet property="volSlider" destination="gfJ-2K-gxq" id="ypa-78-rHy"/>
+                        <outlet property="volStepper" destination="eQ5-55-ijL" id="VVD-e6-DXU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Fe-VC-HOP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -549,7 +567,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="showToast:" destination="R5e-Zm-0dj" eventType="touchUpInside" id="6o9-AN-4HR"/>
+                                    <action selector="toastPressed:" destination="pyF-HD-7Jf" eventType="touchUpInside" id="xI4-vw-2bu"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -561,6 +579,7 @@
                         <outlet property="apps" destination="hZK-k1-W8u" id="e5q-1j-jh9"/>
                         <outlet property="browserButton" destination="hKc-WC-0Xi" id="VHg-GK-0yl"/>
                         <outlet property="netflixButton" destination="vJQ-O5-dw7" id="hGO-Py-fAk"/>
+                        <outlet property="toastButton" destination="mSu-pk-y7b" id="zYR-DY-aA4"/>
                         <outlet property="youtubeButton" destination="8Mm-03-0cB" id="u9e-jS-njk"/>
                     </connections>
                 </viewController>
@@ -646,6 +665,9 @@
                                 <state key="normal" title="Power Off">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="powerOff:" destination="R5e-Zm-0dj" eventType="touchUpInside" id="3k7-Fm-glj"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lXn-Jc-1eS">
                                 <rect key="frame" x="20" y="20" width="120" height="30"/>
@@ -653,6 +675,9 @@
                                 <state key="normal" title="Incoming Call">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="incomingCall:" destination="R5e-Zm-0dj" eventType="touchUpInside" id="8RN-pm-Ezk"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LIa-IO-Zli">
                                 <rect key="frame" x="211" y="64" width="88" height="30"/>
@@ -660,6 +685,9 @@
                                 <state key="normal" title="3D Mode">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="display3D:" destination="R5e-Zm-0dj" eventType="touchUpInside" id="guQ-mE-Waq"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -670,7 +698,10 @@
                     <connections>
                         <outlet property="channelStepper" destination="mup-68-NPp" id="EcR-vA-FLs"/>
                         <outlet property="channels" destination="Is0-7e-UuC" id="5p4-aB-odd"/>
+                        <outlet property="display3DButton" destination="LIa-IO-Zli" id="obM-F1-3UA"/>
+                        <outlet property="incomingCallButton" destination="lXn-Jc-1eS" id="3bX-GS-YYJ"/>
                         <outlet property="muteSwitch" destination="Ghq-Yi-Q8s" id="fd4-w2-TM8"/>
+                        <outlet property="powerOffButton" destination="Eo7-U7-BxX" id="BYh-VP-Lm6"/>
                         <outlet property="volSlider" destination="gfJ-2K-gxq" id="x1l-QO-GeE"/>
                         <outlet property="volStepper" destination="eQ5-55-ijL" id="YOB-rm-Vz2"/>
                     </connections>

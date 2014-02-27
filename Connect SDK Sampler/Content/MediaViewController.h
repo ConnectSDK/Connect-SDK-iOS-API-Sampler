@@ -10,19 +10,24 @@
 
 @interface MediaViewController : ContentViewController
 
-@property (nonatomic, strong) IBOutlet UIButton *playButton;
-@property (nonatomic, strong) IBOutlet UIButton *pauseButton;
-@property (nonatomic, strong) IBOutlet UIButton *stopButton;
-@property (nonatomic, strong) IBOutlet UIButton *rewindButton;
-@property (nonatomic, strong) IBOutlet UIButton *fastForwardButton;
-@property (nonatomic, strong) IBOutlet UITableView *mediaList;
-@property (weak, nonatomic) IBOutlet UIButton *tv3DButton;
+@property (weak, nonatomic) IBOutlet UIButton *displayPhotoButton;
+@property (weak, nonatomic) IBOutlet UIButton *displayVideoButton;
+@property (weak, nonatomic) IBOutlet UIButton *closeMediaButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *playButton;
+@property (weak, nonatomic) IBOutlet UIButton *pauseButton;
+@property (weak, nonatomic) IBOutlet UIButton *stopButton;
+@property (weak, nonatomic) IBOutlet UIButton *rewindButton;
+@property (weak, nonatomic) IBOutlet UIButton *fastForwardButton;
+
+- (IBAction)displayPhoto:(id)sender;
+- (IBAction)displayVideo:(id)sender;
+- (IBAction)closeMedia:(id)sender;
 
 -(IBAction)playClicked:(id)sender;
 -(IBAction)pauseClicked:(id)sender;
 -(IBAction)stopClicked:(id)sender;
 -(IBAction)rewindClicked:(id)sender;
 -(IBAction)fastForwardClicked:(id)sender;
-- (IBAction)tv3D:(id)sender;
 
 @end

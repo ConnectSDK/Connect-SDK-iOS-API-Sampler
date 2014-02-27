@@ -89,6 +89,15 @@
 
 #pragma mark - Remote Control methods
 
+- (IBAction)displayPhoto:(id)sender {
+}
+
+- (IBAction)displayVideo:(id)sender {
+}
+
+- (IBAction)closeMedia:(id)sender {
+}
+
 -(void)playClicked:(id)sender
 {
     [self.device.mediaControl playWithSuccess:^(id responseObject)

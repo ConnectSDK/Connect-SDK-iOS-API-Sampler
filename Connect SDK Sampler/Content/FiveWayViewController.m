@@ -149,6 +149,9 @@ typedef enum
     _timer = nil;
 }
 
+- (IBAction)toggleKeyboard:(id)sender {
+}
+
 #pragma mark - Mouse methods
 - (void) hButtonHold
 {

@@ -10,19 +10,17 @@
 
 @interface ChannelViewController : ContentViewController<UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) IBOutlet UIStepper *volStepper;
-@property (nonatomic, strong) IBOutlet UISlider *volSlider;
-@property (nonatomic, strong) IBOutlet UISwitch *muteSwitch;
+@property (weak, nonatomic) IBOutlet UIButton *incomingCallButton;
+@property (weak, nonatomic) IBOutlet UIButton *powerOffButton;
+@property (weak, nonatomic) IBOutlet UIButton *display3DButton;
 
-@property (nonatomic, strong) IBOutlet UIStepper *channelStepper;
-@property (nonatomic, strong) IBOutlet UITableView *channels;
+- (IBAction)incomingCall:(id)sender;
+- (IBAction)powerOff:(id)sender;
+- (IBAction)display3D:(id)sender;
 
-@property (weak, nonatomic) IBOutlet UIButton *toastButton;
+@property (weak, nonatomic) IBOutlet UIStepper *channelStepper;
+@property (weak, nonatomic) IBOutlet UITableView *channels;
 
--(IBAction)volumeStepperChange:(id)sender;
--(IBAction)volumeSliderChange:(id)sender;
--(IBAction)muteSwitchChange:(id)sender;
 -(IBAction)channelStepperChange:(id)sender;
-- (IBAction)showToast:(id)sender;
 
 @end

@@ -262,4 +262,7 @@
     }];
 }
 
+- (IBAction)toastPressed:(id)sender {
+}
+
 @end

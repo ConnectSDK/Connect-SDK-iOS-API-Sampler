@@ -10,19 +10,17 @@
 
 @interface AppViewController : ContentViewController<UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) IBOutlet UITableView *apps;
-@property (nonatomic, strong) IBOutlet UIButton *browserButton;
-@property (nonatomic, strong) IBOutlet UIButton *simpleImageButton;
-@property (nonatomic, strong) IBOutlet UIButton *simpleVideoButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *browserButton;
+@property (weak, nonatomic) IBOutlet UIButton *toastButton;
 @property (weak, nonatomic) IBOutlet UIButton *netflixButton;
-@property (weak, nonatomic) IBOutlet UIButton *huluButton;
 @property (weak, nonatomic) IBOutlet UIButton *youtubeButton;
 
+@property (weak, nonatomic) IBOutlet UITableView *apps;
+
 - (IBAction)browserPressed:(id)sender;
-- (IBAction)simpleImagePressed:(id)sender;
-- (IBAction)simpleVideoPressed:(id)sender;
+- (IBAction)toastPressed:(id)sender;
 - (IBAction)netflixPressed:(id)sender;
-- (IBAction)huluPressed:(id)sender;
 - (IBAction)youtubePressed:(id)sender;
 
 @end
