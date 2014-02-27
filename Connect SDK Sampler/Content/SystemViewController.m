@@ -26,19 +26,13 @@
         
         [self.device.externalInputControl getExternalInputListWithSuccess:^(NSArray *inp)
         {
-            dispatch_async(dispatch_get_main_queue(), ^
-            {
-                _inputList = inp;
-                [_inputs reloadData];
-            });
+            _inputList = inp;
+            [_inputs reloadData];
         } failure:^(NSError *err)
         {
             NSLog(@"External error, %@", err);
 
-            dispatch_async(dispatch_get_main_queue(), ^
-            {
-                self.inputs.hidden = YES;
-            });
+            self.inputs.hidden = YES;
         }];
     } else
     {
@@ -105,6 +99,8 @@
     }];
 }
 
+#pragma mark - Connect SDK API sampler methods
+
 - (IBAction)launchPicker:(id)sender
 {
     [self.device.externalInputControl launchInputPickerWithSuccess:^(LaunchSession *session)
@@ -112,10 +108,7 @@
         NSLog(@"External input picker launched");
         _inputPickerSession = session;
 
-        dispatch_async(dispatch_get_main_queue(), ^
-        {
-            self.closePickerButton.enabled = YES;
-        });
+        self.closePickerButton.enabled = YES;
     } failure:^(NSError *error)
     {
         NSLog(@"External input picker error %@", error);
@@ -129,10 +122,7 @@
         NSLog(@"External input picker closed");
         _inputPickerSession = nil;
 
-        dispatch_async(dispatch_get_main_queue(), ^
-        {
-            self.closePickerButton.enabled = NO;
-        });
+        self.closePickerButton.enabled = NO;
     } failure:^(NSError *error)
     {
         NSLog(@"External input picker close error %@", error);

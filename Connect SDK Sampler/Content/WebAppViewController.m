@@ -46,6 +46,8 @@
 }
 */
 
+#pragma mark - Connect SDK API sampler methods
+
 - (IBAction)launchWebApp:(id)sender {
 }
 

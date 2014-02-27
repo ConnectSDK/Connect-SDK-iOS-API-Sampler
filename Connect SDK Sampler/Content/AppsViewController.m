@@ -34,10 +34,8 @@
         
         [self.device.launcher getAppListWithSuccess:^(NSArray *appList)
         {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                _appList = appList;
-                [self reloadData];
-            });
+            _appList = appList;
+            [self reloadData];
         } failure:^(NSError *err)
         {
             NSLog(@"Get app Error %@", err.description);
@@ -130,7 +128,7 @@
     }];
 }
 
-#pragma mark - Actions
+#pragma mark - Connect SDK API sampler methods
 
 -(void) browserPressed:(id)sender{
     NSURL *URL = [NSURL URLWithString:@"http://enyojs.com/"];
@@ -154,11 +152,8 @@
         {
             NSLog(@"media closed");
 
-            dispatch_async(dispatch_get_main_queue(), ^
-            {
-                _imageSession = nil;
-                sender.selected = NO;
-            });
+            _imageSession = nil;
+            sender.selected = NO;
         } failure:^(NSError *error)
         {
             NSLog(@"media close fail, %@", error);
@@ -174,11 +169,8 @@
         {
             NSLog(@"media opened %@", launchSession);
 
-            dispatch_async(dispatch_get_main_queue(), ^
-            {
-                _imageSession = launchSession;
-                sender.selected = YES;
-            });
+            _imageSession = launchSession;
+            sender.selected = YES;
         } failure:^(NSError *error)
         {
             NSLog(@"media fail, %@", error);
@@ -196,11 +188,8 @@
          {
              NSLog(@"media closed");
              
-             dispatch_async(dispatch_get_main_queue(), ^
-                            {
-                                _videoSession = nil;
-                                sender.selected = NO;
-                            });
+            _videoSession = nil;
+            sender.selected = NO;
          } failure:^(NSError *error)
          {
              NSLog(@"media close fail, %@", error);
@@ -217,11 +206,8 @@
          {
              NSLog(@"media opened %@", launchSession);
              
-             dispatch_async(dispatch_get_main_queue(), ^
-                            {
-                                _videoSession = launchSession;
-                                sender.selected = YES;
-                            });
+            _videoSession = launchSession;
+            sender.selected = YES;
          } failure:^(NSError *error)
          {
              NSLog(@"media fail, %@", error);

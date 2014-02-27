@@ -8,16 +8,18 @@
 
 #import "MediaViewController.h"
 
-@interface MediaViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface MediaViewController ()
 
 @end
 
 @implementation MediaViewController
 {
-    NSArray *_mediaListArray;
-
-    ServiceSubscription *_channelInfoSubscription;
-    ServiceSubscription *_3DSubscription;
+    LaunchSession *_launchSession;
+    id<MediaControl> _mediaControl;
+    
+    ServiceSubscription *_playPositionSubscription;
+    ServiceSubscription *_muteSubscription;
+    ServiceSubscription *_volumeSubscription;
 }
 
 #pragma mark - UIViewController creation/destruction methods
@@ -26,40 +28,8 @@
 {
     if (self.device)
     {
-        [_playButton setEnabled:YES];
-        [_pauseButton setEnabled:YES];
-        [_stopButton setEnabled:YES];
-        [_rewindButton setEnabled:YES];
-        [_fastForwardButton setEnabled:YES];
-        [_tv3DButton setEnabled:YES];
-
-        _channelInfoSubscription = [self.device.tvControl subscribeChannelInfoWithSuccess:^(ChannelInfo *channelInfo)
-        {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                NSLog(@"getChannelInfo success");
-
-                _mediaListArray = @[
-                        [NSString stringWithFormat:@"Channel number: %@", channelInfo.number],
-                        [NSString stringWithFormat:@"Channel name: %@", channelInfo.name],
-                        [NSString stringWithFormat:@"Channel ID: %@", channelInfo.id]
-                ];
-                [_mediaList reloadData];
-            });
-        } failure:^(NSError *error)
-        {
-            NSLog(@"getChannelInfo error: %@", error.localizedDescription);
-        }];
-
-        _3DSubscription = [self.device.tvControl subscribe3DEnabledWithSuccess:^(BOOL tv3DEnabled)
-        {
-            dispatch_async(dispatch_get_main_queue(), ^
-            {
-                _tv3DButton.selected = tv3DEnabled;
-            });
-        } failure:^(NSError *error)
-        {
-            NSLog(@"Subscribe to 3D mode error: %@", error.localizedDescription);
-        }];
+        if ([self.device hasCapability:kMediaPlayerDisplayImage]) [_displayPhotoButton setEnabled:YES];
+        if ([self.device hasCapability:kMediaPlayerDisplayVideo]) [_displayVideoButton setEnabled:YES];
     } else
     {
         [self removeSubscriptions];
@@ -68,39 +38,137 @@
 
 - (void) removeSubscriptions
 {
-    if (_channelInfoSubscription)
-        [_channelInfoSubscription unsubscribe];
+    [self resetMediaControlComponents];
+    
+    [_displayPhotoButton setEnabled:NO];
+    [_displayVideoButton setEnabled:NO];
+}
 
-    if (_3DSubscription)
-        [_3DSubscription unsubscribe];
-
+- (void) resetMediaControlComponents
+{
+    if (_playPositionSubscription)
+        [_playPositionSubscription unsubscribe];
+    
+    if (_muteSubscription)
+        [_muteSubscription unsubscribe];
+    
+    if (_volumeSubscription)
+        [_volumeSubscription unsubscribe];
+    
+    _launchSession = nil;
+    _mediaControl = nil;
+    
+    [_closeMediaButton setEnabled:NO];
+    
     [_playButton setEnabled:NO];
     [_pauseButton setEnabled:NO];
     [_stopButton setEnabled:NO];
     [_rewindButton setEnabled:NO];
     [_fastForwardButton setEnabled:NO];
-    [_tv3DButton setEnabled:NO];
-
-    dispatch_async(dispatch_get_main_queue(), ^{
-        _mediaListArray = nil;
-        [_mediaList reloadData];
-    });
+    
+    _currentTimeLabel.text = @"--:--";
+    _durationLabel.text = @"--:--";
+    
+    [_seekSlider setEnabled:NO];
+    [_volumeSlider setEnabled:NO];
+    
+    [_seekSlider setValue:0 animated:NO];
+    [_volumeSlider setValue:0 animated:NO];
 }
 
-#pragma mark - Remote Control methods
+- (void) enableMediaControlComponents
+{
+    if ([self.device hasCapability:kMediaControlPlay]) [_playButton setEnabled:YES];
+    if ([self.device hasCapability:kMediaControlPause]) [_pauseButton setEnabled:YES];
+    if ([self.device hasCapability:kMediaControlStop]) [_stopButton setEnabled:YES];
+    if ([self.device hasCapability:kMediaControlRewind]) [_rewindButton setEnabled:YES];
+    if ([self.device hasCapability:kMediaControlFastForward]) [_fastForwardButton setEnabled:YES];
+    
+    if ([self.device hasCapability:kMediaControlPositionSubscribe])
+    {
+        [_mediaControl subscribePositionWithSuccess:^(NSTimeInterval position) {
+            
+        } failure:^(NSError *error) {
+            
+        }];
+    }
+}
+
+#pragma mark - Connect SDK API sampler methods
 
 - (IBAction)displayPhoto:(id)sender {
+    [self resetMediaControlComponents];
+    
+    NSURL *mediaURL = [NSURL URLWithString:@""];
+    NSURL *iconURL = [NSURL URLWithString:@""];
+    NSString *title = @"";
+    NSString *description = @"";
+    NSString *mimeType = @"image/png";
+    
+    [self.device.mediaPlayer displayImage:mediaURL
+                                  iconURL:iconURL
+                                    title:title
+                              description:description
+                                 mimeType:mimeType
+                                  success:^(LaunchSession *launchSession, id<MediaControl> mediaControl) {
+                                      _launchSession = launchSession;
+                                  }
+                                  failure:^(NSError *error) {
+                                      NSLog(@"display photo failure: %@", error.localizedDescription);
+                                  }];
 }
 
 - (IBAction)displayVideo:(id)sender {
+    [self resetMediaControlComponents];
+    
+    NSURL *mediaURL = [NSURL URLWithString:@""];
+    NSURL *iconURL = [NSURL URLWithString:@""];
+    NSString *title = @"";
+    NSString *description = @"";
+    NSString *mimeType = @"video/mp4";
+    BOOL shouldLoop = NO;
+    
+    [self.device.mediaPlayer displayVideo:mediaURL
+                                  iconURL:iconURL
+                                    title:title
+                              description:description
+                                 mimeType:mimeType
+                               shouldLoop:shouldLoop
+                                  success:^(LaunchSession *launchSession, id<MediaControl> mediaControl) {
+                                      _launchSession = launchSession;
+                                      _mediaControl = mediaControl;
+                                      
+                                      [self enableMediaControlComponents];
+                                  }
+                                  failure:^(NSError *error) {
+                                      NSLog(@"display video failure: %@", error.localizedDescription);
+                                  }];
 }
 
-- (IBAction)closeMedia:(id)sender {
+- (IBAction)closeMedia:(id)sender
+{
+    if (!_launchSession)
+    {
+        [self resetMediaControlComponents];
+        return;
+    }
+    
+    [_launchSession closeWithSuccess:^(id responseObject) {
+        [self resetMediaControlComponents];
+    } failure:^(NSError *error) {
+        NSLog(@"close media failure: %@", error.localizedDescription);
+    }];
 }
 
 -(void)playClicked:(id)sender
 {
-    [self.device.mediaControl playWithSuccess:^(id responseObject)
+    if (!_mediaControl)
+    {
+        [self resetMediaControlComponents];
+        return;
+    }
+    
+    [_mediaControl playWithSuccess:^(id responseObject)
     {
         NSLog(@"play success");
     } failure:^(NSError *error)
@@ -111,7 +179,13 @@
 
 -(void)pauseClicked:(id)sender
 {
-    [self.device.mediaControl pauseWithSuccess:^(id responseObject)
+    if (!_mediaControl)
+    {
+        [self resetMediaControlComponents];
+        return;
+    }
+    
+    [_mediaControl pauseWithSuccess:^(id responseObject)
     {
         NSLog(@"pause success");
     } failure:^(NSError *error)
@@ -122,7 +196,13 @@
 
 -(void)stopClicked:(id)sender
 {
-    [self.device.mediaControl stopWithSuccess:^(id responseObject)
+    if (!_mediaControl)
+    {
+        [self resetMediaControlComponents];
+        return;
+    }
+    
+    [_mediaControl stopWithSuccess:^(id responseObject)
     {
         NSLog(@"stop success");
     } failure:^(NSError *error)
@@ -133,7 +213,13 @@
 
 -(void)rewindClicked:(id)sender
 {
-    [self.device.mediaControl rewindWithSuccess:^(id responseObject)
+    if (!_mediaControl)
+    {
+        [self resetMediaControlComponents];
+        return;
+    }
+    
+    [_mediaControl rewindWithSuccess:^(id responseObject)
     {
         NSLog(@"rewind success");
     } failure:^(NSError *error)
@@ -144,7 +230,13 @@
 
 -(void)fastForwardClicked:(id)sender
 {
-    [self.device.mediaControl fastForwardWithSuccess:^(id responseObject)
+    if (!_mediaControl)
+    {
+        [self resetMediaControlComponents];
+        return;
+    }
+    
+    [_mediaControl fastForwardWithSuccess:^(id responseObject)
     {
         NSLog(@"fast forward success");
     } failure:^(NSError *error)
@@ -153,64 +245,20 @@
     }];
 }
 
--(void) offClicked:(id)sender
+- (IBAction)seekChanged:(id)sender
 {
-    [self.device.powerControl powerOffWithSuccess:^(id responseObject)
-    {
-        NSLog(@"power off success");
-    } failure:^(NSError *error)
-    {
-        NSLog(@"power off failure: %@", error.localizedDescription);
-    }];
-}
-
-- (IBAction)tv3D:(id)sender
-{
-    BOOL enabled = !self.tv3DButton.selected;
-
-    [self.device.tvControl set3DEnabled:enabled success:^(id responseObject)
-    {
-        dispatch_async(dispatch_get_main_queue(), ^
-        {
-            self.tv3DButton.selected = enabled;
-        });
-    } failure:^(NSError *error)
-    {
-        NSLog(@"set 3D failure: %@", error.localizedDescription);
-    }];
-}
-
-#pragma mark - Media UITableView methods
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    if (_mediaListArray)
-        return _mediaListArray.count;
-    else
-        return 0;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"ConnectSDKSamplerMediaChooser";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    if (cell == nil)
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    if (!_mediaControl)
+    {
+        [self resetMediaControlComponents];
+        return;
+    }
     
-    cell.textLabel.text = [_mediaListArray objectAtIndex:(NSUInteger) indexPath.row];
-    
-    return cell;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (IBAction)volumeChanged:(id)sender
 {
-    NSLog(@"key: clicked %@", [_mediaListArray objectAtIndex:(NSUInteger) indexPath.row]);
+    
 }
 
 @end

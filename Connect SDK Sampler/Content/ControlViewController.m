@@ -34,13 +34,10 @@ typedef enum
     {
         _keyboardSubscription = [self.device.keyboardControl subscribeKeyboardStatusWithSuccess:^(KeyboardInfo *info)
         {
-            dispatch_async(dispatch_get_main_queue(), ^
-            {
-                if (info.isVisible)
-                    [self getKeyboardFocusWithType:info.keyboardType];
-                else
-                    [self resignKeyboardFocus];
-            });
+            if (info.isVisible)
+                [self getKeyboardFocusWithType:info.keyboardType];
+            else
+                [self resignKeyboardFocus];
         } failure:^(NSError *error)
         {
             NSLog(@"keyboard subscription error %@", error.localizedDescription);
@@ -48,10 +45,7 @@ typedef enum
 
         [self.device.mouseControl connectMouseWithSuccess:^(id responseObject)
         {
-            dispatch_async(dispatch_get_main_queue(), ^
-            {
-                [self setupControls];
-            });
+            [self setupControls];
         } failure:nil];
     } else
     {
@@ -86,7 +80,7 @@ typedef enum
     [_backButton setEnabled:NO];
 }
 
-#pragma mark - Actions
+#pragma mark - Connect SDK API sampler methods
 
 - (void)homeClicked:(id)sender
 {
