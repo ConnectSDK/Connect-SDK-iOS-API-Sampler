@@ -368,6 +368,7 @@
                         <outlet property="durationLabel" destination="XeI-cd-9bl" id="7zT-sr-TU7"/>
                         <outlet property="fastForwardButton" destination="t7P-Cr-aNE" id="Ahk-23-aw8"/>
                         <outlet property="pauseButton" destination="qhf-xs-vfO" id="GM9-rV-1bC"/>
+                        <outlet property="playButton" destination="UFe-8W-6XQ" id="FTn-MR-6Sh"/>
                         <outlet property="rewindButton" destination="dnB-mo-VXJ" id="VJt-ee-Tvn"/>
                         <outlet property="seekSlider" destination="4G9-x6-uVY" id="R2B-xy-Fbw"/>
                         <outlet property="stopButton" destination="pUK-Wi-aqc" id="uZ7-yH-ckZ"/>

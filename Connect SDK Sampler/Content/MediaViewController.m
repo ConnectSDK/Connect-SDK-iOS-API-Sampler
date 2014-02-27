@@ -87,11 +87,15 @@
     if ([self.device hasCapability:kMediaControlPositionSubscribe])
     {
         [_mediaControl subscribePositionWithSuccess:^(NSTimeInterval position) {
-            
+            // TODO: implement position
         } failure:^(NSError *error) {
-            
+            NSLog(@"subscribe position failure: %@", error.localizedDescription);
         }];
     }
+    
+    // TODO: subscribe to volume
+    
+    // TODO: subscribe to mute
 }
 
 #pragma mark - Connect SDK API sampler methods
@@ -99,11 +103,11 @@
 - (IBAction)displayPhoto:(id)sender {
     [self resetMediaControlComponents];
     
-    NSURL *mediaURL = [NSURL URLWithString:@""];
-    NSURL *iconURL = [NSURL URLWithString:@""];
-    NSString *title = @"";
-    NSString *description = @"";
-    NSString *mimeType = @"image/png";
+    NSURL *mediaURL = [NSURL URLWithString:@"http://www.freesoftwaremagazine.com/files/nodes/3466/fig_sintel_style_study.jpg"];
+    NSURL *iconURL = [NSURL URLWithString:@"http://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/t5/s48x48/50354_121158371242322_7687_q.jpg"];
+    NSString *title = @"Sintel Character Design";
+    NSString *description = @"Blender Open Movie Project";
+    NSString *mimeType = @"image/jpeg";
     
     [self.device.mediaPlayer displayImage:mediaURL
                                   iconURL:iconURL
@@ -112,6 +116,9 @@
                                  mimeType:mimeType
                                   success:^(LaunchSession *launchSession, id<MediaControl> mediaControl) {
                                       _launchSession = launchSession;
+                                      
+                                      if ([self.device hasCapability:kMediaPlayerClose])
+                                          [_closeMediaButton setEnabled:YES];
                                   }
                                   failure:^(NSError *error) {
                                       NSLog(@"display photo failure: %@", error.localizedDescription);
@@ -121,10 +128,10 @@
 - (IBAction)displayVideo:(id)sender {
     [self resetMediaControlComponents];
     
-    NSURL *mediaURL = [NSURL URLWithString:@""];
-    NSURL *iconURL = [NSURL URLWithString:@""];
-    NSString *title = @"";
-    NSString *description = @"";
+    NSURL *mediaURL = [NSURL URLWithString:@"http://download.blender.org/durian/trailer/sintel_trailer-720p.mp4"];
+    NSURL *iconURL = [NSURL URLWithString:@"http://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/t5/s48x48/50354_121158371242322_7687_q.jpg"];
+    NSString *title = @"Sintel Trailer";
+    NSString *description = @"Blender Open Movie Project";
     NSString *mimeType = @"video/mp4";
     BOOL shouldLoop = NO;
     
@@ -137,6 +144,9 @@
                                   success:^(LaunchSession *launchSession, id<MediaControl> mediaControl) {
                                       _launchSession = launchSession;
                                       _mediaControl = mediaControl;
+                                      
+                                      if ([self.device hasCapability:kMediaPlayerClose])
+                                          [_closeMediaButton setEnabled:YES];
                                       
                                       [self enableMediaControlComponents];
                                   }
@@ -247,18 +257,18 @@
 
 - (IBAction)seekChanged:(id)sender
 {
-    
     if (!_mediaControl)
     {
         [self resetMediaControlComponents];
         return;
     }
     
+    // TODO: implement seek
 }
 
 - (IBAction)volumeChanged:(id)sender
 {
-    
+    // TODO: implement volume/mute etc
 }
 
 @end
