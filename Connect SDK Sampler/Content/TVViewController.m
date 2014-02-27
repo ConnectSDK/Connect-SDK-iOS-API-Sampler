@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 LG Electronics. All rights reserved.
 //
 
-#import "ChannelViewController.h"
+#import "TVViewController.h"
 
-@interface ChannelViewController ()
+@interface TVViewController ()
 
 @end
 
-@implementation ChannelViewController
+@implementation TVViewController
 {
     NSArray *_channelList;
     ChannelInfo *_currentChannel;

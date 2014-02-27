@@ -83,10 +83,10 @@
             </objects>
             <point key="canvasLocation" x="896" y="-254"/>
         </scene>
-        <!--Five Way View Controller - Five Way-->
+        <!--Control View Controller - Five Way-->
         <scene sceneID="40H-Sb-dZz">
             <objects>
-                <viewController title="Five Way" id="aPk-l6-Ae1" customClass="FiveWayViewController" sceneMemberID="viewController">
+                <viewController title="Five Way" id="aPk-l6-Ae1" customClass="ControlViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fDJ-xr-8Ax">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -179,7 +179,7 @@
                                     <action selector="toggleKeyboard:" destination="aPk-l6-Ae1" eventType="touchUpInside" id="Jt2-hY-JjE"/>
                                 </connections>
                             </button>
-                            <view multipleTouchEnabled="YES" contentMode="scaleToFill" id="tKU-TQ-yju" customClass="TouchpadView">
+                            <view multipleTouchEnabled="YES" contentMode="scaleToFill" id="tKU-TQ-yju" customClass="ControlTouchpadView">
                                 <rect key="frame" x="0.0" y="146" width="320" height="221"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -368,10 +368,10 @@
             </objects>
             <point key="canvasLocation" x="519" y="-254"/>
         </scene>
-        <!--Input View Controller - Inputs-->
+        <!--System View Controller - Inputs-->
         <scene sceneID="Sco-M8-MvZ">
             <objects>
-                <viewController title="Inputs" id="jwQ-mp-yYL" customClass="InputViewController" sceneMemberID="viewController">
+                <viewController title="Inputs" id="jwQ-mp-yYL" customClass="SystemViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uLL-mb-gu2">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -513,10 +513,10 @@
             </objects>
             <point key="canvasLocation" x="896" y="321"/>
         </scene>
-        <!--App View Controller - Apps-->
+        <!--Apps View Controller - Apps-->
         <scene sceneID="meF-mr-wIc">
             <objects>
-                <viewController title="Apps" id="pyF-HD-7Jf" customClass="AppViewController" sceneMemberID="viewController">
+                <viewController title="Apps" id="pyF-HD-7Jf" customClass="AppsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="frJ-rC-Vg5">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -628,10 +628,10 @@
             </objects>
             <point key="canvasLocation" x="-46" y="54"/>
         </scene>
-        <!--Channel View Controller - TV-->
+        <!--View Controller - TV-->
         <scene sceneID="qbQ-Ns-sIy">
             <objects>
-                <viewController title="TV" id="R5e-Zm-0dj" customClass="ChannelViewController" sceneMemberID="viewController">
+                <viewController title="TV" id="R5e-Zm-0dj" customClass="TVViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YWT-Pc-wqi">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

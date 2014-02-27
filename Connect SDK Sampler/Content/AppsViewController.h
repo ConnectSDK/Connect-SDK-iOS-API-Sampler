@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 LG Electronics. All rights reserved.
 //
 
-#import "ContentViewController.h"
+#import "BaseViewController.h"
 
-@interface AppViewController : ContentViewController<UITableViewDataSource, UITableViewDelegate>
+@interface AppsViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UIButton *browserButton;

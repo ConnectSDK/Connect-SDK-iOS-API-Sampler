@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 LG Electronics. All rights reserved.
 //
 
-#import "AppViewController.h"
+#import "AppsViewController.h"
 
-@interface AppViewController ()
+@interface AppsViewController ()
 
 @end
 
-@implementation AppViewController{
+@implementation AppsViewController{
     NSArray *_appList;
     int _currentApp;
 

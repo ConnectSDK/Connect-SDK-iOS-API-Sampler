@@ -10,15 +10,15 @@
 		EA099895185146830072824C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EA099894185146830072824C /* libz.dylib */; };
 		EA0998A2185147070072824C /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0998A1185147070072824C /* libicucore.dylib */; };
 		EA09EFA61875E7EB008E6839 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA09EFA51875E7EB008E6839 /* MainStoryboard.storyboard */; };
-		EA09EFC31875E82A008E6839 /* AppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA09EFA91875E82A008E6839 /* AppViewController.m */; };
-		EA09EFC41875E82A008E6839 /* ChannelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA09EFAB1875E82A008E6839 /* ChannelViewController.m */; };
-		EA09EFC51875E82A008E6839 /* FiveWayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA09EFAD1875E82A008E6839 /* FiveWayViewController.m */; };
-		EA09EFC61875E82A008E6839 /* InputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA09EFAF1875E82A008E6839 /* InputViewController.m */; };
+		EA09EFC31875E82A008E6839 /* AppsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA09EFA91875E82A008E6839 /* AppsViewController.m */; };
+		EA09EFC41875E82A008E6839 /* TVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA09EFAB1875E82A008E6839 /* TVViewController.m */; };
+		EA09EFC51875E82A008E6839 /* ControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA09EFAD1875E82A008E6839 /* ControlViewController.m */; };
+		EA09EFC61875E82A008E6839 /* SystemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA09EFAF1875E82A008E6839 /* SystemViewController.m */; };
 		EA09EFC81875E82A008E6839 /* MediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA09EFB31875E82A008E6839 /* MediaViewController.m */; };
-		EA09EFC91875E82A008E6839 /* TouchpadView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA09EFB51875E82A008E6839 /* TouchpadView.m */; };
+		EA09EFC91875E82A008E6839 /* ControlTouchpadView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA09EFB51875E82A008E6839 /* ControlTouchpadView.m */; };
 		EA09EFCA1875E82A008E6839 /* SamplerNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA09EFB81875E82A008E6839 /* SamplerNavigationViewController.m */; };
 		EA09EFCB1875E82A008E6839 /* SamplerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA09EFBA1875E82A008E6839 /* SamplerViewController.m */; };
-		EA09EFCC1875E82A008E6839 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA09EFBC1875E82A008E6839 /* ContentViewController.m */; };
+		EA09EFCC1875E82A008E6839 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA09EFBC1875E82A008E6839 /* BaseViewController.m */; };
 		EA0F2D0218BE7705003B44E1 /* WebAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0F2D0118BE7705003B44E1 /* WebAppViewController.m */; };
 		EA0F2D3D18BEACCB003B44E1 /* icon_17114.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0F2D2618BEACCB003B44E1 /* icon_17114.png */; };
 		EA0F2D3E18BEACCB003B44E1 /* icon_17114@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0F2D2718BEACCB003B44E1 /* icon_17114@2x.png */; };
@@ -53,24 +53,24 @@
 		EA099894185146830072824C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		EA0998A1185147070072824C /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		EA09EFA51875E7EB008E6839 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
-		EA09EFA81875E82A008E6839 /* AppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppViewController.h; sourceTree = "<group>"; };
-		EA09EFA91875E82A008E6839 /* AppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppViewController.m; sourceTree = "<group>"; };
-		EA09EFAA1875E82A008E6839 /* ChannelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelViewController.h; sourceTree = "<group>"; };
-		EA09EFAB1875E82A008E6839 /* ChannelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelViewController.m; sourceTree = "<group>"; };
-		EA09EFAC1875E82A008E6839 /* FiveWayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FiveWayViewController.h; sourceTree = "<group>"; };
-		EA09EFAD1875E82A008E6839 /* FiveWayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FiveWayViewController.m; sourceTree = "<group>"; };
-		EA09EFAE1875E82A008E6839 /* InputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputViewController.h; sourceTree = "<group>"; };
-		EA09EFAF1875E82A008E6839 /* InputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputViewController.m; sourceTree = "<group>"; };
+		EA09EFA81875E82A008E6839 /* AppsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppsViewController.h; sourceTree = "<group>"; };
+		EA09EFA91875E82A008E6839 /* AppsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppsViewController.m; sourceTree = "<group>"; };
+		EA09EFAA1875E82A008E6839 /* TVViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVViewController.h; sourceTree = "<group>"; };
+		EA09EFAB1875E82A008E6839 /* TVViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVViewController.m; sourceTree = "<group>"; };
+		EA09EFAC1875E82A008E6839 /* ControlViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlViewController.h; sourceTree = "<group>"; };
+		EA09EFAD1875E82A008E6839 /* ControlViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlViewController.m; sourceTree = "<group>"; };
+		EA09EFAE1875E82A008E6839 /* SystemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemViewController.h; sourceTree = "<group>"; };
+		EA09EFAF1875E82A008E6839 /* SystemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemViewController.m; sourceTree = "<group>"; };
 		EA09EFB21875E82A008E6839 /* MediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaViewController.h; sourceTree = "<group>"; };
 		EA09EFB31875E82A008E6839 /* MediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaViewController.m; sourceTree = "<group>"; };
-		EA09EFB41875E82A008E6839 /* TouchpadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchpadView.h; sourceTree = "<group>"; };
-		EA09EFB51875E82A008E6839 /* TouchpadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchpadView.m; sourceTree = "<group>"; };
+		EA09EFB41875E82A008E6839 /* ControlTouchpadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlTouchpadView.h; sourceTree = "<group>"; };
+		EA09EFB51875E82A008E6839 /* ControlTouchpadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlTouchpadView.m; sourceTree = "<group>"; };
 		EA09EFB71875E82A008E6839 /* SamplerNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SamplerNavigationViewController.h; sourceTree = "<group>"; };
 		EA09EFB81875E82A008E6839 /* SamplerNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SamplerNavigationViewController.m; sourceTree = "<group>"; };
 		EA09EFB91875E82A008E6839 /* SamplerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SamplerViewController.h; sourceTree = "<group>"; };
 		EA09EFBA1875E82A008E6839 /* SamplerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SamplerViewController.m; sourceTree = "<group>"; };
-		EA09EFBB1875E82A008E6839 /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
-		EA09EFBC1875E82A008E6839 /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
+		EA09EFBB1875E82A008E6839 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		EA09EFBC1875E82A008E6839 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		EA0F2D0018BE7705003B44E1 /* WebAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebAppViewController.h; sourceTree = "<group>"; };
 		EA0F2D0118BE7705003B44E1 /* WebAppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebAppViewController.m; sourceTree = "<group>"; };
 		EA0F2D2618BEACCB003B44E1 /* icon_17114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_17114.png; sourceTree = "<group>"; };
@@ -128,22 +128,22 @@
 		EA09EFA71875E82A008E6839 /* Content */ = {
 			isa = PBXGroup;
 			children = (
-				EA09EFBB1875E82A008E6839 /* ContentViewController.h */,
-				EA09EFBC1875E82A008E6839 /* ContentViewController.m */,
-				EA09EFA81875E82A008E6839 /* AppViewController.h */,
-				EA09EFA91875E82A008E6839 /* AppViewController.m */,
-				EA09EFAA1875E82A008E6839 /* ChannelViewController.h */,
-				EA09EFAB1875E82A008E6839 /* ChannelViewController.m */,
-				EA09EFAC1875E82A008E6839 /* FiveWayViewController.h */,
-				EA09EFAD1875E82A008E6839 /* FiveWayViewController.m */,
-				EA09EFAE1875E82A008E6839 /* InputViewController.h */,
-				EA09EFAF1875E82A008E6839 /* InputViewController.m */,
+				EA09EFBB1875E82A008E6839 /* BaseViewController.h */,
+				EA09EFBC1875E82A008E6839 /* BaseViewController.m */,
 				EA09EFB21875E82A008E6839 /* MediaViewController.h */,
 				EA09EFB31875E82A008E6839 /* MediaViewController.m */,
-				EA09EFB41875E82A008E6839 /* TouchpadView.h */,
-				EA09EFB51875E82A008E6839 /* TouchpadView.m */,
 				EA0F2D0018BE7705003B44E1 /* WebAppViewController.h */,
 				EA0F2D0118BE7705003B44E1 /* WebAppViewController.m */,
+				EA09EFAC1875E82A008E6839 /* ControlViewController.h */,
+				EA09EFAD1875E82A008E6839 /* ControlViewController.m */,
+				EA09EFB41875E82A008E6839 /* ControlTouchpadView.h */,
+				EA09EFB51875E82A008E6839 /* ControlTouchpadView.m */,
+				EA09EFA81875E82A008E6839 /* AppsViewController.h */,
+				EA09EFA91875E82A008E6839 /* AppsViewController.m */,
+				EA09EFAA1875E82A008E6839 /* TVViewController.h */,
+				EA09EFAB1875E82A008E6839 /* TVViewController.m */,
+				EA09EFAE1875E82A008E6839 /* SystemViewController.h */,
+				EA09EFAF1875E82A008E6839 /* SystemViewController.m */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -318,7 +318,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = LG;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = LGE;
 				TargetAttributes = {
 					EA7E00AB184402B20089FA62 = {
@@ -397,15 +397,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA09EFCB1875E82A008E6839 /* SamplerViewController.m in Sources */,
-				EA09EFCC1875E82A008E6839 /* ContentViewController.m in Sources */,
-				EA09EFC31875E82A008E6839 /* AppViewController.m in Sources */,
-				EA09EFC41875E82A008E6839 /* ChannelViewController.m in Sources */,
-				EA09EFC91875E82A008E6839 /* TouchpadView.m in Sources */,
+				EA09EFCC1875E82A008E6839 /* BaseViewController.m in Sources */,
+				EA09EFC31875E82A008E6839 /* AppsViewController.m in Sources */,
+				EA09EFC41875E82A008E6839 /* TVViewController.m in Sources */,
+				EA09EFC91875E82A008E6839 /* ControlTouchpadView.m in Sources */,
 				EA09EFCA1875E82A008E6839 /* SamplerNavigationViewController.m in Sources */,
 				EA9E48B0186DFCFD002DE134 /* main.m in Sources */,
-				EA09EFC61875E82A008E6839 /* InputViewController.m in Sources */,
+				EA09EFC61875E82A008E6839 /* SystemViewController.m in Sources */,
 				EA66B7CC187611D300669EAF /* AppDelegate.m in Sources */,
-				EA09EFC51875E82A008E6839 /* FiveWayViewController.m in Sources */,
+				EA09EFC51875E82A008E6839 /* ControlViewController.m in Sources */,
 				EA09EFC81875E82A008E6839 /* MediaViewController.m in Sources */,
 				EA0F2D0218BE7705003B44E1 /* WebAppViewController.m in Sources */,
 			);
@@ -429,7 +429,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -470,7 +469,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -505,12 +503,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/jwhite/Repositories/2nd-Screen-iOS-SDK-Source/ConnectSDK/Frameworks",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Connect SDK Sampler/Connect SDK Sampler-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -520,7 +520,7 @@
 				INFOPLIST_FILE = "Connect SDK Sampler/Connect SDK Sampler-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "Connect SDK Sampler";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -533,12 +533,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/jwhite/Repositories/2nd-Screen-iOS-SDK-Source/ConnectSDK/Frameworks",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Connect SDK Sampler/Connect SDK Sampler-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -548,7 +550,7 @@
 				INFOPLIST_FILE = "Connect SDK Sampler/Connect SDK Sampler-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "Connect SDK Sampler";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

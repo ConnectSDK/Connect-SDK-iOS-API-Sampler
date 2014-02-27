@@ -7,7 +7,7 @@
 //
 
 #import "SamplerViewController.h"
-#import "ContentViewController.h"
+#import "BaseViewController.h"
 
 @interface SamplerViewController ()
 
@@ -66,9 +66,9 @@
     
     UIViewController *visibleViewController = [self visibleViewController];
     
-    if ([visibleViewController isKindOfClass:[ContentViewController class]])
+    if ([visibleViewController isKindOfClass:[BaseViewController class]])
     {
-        ContentViewController *contentViewController = (ContentViewController *) self.selectedViewController;
+        BaseViewController *contentViewController = (BaseViewController *) self.selectedViewController;
         contentViewController.device = _device;
     }
 }
@@ -77,9 +77,9 @@
 {
     UIViewController *visibleViewController = [self visibleViewController];
     
-    if ([visibleViewController isKindOfClass:[ContentViewController class]])
+    if ([visibleViewController isKindOfClass:[BaseViewController class]])
     {
-        ContentViewController *contentViewController = (ContentViewController *) self.selectedViewController;
+        BaseViewController *contentViewController = (BaseViewController *) self.selectedViewController;
         contentViewController.device = nil;
     }
 
@@ -107,7 +107,7 @@
 {
     UIViewController *viewController;
     
-    if ([self.selectedViewController isKindOfClass:[ContentViewController class]])
+    if ([self.selectedViewController isKindOfClass:[BaseViewController class]])
         viewController = self.selectedViewController;
     else if (self.selectedViewController == self.tabBarController.moreNavigationController)
         viewController = self.tabBarController.moreNavigationController.visibleViewController;
@@ -121,9 +121,9 @@
 
 -(void) tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
 {
-    if ([viewController isKindOfClass:[ContentViewController class]])
+    if ([viewController isKindOfClass:[BaseViewController class]])
     {
-        ContentViewController *contentViewController = (ContentViewController*)viewController;
+        BaseViewController *contentViewController = (BaseViewController*)viewController;
         contentViewController.device = _device;
         
         if (self.navigationController.navigationBarHidden)
@@ -141,9 +141,9 @@
 
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
-    if ([viewController isKindOfClass:[ContentViewController class]])
+    if ([viewController isKindOfClass:[BaseViewController class]])
     {
-        ContentViewController *contentViewController = (ContentViewController*)viewController;
+        BaseViewController *contentViewController = (BaseViewController*)viewController;
         contentViewController.device = _device;
     }
 }

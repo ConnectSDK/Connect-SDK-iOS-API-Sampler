@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 LG Electronics. All rights reserved.
 //
 
-#import "ContentViewController.h"
+#import "BaseViewController.h"
 
-@interface MediaViewController : ContentViewController
+@interface MediaViewController : BaseViewController
 
 @property (weak, nonatomic) IBOutlet UIButton *displayPhotoButton;
 @property (weak, nonatomic) IBOutlet UIButton *displayVideoButton;

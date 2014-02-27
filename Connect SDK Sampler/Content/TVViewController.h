@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 LG Electronics. All rights reserved.
 //
 
-#import "ContentViewController.h"
+#import "BaseViewController.h"
 
-@interface ChannelViewController : ContentViewController<UITableViewDataSource, UITableViewDelegate>
+@interface TVViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *incomingCallButton;
 @property (weak, nonatomic) IBOutlet UIButton *powerOffButton;

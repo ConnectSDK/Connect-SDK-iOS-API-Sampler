@@ -8,7 +8,7 @@
 
 #import <ConnectSDK/ConnectSDK.h>
 
-@interface TouchpadView : UIView
+@interface ControlTouchpadView : UIView
 
 @property (nonatomic, strong) id<MouseControl> mouseControl;
 

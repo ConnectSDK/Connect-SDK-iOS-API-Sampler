@@ -8,7 +8,7 @@
 
 #import <ConnectSDK/ConnectSDK.h>
 
-@interface ContentViewController : UIViewController
+@interface BaseViewController : UIViewController
 
 @property (nonatomic, assign) ConnectableDevice *device;
 

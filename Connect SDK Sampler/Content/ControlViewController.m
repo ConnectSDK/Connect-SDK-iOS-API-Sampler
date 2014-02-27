@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 LG Electronics. All rights reserved.
 //
 
-#import "FiveWayViewController.h"
+#import "ControlViewController.h"
 
 typedef enum
 {
@@ -18,11 +18,11 @@ typedef enum
 
 #define FIVEWAY_DELAY 0.2
 
-@interface FiveWayViewController ()
+@interface ControlViewController ()
 
 @end
 
-@implementation FiveWayViewController{
+@implementation ControlViewController{
     NSTimer *_timer;
 
     ServiceSubscription *_keyboardSubscription;

@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 LGE. All rights reserved.
 //
 
-#import "ContentViewController.h"
+#import "BaseViewController.h"
 
-@interface WebAppViewController : ContentViewController
+@interface WebAppViewController : BaseViewController
 
 @property (weak, nonatomic) IBOutlet UIButton *launchButton;
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;

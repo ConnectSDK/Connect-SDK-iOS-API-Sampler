@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 LG Electronics. All rights reserved.
 //
 
-#import "ContentViewController.h"
-#import "TouchpadView.h"
+#import "BaseViewController.h"
+#import "ControlTouchpadView.h"
 
-@interface FiveWayViewController : ContentViewController<UITextFieldDelegate>
+@interface ControlViewController : BaseViewController<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *homeButton;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
@@ -21,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *keyboardButton;
 
 @property (weak, nonatomic) IBOutlet UITextField *keyboard;
-@property (weak, nonatomic) IBOutlet TouchpadView *touchpad;
+@property (weak, nonatomic) IBOutlet ControlTouchpadView *touchpad;
 
 -(IBAction)homeClicked:(id)sender;
 -(IBAction)backClicked:(id)sender;

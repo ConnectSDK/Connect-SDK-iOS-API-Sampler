@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 LG Electronics. All rights reserved.
 //
 
-#import "ContentViewController.h"
+#import "BaseViewController.h"
 
-@interface InputViewController : ContentViewController<UITabBarDelegate, UITableViewDataSource>
+@interface SystemViewController : BaseViewController<UITabBarDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIStepper *volStepper;
 @property (weak, nonatomic) IBOutlet UISlider *volSlider;

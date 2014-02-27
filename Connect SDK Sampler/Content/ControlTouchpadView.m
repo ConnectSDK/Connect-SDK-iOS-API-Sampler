@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 LG Electronics. All rights reserved.
 //
 
-#import "TouchpadView.h"
+#import "ControlTouchpadView.h"
 
-@implementation TouchpadView
+@implementation ControlTouchpadView
 {
     float oldX;
     float oldY;

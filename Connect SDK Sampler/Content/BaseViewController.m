@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 LG Electronics. All rights reserved.
 //
 
-#import "ContentViewController.h"
+#import "BaseViewController.h"
 
-@interface ContentViewController ()
+@interface BaseViewController ()
 
 @end
 
-@implementation ContentViewController
+@implementation BaseViewController
 {
     BOOL hasSubscriptions;
 }
