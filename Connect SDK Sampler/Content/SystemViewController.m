@@ -16,24 +16,95 @@
 {
     NSArray *_inputList;
     LaunchSession *_inputPickerSession;
+    
+    ServiceSubscription *_muteSubscription;
+    ServiceSubscription *_volumeSubscription;
 }
 
 - (void)addSubscriptions
 {
     if (self.device)
     {
+        if ([self.device hasCapability:kVolumeControlVolumeUp] && [self.device hasCapability:kVolumeControlVolumeDown])
+            [_volStepper setEnabled:YES];
+        
+        if ([self.device hasCapability:kVolumeControlMuteSet]) [_volSlider setEnabled:YES];
+        
+        if ([self.device hasCapability:kVolumeControlVolumeSubscribe])
+        {
+            _volumeSubscription = [self.device.volumeControl subscribeVolumeWithSuccess:^(float volume)
+                                   {
+                                       [_volSlider setValue:volume];
+                                       [_volSlider setEnabled:YES];
+                                       NSLog(@"volume changed to %f", volume);
+                                   } failure:^(NSError *error)
+                                   {
+                                       NSLog(@"Subscribe Vol Error %@", error.localizedDescription);
+                                   }];
+        } else if ([self.device hasCapability:kVolumeControlVolumeGet])
+        {
+            [self.device.volumeControl getVolumeWithSuccess:^(float volume)
+             {
+                 [_volSlider setValue:volume];
+                 NSLog(@"Get vol %f", volume);
+             } failure:^(NSError *error)
+             {
+                 NSLog(@"Get Vol Error %@", error.localizedDescription);
+             }];
+        }
+        
+        if ([self.device hasCapability:kVolumeControlMuteSubscribe])
+        {
+            _muteSubscription = [self.device.volumeControl subscribeMuteWithSuccess:^(BOOL mute)
+                                 {
+                                     NSLog(@"mute value changed");
+                                     [_muteSwitch setOn:mute];
+                                     [_muteSwitch setEnabled:YES];
+                                 } failure:^(NSError *subscribeError)
+                                 {
+                                     NSLog(@"Subscribe mute Error %@", subscribeError.localizedDescription);
+                                 }];
+        } else if ([self.device hasCapability:kVolumeControlMuteGet])
+        {
+            [self.device.volumeControl getMuteWithSuccess:^(BOOL mute)
+             {
+                 [_muteSwitch setOn:mute];
+                 [_muteSwitch setEnabled:YES];
+             } failure:^(NSError *getError)
+             {
+                 NSLog(@"Get mute Error %@", getError.localizedDescription);
+                 
+                 [_muteSwitch setEnabled:NO];
+             }];
+        }
+        
+        if ([self.device hasCapability:kMediaControlPlay]) [_playButton setEnabled:YES];
+        if ([self.device hasCapability:kMediaControlPause]) [_pauseButton setEnabled:YES];
+        if ([self.device hasCapability:kMediaControlStop]) [_stopButton setEnabled:YES];
+        if ([self.device hasCapability:kMediaControlRewind]) [_rewindButton setEnabled:YES];
+        if ([self.device hasCapability:kMediaControlFastForward]) [_fastForwardButton setEnabled:YES];
+        
         _inputList = [[NSArray alloc] init];
         
-        [self.device.externalInputControl getExternalInputListWithSuccess:^(NSArray *inp)
+        if ([self.device hasCapability:kExternalInputControlList])
         {
-            _inputList = inp;
-            [_inputs reloadData];
-        } failure:^(NSError *err)
+            [self.device.externalInputControl getExternalInputListWithSuccess:^(NSArray *inp)
+             {
+                 _inputList = inp;
+                 [_inputs reloadData];
+             } failure:^(NSError *err)
+             {
+                 NSLog(@"External error, %@", err);
+                 
+                 self.inputs.hidden = YES;
+             }];
+        } else
         {
-            NSLog(@"External error, %@", err);
-
             self.inputs.hidden = YES;
-        }];
+            
+            if ([self.device hasCapability:kExternalInputControlPickerLaunch]) [_launchPickerButton setEnabled:YES];
+            if ([self.device hasCapability:kExternalInputControlPickerClose]) [_closePickerButton setEnabled:YES];
+        }
     } else
     {
         [self removeSubscriptions];
@@ -42,11 +113,30 @@
 
 - (void)removeSubscriptions
 {
+    if (_muteSubscription)
+        [_muteSubscription unsubscribe];
+    
+    if (_volumeSubscription)
+        [_volumeSubscription unsubscribe];
+    
+    [_volStepper setEnabled:NO];
+    [_volSlider setEnabled:NO];
+    [_volStepper setValue:10];
+    [_muteSwitch setEnabled:NO];
+    
+    [_playButton setEnabled:YES];
+    [_pauseButton setEnabled:YES];
+    [_stopButton setEnabled:YES];
+    [_rewindButton setEnabled:YES];
+    [_fastForwardButton setEnabled:YES];
+    
     _inputList = [[NSArray alloc] init];
     [_inputs reloadData];
 
     _inputPickerSession = nil;
-    self.closePickerButton.enabled = NO;
+    
+    [_launchPickerButton setEnabled:NO];
+    [_closePickerButton setEnabled:NO];
 
     self.inputs.hidden = NO;
 }
@@ -100,6 +190,133 @@
 }
 
 #pragma mark - Connect SDK API sampler methods
+
+-(void)volumeStepperChange:(id)sender
+{
+    NSLog(@"Volume change requested");
+    
+    if ([_volStepper value] > 10)
+    {
+        [self.device.volumeControl volumeUpWithSuccess:^(id responseObject)
+         {
+             NSLog(@"Vol Up Success");
+         } failure:^(NSError *err)
+         {
+             NSLog(@"Vol Up Error %@", err.description);
+         }];
+    } else if ([_volStepper value] < 10)
+    {
+        [self.device.volumeControl volumeDownWithSuccess:^(id responseObject)
+         {
+             NSLog(@"Vol down Success");
+         } failure:^(NSError *err)
+         {
+             NSLog(@"Vol down Error %@", err.description);
+         }];
+    }
+    
+    [_volStepper setValue:10];
+}
+
+-(void) volumeSliderChange:(UISlider *)sender
+{
+    float vol = [_volSlider value];
+    
+    [self.device.volumeControl setVolume:vol success:^(id responseObject)
+     {
+         NSLog(@"Vol Change Success %f", vol);
+     } failure:^(NSError *setVolumeError)
+     {
+         // For devices which don't support setVolume, we'll disable
+         // slider and should encourage volume up/down instead
+         
+         NSLog(@"Vol Change Error %@", setVolumeError.description);
+         
+         sender.enabled = NO;
+         sender.userInteractionEnabled = NO;
+         
+         [self.device.volumeControl getVolumeWithSuccess:^(float volume)
+          {
+              NSLog(@"Vol rolled back to actual %f", volume);
+              
+              sender.value = volume;
+          } failure:^(NSError *getVolumeError)
+          {
+              NSLog(@"Vol serious error: %@", getVolumeError.localizedDescription);
+          }];
+     }];
+}
+
+-(void)muteSwitchChange:(id)sender
+{
+    BOOL muteOn = [_muteSwitch isOn];
+    _muteSwitch.enabled = NO;
+    
+    [self.device.volumeControl setMute:muteOn success:^(id responseObject)
+     {
+         NSLog(@"Mute Success");
+         
+         _muteSwitch.enabled = YES;
+     } failure:^(NSError *err)
+     {
+         NSLog(@"Mute Error %@", err.description);
+     }];
+}
+
+-(void)playClicked:(id)sender
+{
+    [self.device.mediaControl playWithSuccess:^(id responseObject)
+     {
+         NSLog(@"play success");
+     } failure:^(NSError *error)
+     {
+         NSLog(@"play failure: %@", error.localizedDescription);
+     }];
+}
+
+-(void)pauseClicked:(id)sender
+{
+    [self.device.mediaControl pauseWithSuccess:^(id responseObject)
+     {
+         NSLog(@"pause success");
+     } failure:^(NSError *error)
+     {
+         NSLog(@"pause failure: %@", error.localizedDescription);
+     }];
+}
+
+-(void)stopClicked:(id)sender
+{
+    [self.device.mediaControl stopWithSuccess:^(id responseObject)
+     {
+         NSLog(@"stop success");
+     } failure:^(NSError *error)
+     {
+         NSLog(@"stop failure: %@", error.localizedDescription);
+     }];
+}
+
+-(void)rewindClicked:(id)sender
+{
+    [self.device.mediaControl rewindWithSuccess:^(id responseObject)
+     {
+         NSLog(@"rewind success");
+     } failure:^(NSError *error)
+     {
+         NSLog(@"rewind failure: %@", error.localizedDescription);
+     }];
+}
+
+-(void)fastForwardClicked:(id)sender
+{
+    [self.device.mediaControl fastForwardWithSuccess:^(id responseObject)
+     {
+         NSLog(@"fast forward success");
+     } failure:^(NSError *error)
+     {
+         NSLog(@"fast forward failure: %@", error.localizedDescription);
+     }];
+}
 
 - (IBAction)launchPicker:(id)sender
 {
