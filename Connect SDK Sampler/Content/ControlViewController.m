@@ -199,33 +199,42 @@ typedef enum
     [_keyboard resignFirstResponder];
 }
 
--(void) textFieldDidBeginEditing:(UITextField *)textField{
+-(void) textFieldDidBeginEditing:(UITextField *)textField
+{
     [textField setText:@"*"];
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
     if ([self.device hasCapability:kKeyboardControlSendEnter])
-    {
         [self.device.keyboardControl sendEnterWithSuccess:nil failure:nil];
 
-        if (![self.device hasCapability:kKeyboardControlSubscribe])
-            [self resignKeyboardFocus];
-    }
+    if (![self.device hasCapability:kKeyboardControlSubscribe])
+        [self resignKeyboardFocus];
 
     return NO;
 }
 
--(void) keyboardEnterText:(id)sender{
+-(void) keyboardEnterText:(id)sender
+{
     NSString *newString = [_keyboard text];
-    NSLog(@"String %@", newString);
-    if([newString length] == 0){
-        if(self.device.keyboardControl)
+
+    if ([newString length] == 0)
+    {
+        NSLog(@"Received delete key code");
+
+        if ([self.device hasCapability:kKeyboardControlSendDelete])
             [self.device.keyboardControl sendDeleteWithSuccess:nil failure:nil];
+    } else
+    {
+        NSString *stringToSend = [newString substringToIndex:1];
+
+        NSLog(@"Received string to send: %@", stringToSend);
+
+        if ([self.device hasCapability:kKeyboardControlSend])
+            [self.device.keyboardControl send:stringToSend success:nil failure:nil];
     }
-    else{
-        if(self.device.keyboardControl)
-            [self.device.keyboardControl send:[newString substringFromIndex:1] success:nil failure:nil];
-    }
+
     [_keyboard setText:@"*"];
 }
 
