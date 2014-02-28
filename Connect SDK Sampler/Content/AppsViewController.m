@@ -31,35 +31,42 @@
     if (self.device)
     {
         _appList = [[NSArray alloc] init];
-        
-        [self.device.launcher getAppListWithSuccess:^(NSArray *appList)
+
+        if ([self.device hasCapability:kLauncherApplicationList])
         {
-            _appList = appList;
-            [self reloadData];
-        } failure:^(NSError *err)
-        {
-            NSLog(@"Get app Error %@", err.description);
-        }];
+            [self.device.launcher getAppListWithSuccess:^(NSArray *appList)
+            {
+                NSLog(@"Get app list success");
+                _appList = appList;
+                [self reloadData];
+            } failure:^(NSError *err)
+            {
+                NSLog(@"Get app list Error %@", err.description);
+            }];
+        }
 
         _currentApp = -1;
 
-        _runningAppSubscription = [self.device.launcher subscribeRunningAppWithSuccess:^(AppInfo *appInfo)
+        if ([self.device hasCapability:kLauncherRunningAppSubscribe])
         {
-            NSLog(@"App change %@", appInfo);
-
-            [_appList enumerateObjectsUsingBlock:^(AppInfo *app, NSUInteger idx, BOOL *stop)
+            _runningAppSubscription = [self.device.launcher subscribeRunningAppWithSuccess:^(AppInfo *appInfo)
             {
-                if ([app isEqual:appInfo])
+                NSLog(@"Running app changed %@", appInfo);
+
+                [_appList enumerateObjectsUsingBlock:^(AppInfo *app, NSUInteger idx, BOOL *stop)
                 {
-                    _currentApp = idx;
-                    [self reloadData];
-                    *stop = YES;
-                }
+                    if ([app isEqual:appInfo])
+                    {
+                        _currentApp = idx;
+                        [self reloadData];
+                        *stop = YES;
+                    }
+                }];
+            } failure:^(NSError *err)
+            {
+                NSLog(@"Running app subscription err %@", err);
             }];
-        } failure:^(NSError *err)
-        {
-            NSLog(@"App change err %@", err);
-        }];
+        }
         
         if ([self.device hasCapability:kLauncherBrowser]) [_browserButton setEnabled:YES];
         if ([self.device hasCapability:kToastControlShowToast]) [_toastButton setEnabled:YES];
@@ -119,7 +126,8 @@
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
     if (indexPath.row == _currentApp)
         [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
     else
@@ -140,7 +148,8 @@
 
 #pragma mark - Connect SDK API sampler methods
 
--(void) browserPressed:(id)sender{
+-(void) browserPressed:(id)sender
+{
     NSURL *URL = [NSURL URLWithString:@"http://connectsdk.com/"];
 
     [self.device.launcher launchBrowser:URL success:^(LaunchSession *launchSession)
