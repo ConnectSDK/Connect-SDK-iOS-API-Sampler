@@ -27,7 +27,8 @@
     
     if (self.device)
     {
-        [_channelStepper setEnabled:YES];
+        if ([self.device hasCapabilities:@[kTVControlChannelUp, kTVControlChannelDown]])
+            [_channelStepper setEnabled:YES];
         
         if ([self.device hasCapability:kTVControl3DSet]) [_display3DButton setEnabled:YES];
         
