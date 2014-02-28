@@ -105,14 +105,12 @@
 
 - (UIViewController *) visibleViewController
 {
-    // TODO: cover case where we come back to More view controller
-    
     UIViewController *viewController;
     
     if ([self.selectedViewController isKindOfClass:[BaseViewController class]])
         viewController = self.selectedViewController;
-    else if (self.selectedViewController == self.tabBarController.moreNavigationController)
-        viewController = self.tabBarController.moreNavigationController.visibleViewController;
+    else if (self.selectedViewController == self.moreNavigationController)
+        viewController = self.moreNavigationController.visibleViewController;
     else
         viewController = self.tabBarController.selectedViewController;
     
@@ -127,9 +125,16 @@
     {
         BaseViewController *contentViewController = (BaseViewController*)viewController;
         contentViewController.device = _device;
-        
-        if (self.navigationController.navigationBarHidden)
-            [self.navigationController setNavigationBarHidden:NO animated:YES];
+
+        if (viewController.parentViewController == self.moreNavigationController)
+        {
+            if (!self.navigationController.navigationBarHidden)
+                [self.navigationController setNavigationBarHidden:YES animated:YES];
+        } else
+        {
+            if (self.navigationController.navigationBarHidden)
+                [self.navigationController setNavigationBarHidden:NO animated:YES];
+        }
     } else
     {
         if ([viewController isKindOfClass:[UINavigationController class]])
