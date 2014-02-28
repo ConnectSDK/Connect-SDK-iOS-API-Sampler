@@ -315,14 +315,14 @@
                                     <action selector="closeMedia:" destination="wHY-Js-EUt" eventType="touchUpInside" id="tSu-b8-O7m"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--:--" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ajk-00-ICk">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--:--:--" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ajk-00-ICk">
                                 <rect key="frame" x="20" y="182" width="100" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--:--" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XeI-cd-9bl">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--:--:--" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XeI-cd-9bl">
                                 <rect key="frame" x="200" y="182" width="100" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -343,7 +343,7 @@
                                     <action selector="volumeChanged:" destination="wHY-Js-EUt" eventType="valueChanged" id="iiA-Mj-wNX"/>
                                 </connections>
                             </slider>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stream volume" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QHd-w2-82D">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volume" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QHd-w2-82D">
                                 <rect key="frame" x="102" y="274" width="116" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -516,8 +516,8 @@
                         <outlet property="playButton" destination="ElZ-Hp-njA" id="1vh-5k-k2d"/>
                         <outlet property="rewindButton" destination="gWD-fG-1mY" id="q0V-M6-z5h"/>
                         <outlet property="stopButton" destination="8mA-0e-GDt" id="Cql-63-TMZ"/>
-                        <outlet property="volSlider" destination="gfJ-2K-gxq" id="ypa-78-rHy"/>
-                        <outlet property="volStepper" destination="eQ5-55-ijL" id="VVD-e6-DXU"/>
+                        <outlet property="volumeSlider" destination="gfJ-2K-gxq" id="ypa-78-rHy"/>
+                        <outlet property="volumeStepper" destination="eQ5-55-ijL" id="VVD-e6-DXU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Fe-VC-HOP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -612,7 +612,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K5B-6N-xaf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-484" y="54"/>
+            <point key="canvasLocation" x="-332" y="54"/>
         </scene>
         <!--Sampler View Controller-->
         <scene sceneID="hIG-iJ-UbS">
@@ -637,7 +637,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Igk-Rp-jbw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-46" y="54"/>
+            <point key="canvasLocation" x="36" y="54"/>
         </scene>
         <!--View Controller - TV-->
         <scene sceneID="qbQ-Ns-sIy">
