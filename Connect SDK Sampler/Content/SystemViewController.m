@@ -26,16 +26,16 @@
     if (self.device)
     {
         if ([self.device hasCapability:kVolumeControlVolumeUp] && [self.device hasCapability:kVolumeControlVolumeDown])
-            [_volStepper setEnabled:YES];
+            [_volumeStepper setEnabled:YES];
         
-        if ([self.device hasCapability:kVolumeControlMuteSet]) [_volSlider setEnabled:YES];
+        if ([self.device hasCapability:kVolumeControlMuteSet]) [_volumeSlider setEnabled:YES];
         
         if ([self.device hasCapability:kVolumeControlVolumeSubscribe])
         {
             _volumeSubscription = [self.device.volumeControl subscribeVolumeWithSuccess:^(float volume)
                                    {
-                                       [_volSlider setValue:volume];
-                                       [_volSlider setEnabled:YES];
+                                       [_volumeSlider setValue:volume];
+                                       [_volumeSlider setEnabled:YES];
                                        NSLog(@"volume changed to %f", volume);
                                    } failure:^(NSError *error)
                                    {
@@ -45,7 +45,7 @@
         {
             [self.device.volumeControl getVolumeWithSuccess:^(float volume)
              {
-                 [_volSlider setValue:volume];
+                 [_volumeSlider setValue:volume];
                  NSLog(@"Get vol %f", volume);
              } failure:^(NSError *error)
              {
@@ -119,9 +119,9 @@
     if (_volumeSubscription)
         [_volumeSubscription unsubscribe];
     
-    [_volStepper setEnabled:NO];
-    [_volSlider setEnabled:NO];
-    [_volStepper setValue:10];
+    [_volumeStepper setEnabled:NO];
+    [_volumeSlider setEnabled:NO];
+    [_volumeStepper setValue:10];
     [_muteSwitch setEnabled:NO];
     
     [_playButton setEnabled:YES];
@@ -195,7 +195,7 @@
 {
     NSLog(@"Volume change requested");
     
-    if ([_volStepper value] > 10)
+    if ([_volumeStepper value] > 10)
     {
         [self.device.volumeControl volumeUpWithSuccess:^(id responseObject)
          {
@@ -204,7 +204,7 @@
          {
              NSLog(@"Vol Up Error %@", err.description);
          }];
-    } else if ([_volStepper value] < 10)
+    } else if ([_volumeStepper value] < 10)
     {
         [self.device.volumeControl volumeDownWithSuccess:^(id responseObject)
          {
@@ -215,12 +215,12 @@
          }];
     }
     
-    [_volStepper setValue:10];
+    [_volumeStepper setValue:10];
 }
 
 -(void) volumeSliderChange:(UISlider *)sender
 {
-    float vol = [_volSlider value];
+    float vol = [_volumeSlider value];
     
     [self.device.volumeControl setVolume:vol success:^(id responseObject)
      {

@@ -10,8 +10,8 @@
 
 @interface SystemViewController : BaseViewController<UITabBarDelegate, UITableViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UIStepper *volStepper;
-@property (weak, nonatomic) IBOutlet UISlider *volSlider;
+@property (weak, nonatomic) IBOutlet UIStepper *volumeStepper;
+@property (weak, nonatomic) IBOutlet UISlider *volumeSlider;
 @property (weak, nonatomic) IBOutlet UISwitch *muteSwitch;
 
 -(IBAction)volumeStepperChange:(id)sender;
