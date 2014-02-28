@@ -18,12 +18,9 @@
 
     ServiceSubscription *_runningAppSubscription;
 
-//    LaunchSession *_netflixSession;
-//    LaunchSession *_youtubeSession;
-//    LaunchSession *_browserSession;
-//    LaunchSession *_huluSession;
-    LaunchSession *_imageSession;
-    LaunchSession *_videoSession;
+    LaunchSession *_netflixSession;
+    LaunchSession *_youtubeSession;
+    LaunchSession *_browserSession;
 }
 
 - (void) addSubscriptions
@@ -58,7 +55,10 @@
                     if ([app isEqual:appInfo])
                     {
                         _currentApp = idx;
+
                         [self reloadData];
+                        [_apps scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:_currentApp inSection:0] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+
                         *stop = YES;
                     }
                 }];
@@ -79,7 +79,11 @@
 {
     _appList = nil;
     [self reloadData];
-    
+
+    _browserSession = nil;
+    _netflixSession = nil;
+    _youtubeSession = nil;
+
     [_browserButton setEnabled:NO];
     [_toastButton setEnabled:NO];
     [_netflixButton setEnabled:NO];
@@ -154,37 +158,101 @@
 
 -(void) browserPressed:(id)sender
 {
-    NSURL *URL = [NSURL URLWithString:@"http://connectsdk.com/"];
+    if (_browserSession)
+    {
+        [_browserSession closeWithSuccess:^(id responseObject)
+        {
+            NSLog(@"browser close success");
+        } failure:^(NSError *error)
+        {
+            NSLog(@"browser close error: %@", error.localizedDescription);
+        }];
 
-    [self.device.launcher launchBrowser:URL success:^(LaunchSession *launchSession)
+        _browserSession = nil;
+        [_browserButton setSelected:NO];
+    } else
     {
-        NSLog(@"google opened %@", launchSession);
-    } failure:^(NSError *error)
-    {
-        NSLog(@"Google fail, %@", error);
-    }];
+        NSURL *URL = [NSURL URLWithString:@"http://connectsdk.com/"];
+
+        [self.device.launcher launchBrowser:URL success:^(LaunchSession *launchSession)
+        {
+            NSLog(@"google opened %@", launchSession);
+
+            if ([self.device hasCapability:kLauncherApplicationClose])
+            {
+                _browserSession = launchSession;
+                [_browserButton setSelected:YES];
+            }
+        } failure:^(NSError *error)
+        {
+            NSLog(@"Google fail, %@", error);
+        }];
+    }
 }
 
 - (IBAction)netflixPressed:(id)sender
 {
-    [self.device.launcher launchNetflix:@"70217913" success:^(LaunchSession *launchSession)
-     {
-         NSLog(@"netflix opened with data: %@", launchSession);
-     } failure:^(NSError *error)
-     {
-         NSLog(@"netflix fail, %@", error);
-     }];
+    if (_netflixSession)
+    {
+        [_netflixSession closeWithSuccess:^(id responseObject)
+        {
+            NSLog(@"netflix close success");
+        } failure:^(NSError *error)
+        {
+            NSLog(@"netflix close error: %@", error.localizedDescription);
+        }];
+
+        _netflixSession = nil;
+        [_netflixButton setSelected:NO];
+    } else
+    {
+        [self.device.launcher launchNetflix:@"70217913" success:^(LaunchSession *launchSession)
+        {
+            NSLog(@"netflix opened with data: %@", launchSession);
+
+            if ([self.device hasCapability:kLauncherApplicationClose])
+            {
+                _netflixSession = launchSession;
+                [_netflixButton setSelected:YES];
+            }
+        } failure:^(NSError *error)
+        {
+            NSLog(@"netflix fail, %@", error);
+        }];
+    }
+
 }
 
 - (IBAction)youtubePressed:(id)sender
 {
-    [self.device.launcher launchYouTube:@"eRsGyueVLvQ" success:^(LaunchSession *launchSession)
+    if (_youtubeSession)
     {
-        NSLog(@"youtube opened with data: %@", launchSession);
-    } failure:^(NSError *error)
+        [_youtubeSession closeWithSuccess:^(id responseObject)
+        {
+            NSLog(@"youtube close success");
+        } failure:^(NSError *error)
+        {
+            NSLog(@"youtube close error: %@", error.localizedDescription);
+        }];
+
+        _youtubeSession = nil;
+        [_youtubeButton setSelected:NO];
+    } else
     {
-        NSLog(@"youtube fail, %@", error);
-    }];
+        [self.device.launcher launchYouTube:@"eRsGyueVLvQ" success:^(LaunchSession *launchSession)
+        {
+            NSLog(@"youtube opened with data: %@", launchSession);
+
+            if ([self.device hasCapability:kLauncherApplicationClose])
+            {
+                _youtubeSession = launchSession;
+                [_youtubeButton setSelected:YES];
+            }
+        } failure:^(NSError *error)
+        {
+            NSLog(@"youtube fail, %@", error);
+        }];
+    }
 }
 
 - (IBAction)toastPressed:(id)sender
