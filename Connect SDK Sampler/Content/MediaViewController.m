@@ -17,9 +17,12 @@
     LaunchSession *_launchSession;
     id<MediaControl> _mediaControl;
     
-    ServiceSubscription *_playPositionSubscription;
-    ServiceSubscription *_muteSubscription;
+    ServiceSubscription *_playStateSubscription;
     ServiceSubscription *_volumeSubscription;
+
+    NSTimeInterval _estimatedMediaPosition;
+    NSTimeInterval _mediaDuration;
+    NSTimer *_playTimer;
 }
 
 #pragma mark - UIViewController creation/destruction methods
@@ -46,12 +49,15 @@
 
 - (void) resetMediaControlComponents
 {
-    if (_playPositionSubscription)
-        [_playPositionSubscription unsubscribe];
-    
-    if (_muteSubscription)
-        [_muteSubscription unsubscribe];
-    
+    if (_playTimer)
+    {
+        [_playTimer invalidate];
+        _playTimer = nil;
+    }
+
+    if (_playStateSubscription)
+        [_playStateSubscription unsubscribe];
+
     if (_volumeSubscription)
         [_volumeSubscription unsubscribe];
     
@@ -66,8 +72,8 @@
     [_rewindButton setEnabled:NO];
     [_fastForwardButton setEnabled:NO];
     
-    _currentTimeLabel.text = @"--:--";
-    _durationLabel.text = @"--:--";
+    _currentTimeLabel.text = @"--:--:--";
+    _durationLabel.text = @"--:--:--";
     
     [_seekSlider setEnabled:NO];
     [_volumeSlider setEnabled:NO];
@@ -83,27 +89,106 @@
     if ([self.device hasCapability:kMediaControlStop]) [_stopButton setEnabled:YES];
     if ([self.device hasCapability:kMediaControlRewind]) [_rewindButton setEnabled:YES];
     if ([self.device hasCapability:kMediaControlFastForward]) [_fastForwardButton setEnabled:YES];
-    
-    if ([self.device hasCapability:kMediaControlPositionSubscribe])
-    {
-        [_mediaControl subscribePositionWithSuccess:^(NSTimeInterval position) {
-            [_currentTimeLabel setText:[NSString stringWithFormat:@"%@", @(position)]];
-        } failure:^(NSError *error) {
-            NSLog(@"subscribe position failure: %@", error.localizedDescription);
-        }];
-    }
 
     if ([self.device hasCapability:kMediaControlPlayStateSubscribe])
     {
-        // TODO: do something with play state?
+        [_mediaControl subscribePlayStateWithSuccess:^(MediaControlPlayState playState)
+        {
+            NSLog(@"play state change %@", @(playState));
+
+            if (playState == MediaControlPlayStatePlaying)
+            {
+                if (_playTimer)
+                    [_playTimer invalidate];
+
+                [_mediaControl getDurationWithSuccess:^(NSTimeInterval duration)
+                {
+                    NSLog(@"duration change %@", @(duration));
+                    _mediaDuration = duration;
+                } failure:^(NSError *error)
+                {
+                    NSLog(@"get duration failure: %@", error.localizedDescription);
+                }];
+
+                [_mediaControl getPositionWithSuccess:^(NSTimeInterval position)
+                {
+                    NSLog(@"position change %@", @(position));
+                    _estimatedMediaPosition = position;
+                } failure:^(NSError *error)
+                {
+                    NSLog(@"get position failure: %@", error.localizedDescription);
+                }];
+
+                _playTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updatePlayerControls) userInfo:nil repeats:YES];
+            } else if (playState == MediaControlPlayStateFinished)
+            {
+                [self resetMediaControlComponents];
+            } else
+            {
+                if (_playTimer)
+                    [_playTimer invalidate];
+            }
+        } failure:^(NSError *error)
+        {
+            NSLog(@"subscribe play state failure: %@", error.localizedDescription);
+        }];
     }
 
     if ([self.device hasCapability:kMediaControlDuration] && [self.device hasCapability:kMediaControlSeek])
         [_seekSlider setEnabled:YES];
 
-    // TODO: subscribe to volume
-    
-    // TODO: subscribe to mute
+    if ([self.device hasCapability:kVolumeControlMuteSet]) [_volumeSlider setEnabled:YES];
+
+    if ([self.device hasCapability:kVolumeControlVolumeSubscribe])
+    {
+        _volumeSubscription = [self.device.volumeControl subscribeVolumeWithSuccess:^(float volume)
+        {
+            [_volumeSlider setValue:volume];
+            [_volumeSlider setEnabled:YES];
+            NSLog(@"volume changed to %f", volume);
+        } failure:^(NSError *error)
+        {
+            NSLog(@"Subscribe Vol Error %@", error.localizedDescription);
+        }];
+    } else if ([self.device hasCapability:kVolumeControlVolumeGet])
+    {
+        [self.device.volumeControl getVolumeWithSuccess:^(float volume)
+        {
+            [_volumeSlider setValue:volume];
+            NSLog(@"Get vol %f", volume);
+        } failure:^(NSError *error)
+        {
+            NSLog(@"Get Vol Error %@", error.localizedDescription);
+        }];
+    }
+}
+
+- (void) updatePlayerControls
+{
+    _estimatedMediaPosition += 1;
+
+    if (_mediaDuration <= 0)
+        return;
+
+    float progress = (float) (_estimatedMediaPosition / _mediaDuration);
+
+    if (progress > 1.0f)
+        return;
+
+    _seekSlider.value = progress;
+
+    [_currentTimeLabel setText:[self stringForTimeInterval:_estimatedMediaPosition]];
+    [_durationLabel setText:[self stringForTimeInterval:_mediaDuration]];
+}
+
+- (NSString *) stringForTimeInterval:(NSTimeInterval)timeInterval
+{
+    NSInteger ti = (NSInteger) timeInterval;
+    NSInteger seconds = ti % 60;
+    NSInteger minutes = (ti / 60) % 60;
+    NSInteger hours = (ti / 3600);
+
+    return [NSString stringWithFormat:@"%02i:%02i:%02i", hours, minutes, seconds];
 }
 
 #pragma mark - Connect SDK API sampler methods
@@ -288,9 +373,33 @@
     }];
 }
 
-- (IBAction)volumeChanged:(id)sender
+- (IBAction)volumeChanged:(UISlider *)sender
 {
-    // TODO: implement volume/mute etc
+    float vol = [_volumeSlider value];
+
+    [self.device.volumeControl setVolume:vol success:^(id responseObject)
+    {
+        NSLog(@"Vol Change Success %f", vol);
+    } failure:^(NSError *setVolumeError)
+    {
+        // For devices which don't support setVolume, we'll disable
+        // slider and should encourage volume up/down instead
+
+        NSLog(@"Vol Change Error %@", setVolumeError.description);
+
+        sender.enabled = NO;
+        sender.userInteractionEnabled = NO;
+
+        [self.device.volumeControl getVolumeWithSuccess:^(float volume)
+        {
+            NSLog(@"Vol rolled back to actual %f", volume);
+
+            sender.value = volume;
+        } failure:^(NSError *getVolumeError)
+        {
+            NSLog(@"Vol serious error: %@", getVolumeError.localizedDescription);
+        }];
+    }];
 }
 
 @end
