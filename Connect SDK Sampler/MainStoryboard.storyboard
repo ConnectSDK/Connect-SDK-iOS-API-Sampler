@@ -547,6 +547,9 @@
                                 <state key="normal" title="Browser">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="selected">
+                                    <color key="titleColor" red="0.82780655570652173" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="browserPressed:" destination="pyF-HD-7Jf" eventType="touchUpInside" id="e8b-NY-k7g"/>
                                 </connections>
@@ -557,6 +560,9 @@
                                 <state key="normal" title="Netflix">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="selected">
+                                    <color key="titleColor" red="0.82780655569999995" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="netflixPressed:" destination="pyF-HD-7Jf" eventType="touchUpInside" id="sXK-nX-x6Y"/>
                                 </connections>
@@ -566,6 +572,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="YouTube">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleColor" red="0.82780655569999995" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="youtubePressed:" destination="pyF-HD-7Jf" eventType="touchUpInside" id="f5j-Jm-NKX"/>
@@ -686,6 +695,9 @@
                                 <state key="normal" title="Incoming Call">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="selected">
+                                    <color key="titleColor" red="0.82780655569999995" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="incomingCall:" destination="R5e-Zm-0dj" eventType="touchUpInside" id="8RN-pm-Ezk"/>
                                 </connections>
@@ -695,6 +707,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="3D Mode">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleColor" red="0.82780655569999995" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="display3D:" destination="R5e-Zm-0dj" eventType="touchUpInside" id="guQ-mE-Waq"/>
