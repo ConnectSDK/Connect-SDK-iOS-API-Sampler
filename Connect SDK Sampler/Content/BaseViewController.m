@@ -14,7 +14,8 @@
 
 @implementation BaseViewController
 {
-    BOOL hasSubscriptions;
+    BOOL _initialViewing;
+    BOOL _hasSubscriptions;
 }
 
 @synthesize device = _device;
@@ -23,7 +24,8 @@
 
 - (void) commonInit
 {
-    hasSubscriptions = NO;
+    _initialViewing = YES;
+    _hasSubscriptions = NO;
 }
 
 - (id) init
@@ -75,8 +77,11 @@
 {
     [super viewDidAppear:animated];
     
-    if (self.device == nil)
+    if (self.device == nil || _initialViewing)
+    {
         [self removeSubscriptions];
+        _initialViewing = NO;
+    }
 }
 
 - (void) viewDidDisappear:(BOOL)animated
@@ -99,10 +104,11 @@
 
 - (void) setDevice:(ConnectableDevice *)device
 {
-    if (_device)
+    if (_device || _initialViewing)
     {
         [self removeSubscriptions];
         _device = nil;
+        _initialViewing = NO;
     }
     
     if (device)
