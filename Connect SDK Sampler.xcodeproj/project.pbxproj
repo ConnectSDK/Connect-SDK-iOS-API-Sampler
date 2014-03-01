@@ -22,22 +22,16 @@
 		EA0F2D0218BE7705003B44E1 /* WebAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0F2D0118BE7705003B44E1 /* WebAppViewController.m */; };
 		EA0F2D3D18BEACCB003B44E1 /* icon_17114.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0F2D2618BEACCB003B44E1 /* icon_17114.png */; };
 		EA0F2D3E18BEACCB003B44E1 /* icon_17114@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0F2D2718BEACCB003B44E1 /* icon_17114@2x.png */; };
-		EA0F2D3F18BEACCB003B44E1 /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = EA0F2D2818BEACCB003B44E1 /* license.txt */; };
 		EA0F2D4018BEACCB003B44E1 /* icon_3330.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0F2D2A18BEACCB003B44E1 /* icon_3330.png */; };
 		EA0F2D4118BEACCB003B44E1 /* icon_3330@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0F2D2B18BEACCB003B44E1 /* icon_3330@2x.png */; };
-		EA0F2D4218BEACCB003B44E1 /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = EA0F2D2C18BEACCB003B44E1 /* license.txt */; };
 		EA0F2D4318BEACCB003B44E1 /* icon_15307.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0F2D2E18BEACCB003B44E1 /* icon_15307.png */; };
 		EA0F2D4418BEACCB003B44E1 /* icon_15307@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0F2D2F18BEACCB003B44E1 /* icon_15307@2x.png */; };
-		EA0F2D4518BEACCB003B44E1 /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = EA0F2D3018BEACCB003B44E1 /* license.txt */; };
 		EA0F2D4618BEACCB003B44E1 /* icon_17183.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0F2D3218BEACCB003B44E1 /* icon_17183.png */; };
 		EA0F2D4718BEACCB003B44E1 /* icon_17183@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0F2D3318BEACCB003B44E1 /* icon_17183@2x.png */; };
-		EA0F2D4818BEACCB003B44E1 /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = EA0F2D3418BEACCB003B44E1 /* license.txt */; };
 		EA0F2D4918BEACCB003B44E1 /* icon_15111.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0F2D3618BEACCB003B44E1 /* icon_15111.png */; };
 		EA0F2D4A18BEACCB003B44E1 /* icon_15111@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0F2D3718BEACCB003B44E1 /* icon_15111@2x.png */; };
-		EA0F2D4B18BEACCB003B44E1 /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = EA0F2D3818BEACCB003B44E1 /* license.txt */; };
 		EA0F2D4C18BEACCB003B44E1 /* icon_12676.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0F2D3A18BEACCB003B44E1 /* icon_12676.png */; };
 		EA0F2D4D18BEACCB003B44E1 /* icon_12676@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0F2D3B18BEACCB003B44E1 /* icon_12676@2x.png */; };
-		EA0F2D4E18BEACCB003B44E1 /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = EA0F2D3C18BEACCB003B44E1 /* license.txt */; };
 		EA66B7CC187611D300669EAF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA66B7CB187611D300669EAF /* AppDelegate.m */; };
 		EA7E00B0184402B20089FA62 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA7E00AF184402B20089FA62 /* Foundation.framework */; };
 		EA7E00B2184402B20089FA62 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA7E00B1184402B20089FA62 /* CoreGraphics.framework */; };
@@ -350,20 +344,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA0F2D4D18BEACCB003B44E1 /* icon_12676@2x.png in Resources */,
-				EA0F2D4518BEACCB003B44E1 /* license.txt in Resources */,
 				EA0F2D4A18BEACCB003B44E1 /* icon_15111@2x.png in Resources */,
-				EA0F2D4E18BEACCB003B44E1 /* license.txt in Resources */,
-				EA0F2D3F18BEACCB003B44E1 /* license.txt in Resources */,
 				EA0F2D4918BEACCB003B44E1 /* icon_15111.png in Resources */,
 				EA09EFA61875E7EB008E6839 /* MainStoryboard.storyboard in Resources */,
 				EA9E48AB186DFCFD002DE134 /* Images.xcassets in Resources */,
-				EA0F2D4218BEACCB003B44E1 /* license.txt in Resources */,
 				EA0F2D4018BEACCB003B44E1 /* icon_3330.png in Resources */,
-				EA0F2D4818BEACCB003B44E1 /* license.txt in Resources */,
 				EA0F2D4718BEACCB003B44E1 /* icon_17183@2x.png in Resources */,
 				EA9E48AA186DFCFD002DE134 /* InfoPlist.strings in Resources */,
 				EA0F2D3D18BEACCB003B44E1 /* icon_17114.png in Resources */,
-				EA0F2D4B18BEACCB003B44E1 /* license.txt in Resources */,
 				EA0F2D4418BEACCB003B44E1 /* icon_15307@2x.png in Resources */,
 				EA0F2D4318BEACCB003B44E1 /* icon_15307.png in Resources */,
 				EA0F2D4118BEACCB003B44E1 /* icon_3330@2x.png in Resources */,
