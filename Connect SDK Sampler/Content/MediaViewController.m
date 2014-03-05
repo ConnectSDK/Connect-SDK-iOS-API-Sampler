@@ -208,6 +208,8 @@
                               description:description
                                  mimeType:mimeType
                                   success:^(LaunchSession *launchSession, id<MediaControl> mediaControl) {
+                                      NSLog(@"display photo success");
+
                                       _launchSession = launchSession;
                                       
                                       if ([self.device hasCapability:kMediaPlayerClose])
@@ -235,6 +237,8 @@
                                  mimeType:mimeType
                                shouldLoop:shouldLoop
                                   success:^(LaunchSession *launchSession, id<MediaControl> mediaControl) {
+                                      NSLog(@"display video success");
+
                                       _launchSession = launchSession;
                                       _mediaControl = mediaControl;
                                       
@@ -257,6 +261,7 @@
     }
     
     [_launchSession closeWithSuccess:^(id responseObject) {
+        NSLog(@"close media success");
         [self resetMediaControlComponents];
     } failure:^(NSError *error) {
         NSLog(@"close media failure: %@", error.localizedDescription);
