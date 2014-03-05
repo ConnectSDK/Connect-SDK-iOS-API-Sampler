@@ -313,6 +313,7 @@
     [_mediaControl stopWithSuccess:^(id responseObject)
     {
         NSLog(@"stop success");
+        [self resetMediaControlComponents];
     } failure:^(NSError *error)
     {
         NSLog(@"stop failure: %@", error.localizedDescription);
