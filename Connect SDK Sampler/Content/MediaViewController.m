@@ -63,6 +63,9 @@
     
     _launchSession = nil;
     _mediaControl = nil;
+
+    _estimatedMediaPosition = 0;
+    _mediaDuration = 0;
     
     [_closeMediaButton setEnabled:NO];
     
@@ -72,8 +75,8 @@
     [_rewindButton setEnabled:NO];
     [_fastForwardButton setEnabled:NO];
     
-    _currentTimeLabel.text = @"--:--:--";
-    _durationLabel.text = @"--:--:--";
+    _currentTimeLabel.text = @"--:--";
+    _durationLabel.text = @"--:--";
     
     [_seekSlider setEnabled:NO];
     [_volumeSlider setEnabled:NO];
@@ -119,6 +122,9 @@
                     NSLog(@"get position failure: %@", error.localizedDescription);
                 }];
 
+                if ([self.device hasCapability:kMediaControlDuration] && [self.device hasCapability:kMediaControlSeek])
+                    [_seekSlider setEnabled:YES];
+
                 _playTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updatePlayerControls) userInfo:nil repeats:YES];
             } else if (playState == MediaControlPlayStateFinished)
             {
@@ -127,15 +133,14 @@
             {
                 if (_playTimer)
                     [_playTimer invalidate];
+
+                [_seekSlider setEnabled:NO];
             }
         } failure:^(NSError *error)
         {
             NSLog(@"subscribe play state failure: %@", error.localizedDescription);
         }];
     }
-
-    if ([self.device hasCapability:kMediaControlDuration] && [self.device hasCapability:kMediaControlSeek])
-        [_seekSlider setEnabled:YES];
 
     if ([self.device hasCapability:kVolumeControlMuteSet]) [_volumeSlider setEnabled:YES];
 
@@ -188,7 +193,14 @@
     NSInteger minutes = (ti / 60) % 60;
     NSInteger hours = (ti / 3600);
 
-    return [NSString stringWithFormat:@"%02i:%02i:%02i", hours, minutes, seconds];
+    NSString *time;
+
+    if (hours > 0)
+        time = [NSString stringWithFormat:@"%02i:%02i:%02i", hours, minutes, seconds];
+    else
+        time = [NSString stringWithFormat:@"%02i:%02i", minutes, seconds];
+
+    return time;
 }
 
 #pragma mark - Connect SDK API sampler methods
@@ -354,13 +366,31 @@
     }];
 }
 
+- (IBAction)startSeeking:(id)sender
+{
+    NSLog(@"start seeking");
+
+    if (_playTimer)
+        [_playTimer invalidate];
+}
+
 - (IBAction)seekChanged:(id)sender
+{
+    NSTimeInterval time = _seekSlider.value * _mediaDuration;
+    NSString *timeString = [self stringForTimeInterval:time];
+
+    _currentTimeLabel.text = timeString;
+}
+
+- (IBAction)stopSeeking:(id)sender
 {
     if (!_mediaControl)
     {
         [self resetMediaControlComponents];
         return;
     }
+
+    [_seekSlider setEnabled:NO];
 
     [_mediaControl getDurationWithSuccess:^(NSTimeInterval duration)
     {
@@ -369,6 +399,8 @@
         [_mediaControl seek:newTime success:^(id responseObject)
         {
             NSLog(@"seek success");
+
+            [_seekSlider setEnabled:YES];
         } failure:^(NSError *error)
         {
             NSLog(@"seek failure: %@", error.localizedDescription);

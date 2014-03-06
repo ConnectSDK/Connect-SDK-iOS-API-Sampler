@@ -35,7 +35,9 @@
 @property (weak, nonatomic) IBOutlet UISlider *seekSlider;
 @property (weak, nonatomic) IBOutlet UISlider *volumeSlider;
 
+- (IBAction)startSeeking:(id)sender;
 - (IBAction)seekChanged:(id)sender;
+- (IBAction)stopSeeking:(id)sender;
 - (IBAction)volumeChanged:(id)sender;
 
 @end
