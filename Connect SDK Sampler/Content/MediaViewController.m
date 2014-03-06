@@ -22,7 +22,9 @@
 
     NSTimeInterval _estimatedMediaPosition;
     NSTimeInterval _mediaDuration;
+
     NSTimer *_playTimer;
+    NSTimer *_mediaInfoTimer;
 }
 
 #pragma mark - UIViewController creation/destruction methods
@@ -53,6 +55,12 @@
     {
         [_playTimer invalidate];
         _playTimer = nil;
+    }
+
+    if (_mediaInfoTimer)
+    {
+        [_mediaInfoTimer invalidate];
+        _mediaInfoTimer = nil;
     }
 
     if (_playStateSubscription)
@@ -104,27 +112,15 @@
                 if (_playTimer)
                     [_playTimer invalidate];
 
-                [_mediaControl getDurationWithSuccess:^(NSTimeInterval duration)
-                {
-                    NSLog(@"duration change %@", @(duration));
-                    _mediaDuration = duration;
-                } failure:^(NSError *error)
-                {
-                    NSLog(@"get duration failure: %@", error.localizedDescription);
-                }];
+                if (_mediaInfoTimer)
+                    [_mediaInfoTimer invalidate];
 
-                [_mediaControl getPositionWithSuccess:^(NSTimeInterval position)
-                {
-                    NSLog(@"position change %@", @(position));
-                    _estimatedMediaPosition = position;
-                } failure:^(NSError *error)
-                {
-                    NSLog(@"get position failure: %@", error.localizedDescription);
-                }];
+                [self updateMediaInfo];
 
                 if ([self.device hasCapability:kMediaControlDuration] && [self.device hasCapability:kMediaControlSeek])
                     [_seekSlider setEnabled:YES];
 
+                _mediaInfoTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(updateMediaInfo) userInfo:nil repeats:YES];
                 _playTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updatePlayerControls) userInfo:nil repeats:YES];
             } else if (playState == MediaControlPlayStateFinished)
             {
@@ -133,6 +129,9 @@
             {
                 if (_playTimer)
                     [_playTimer invalidate];
+
+                if (_mediaInfoTimer)
+                    [_mediaInfoTimer invalidate];
 
                 [_seekSlider setEnabled:NO];
             }
@@ -166,6 +165,19 @@
             NSLog(@"Get Vol Error %@", error.localizedDescription);
         }];
     }
+}
+
+- (void) updateMediaInfo
+{
+    [_mediaControl getDurationWithSuccess:^(NSTimeInterval duration)
+    {
+        _mediaDuration = duration;
+    } failure:nil];
+
+    [_mediaControl getPositionWithSuccess:^(NSTimeInterval position)
+    {
+        _estimatedMediaPosition = position;
+    } failure:nil];
 }
 
 - (void) updatePlayerControls
@@ -372,6 +384,9 @@
 
     if (_playTimer)
         [_playTimer invalidate];
+
+    if (_mediaInfoTimer)
+        [_mediaInfoTimer invalidate];
 }
 
 - (IBAction)seekChanged:(id)sender
@@ -394,13 +409,18 @@
 
     [_mediaControl getDurationWithSuccess:^(NSTimeInterval duration)
     {
+        _mediaDuration = duration;
+
+        [_mediaControl getPositionWithSuccess:^(NSTimeInterval position)
+        {
+            _estimatedMediaPosition = position;
+        } failure:nil];
+
         NSTimeInterval newTime = duration * _seekSlider.value;
 
         [_mediaControl seek:newTime success:^(id responseObject)
         {
             NSLog(@"seek success");
-
-            [_seekSlider setEnabled:YES];
         } failure:^(NSError *error)
         {
             NSLog(@"seek failure: %@", error.localizedDescription);
