@@ -229,6 +229,9 @@
 #pragma mark - Connect SDK API sampler methods
 
 - (IBAction)displayPhoto:(id)sender {
+    if (_launchSession)
+        [_launchSession closeWithSuccess:nil failure:nil];
+
     [self resetMediaControlComponents];
     
     NSURL *mediaURL = [NSURL URLWithString:@"http://demo.idean.com/jeremy-white/cast/media/photo.jpg"];
@@ -256,6 +259,9 @@
 }
 
 - (IBAction)displayVideo:(id)sender {
+    if (_launchSession)
+        [_launchSession closeWithSuccess:nil failure:nil];
+
     [self resetMediaControlComponents];
     
     NSURL *mediaURL = [NSURL URLWithString:@"http://demo.idean.com/jeremy-white/cast/media/video.mp4"];
@@ -432,6 +438,8 @@
         [_mediaControl seek:newTime success:^(id responseObject)
         {
             NSLog(@"seek success");
+
+            _estimatedMediaPosition = newTime;
 
             if (![self.device hasCapability:kMediaControlPlayStateSubscribe])
                 _mediaInfoTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(updateMediaInfo) userInfo:nil repeats:YES];
