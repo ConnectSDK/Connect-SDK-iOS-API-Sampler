@@ -208,8 +208,8 @@
 - (IBAction)displayPhoto:(id)sender {
     [self resetMediaControlComponents];
     
-    NSURL *mediaURL = [NSURL URLWithString:@"http://www.freesoftwaremagazine.com/files/nodes/3466/fig_sintel_style_study.jpg"];
-    NSURL *iconURL = [NSURL URLWithString:@"http://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/t5/s48x48/50354_121158371242322_7687_q.jpg"];
+    NSURL *mediaURL = [NSURL URLWithString:@"http://demo.idean.com/jeremy-white/cast/media/photo.jpg"];
+    NSURL *iconURL = [NSURL URLWithString:@"http://demo.idean.com/jeremy-white/cast/media/photoIcon.jpg"];
     NSString *title = @"Sintel Character Design";
     NSString *description = @"Blender Open Movie Project";
     NSString *mimeType = @"image/jpeg";
@@ -235,8 +235,8 @@
 - (IBAction)displayVideo:(id)sender {
     [self resetMediaControlComponents];
     
-    NSURL *mediaURL = [NSURL URLWithString:@"http://download.blender.org/durian/trailer/sintel_trailer-720p.mp4"];
-    NSURL *iconURL = [NSURL URLWithString:@"http://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/t5/s48x48/50354_121158371242322_7687_q.jpg"];
+    NSURL *mediaURL = [NSURL URLWithString:@"http://demo.idean.com/jeremy-white/cast/media/video.mp4"];
+    NSURL *iconURL = [NSURL URLWithString:@"http://demo.idean.com/jeremy-white/cast/media/videoIcon.jpg"];
     NSString *title = @"Sintel Trailer";
     NSString *description = @"Blender Open Movie Project";
     NSString *mimeType = @"video/mp4";
