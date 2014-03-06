@@ -25,9 +25,45 @@
 
     NSTimer *_playTimer;
     NSTimer *_mediaInfoTimer;
+
+    MediaPlayStateSuccessBlock _playStateHandler;
 }
 
 #pragma mark - UIViewController creation/destruction methods
+
+- (void) viewDidLoad
+{
+    [super viewDidLoad];
+
+    _playStateHandler = ^(MediaControlPlayState playState)
+    {
+        NSLog(@"play state change %@", @(playState));
+
+        if (playState == MediaControlPlayStatePlaying)
+        {
+            if (_playTimer)
+                [_playTimer invalidate];
+
+            if (_mediaInfoTimer)
+                [_mediaInfoTimer invalidate];
+
+            if ([self.device hasCapability:kMediaControlDuration] && [self.device hasCapability:kMediaControlSeek])
+                [_seekSlider setEnabled:YES];
+
+            _mediaInfoTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(updateMediaInfo) userInfo:nil repeats:YES];
+            _playTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updatePlayerControls) userInfo:nil repeats:YES];
+        } else if (playState == MediaControlPlayStateFinished)
+        {
+            [self resetMediaControlComponents];
+        } else
+        {
+            if (_playTimer)
+                [_playTimer invalidate];
+
+            [_seekSlider setEnabled:NO];
+        }
+    };
+}
 
 - (void) addSubscriptions
 {
@@ -103,42 +139,14 @@
 
     if ([self.device hasCapability:kMediaControlPlayStateSubscribe])
     {
-        [_mediaControl subscribePlayStateWithSuccess:^(MediaControlPlayState playState)
-        {
-            NSLog(@"play state change %@", @(playState));
-
-            if (playState == MediaControlPlayStatePlaying)
-            {
-                if (_playTimer)
-                    [_playTimer invalidate];
-
-                if (_mediaInfoTimer)
-                    [_mediaInfoTimer invalidate];
-
-                [self updateMediaInfo];
-
-                if ([self.device hasCapability:kMediaControlDuration] && [self.device hasCapability:kMediaControlSeek])
-                    [_seekSlider setEnabled:YES];
-
-                _mediaInfoTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(updateMediaInfo) userInfo:nil repeats:YES];
-                _playTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updatePlayerControls) userInfo:nil repeats:YES];
-            } else if (playState == MediaControlPlayStateFinished)
-            {
-                [self resetMediaControlComponents];
-            } else
-            {
-                if (_playTimer)
-                    [_playTimer invalidate];
-
-                if (_mediaInfoTimer)
-                    [_mediaInfoTimer invalidate];
-
-                [_seekSlider setEnabled:NO];
-            }
-        } failure:^(NSError *error)
+        [_mediaControl subscribePlayStateWithSuccess:_playStateHandler failure:^(NSError *error)
         {
             NSLog(@"subscribe play state failure: %@", error.localizedDescription);
         }];
+    } else
+    {
+        _mediaInfoTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(updateMediaInfo) userInfo:nil repeats:YES];
+        _playTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updatePlayerControls) userInfo:nil repeats:YES];
     }
 
     if ([self.device hasCapability:kVolumeControlMuteSet]) [_volumeSlider setEnabled:YES];
@@ -169,6 +177,9 @@
 
 - (void) updateMediaInfo
 {
+    if (![self.device hasCapability:kMediaControlPlayStateSubscribe])
+        [_mediaControl getPlayStateWithSuccess:_playStateHandler failure:nil];
+
     [_mediaControl getDurationWithSuccess:^(NSTimeInterval duration)
     {
         _mediaDuration = duration;
@@ -189,7 +200,7 @@
 
     float progress = (float) (_estimatedMediaPosition / _mediaDuration);
 
-    if (progress > 1.0f)
+    if (progress < 0.0f || progress > 1.0f)
         return;
 
     _seekSlider.value = progress;
@@ -421,6 +432,9 @@
         [_mediaControl seek:newTime success:^(id responseObject)
         {
             NSLog(@"seek success");
+
+            if (![self.device hasCapability:kMediaControlPlayStateSubscribe])
+                _mediaInfoTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(updateMediaInfo) userInfo:nil repeats:YES];
         } failure:^(NSError *error)
         {
             NSLog(@"seek failure: %@", error.localizedDescription);
