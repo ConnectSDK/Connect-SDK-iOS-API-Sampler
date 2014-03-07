@@ -180,15 +180,18 @@
     if (![self.device hasCapability:kMediaControlPlayStateSubscribe])
         [_mediaControl getPlayStateWithSuccess:_playStateHandler failure:nil];
 
-    [_mediaControl getDurationWithSuccess:^(NSTimeInterval duration)
+    if ([self.device hasCapabilities:@[kMediaControlDuration, kMediaControlPosition]])
     {
-        _mediaDuration = duration;
-    } failure:nil];
+        [_mediaControl getDurationWithSuccess:^(NSTimeInterval duration)
+        {
+            _mediaDuration = duration;
+        } failure:nil];
 
-    [_mediaControl getPositionWithSuccess:^(NSTimeInterval position)
-    {
-        _estimatedMediaPosition = position;
-    } failure:nil];
+        [_mediaControl getPositionWithSuccess:^(NSTimeInterval position)
+        {
+            _estimatedMediaPosition = position;
+        } failure:nil];
+    }
 }
 
 - (void) updatePlayerControls
