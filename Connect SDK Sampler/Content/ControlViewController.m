@@ -227,7 +227,7 @@ typedef enum
             [self.device.keyboardControl sendDeleteWithSuccess:nil failure:nil];
     } else
     {
-        NSString *stringToSend = [newString substringToIndex:1];
+        NSString *stringToSend = [newString substringFromIndex:1];
 
         NSLog(@"Received string to send: %@", stringToSend);
 
