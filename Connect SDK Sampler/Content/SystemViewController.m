@@ -25,7 +25,7 @@
 {
     if (self.device)
     {
-        if ([self.device hasCapability:kVolumeControlVolumeUp] && [self.device hasCapability:kVolumeControlVolumeDown])
+        if ([self.device hasCapability:kVolumeControlVolumeUpDown])
             [_volumeStepper setEnabled:YES];
         
         if ([self.device hasCapability:kVolumeControlMuteSet]) [_volumeSlider setEnabled:YES];
