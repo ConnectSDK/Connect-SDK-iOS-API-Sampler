@@ -232,7 +232,7 @@ typedef enum
         NSLog(@"Received string to send: %@", stringToSend);
 
         if ([self.device hasCapability:kKeyboardControlSend])
-            [self.device.keyboardControl send:stringToSend success:nil failure:nil];
+            [self.device.keyboardControl sendKeys:stringToSend success:nil failure:nil];
     }
 
     [_keyboard setText:@"*"];
