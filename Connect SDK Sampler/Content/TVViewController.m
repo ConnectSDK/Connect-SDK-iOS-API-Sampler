@@ -71,15 +71,15 @@
         
         if ([self.device hasCapability:kTVControlChannelSubscribe])
         {
-            _channelInfoSubscription = [self.device.tvControl subscribeChannelInfoWithSuccess:^(ChannelInfo *channelInfo)
-                                        {
-                                            NSLog(@"subscribe current channel success");
-                                            _currentChannel = channelInfo;
-                                            [self.channels reloadData];
-                                        } failure:^(NSError *error)
-                                        {
-                                            NSLog(@"Subscribe current ch Error %@", error.localizedDescription);
-                                        }];
+            _channelInfoSubscription = [self.device.tvControl subscribeCurrentChannelWithSuccess:^(ChannelInfo *channelInfo)
+            {
+                NSLog(@"subscribe current channel success");
+                _currentChannel = channelInfo;
+                [self.channels reloadData];
+            }                                                                            failure:^(NSError *error)
+            {
+                NSLog(@"Subscribe current ch Error %@", error.localizedDescription);
+            }];
         }
         
         if ([self.device hasCapability:kMediaControlPause]) [_incomingCallButton setEnabled:YES];

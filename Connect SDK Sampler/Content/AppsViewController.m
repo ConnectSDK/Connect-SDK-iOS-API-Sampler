@@ -29,7 +29,7 @@
     {
         _appList = [[NSArray alloc] init];
 
-        if ([self.device hasCapability:kLauncherApplicationList])
+        if ([self.device hasCapability:kLauncherAppList])
         {
             [self.device.launcher getAppListWithSuccess:^(NSArray *appList)
             {
@@ -145,10 +145,10 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     AppInfo *app = (AppInfo *) [_appList objectAtIndex:(NSUInteger) indexPath.row];
 
-    [self.device.launcher launchApplicationWithInfo:app success:^(LaunchSession *launchSession)
+    [self.device.launcher launchAppWithInfo:app success:^(LaunchSession *launchSession)
     {
         NSLog(@"Launched application %@", launchSession);
-    } failure:^(NSError *error)
+    }                               failure:^(NSError *error)
     {
         NSLog(@"no launchApp %@", error);
     }];
@@ -178,7 +178,7 @@
         {
             NSLog(@"google opened %@", launchSession);
 
-            if ([self.device hasCapability:kLauncherApplicationClose])
+            if ([self.device hasCapability:kLauncherAppClose])
             {
                 _browserSession = launchSession;
                 [_browserButton setSelected:YES];
@@ -210,7 +210,7 @@
         {
             NSLog(@"netflix opened with data: %@", launchSession);
 
-            if ([self.device hasCapability:kLauncherApplicationClose])
+            if ([self.device hasCapability:kLauncherAppClose])
             {
                 _netflixSession = launchSession;
                 [_netflixButton setSelected:YES];
@@ -243,7 +243,7 @@
         {
             NSLog(@"youtube opened with data: %@", launchSession);
 
-            if ([self.device hasCapability:kLauncherApplicationClose])
+            if ([self.device hasCapability:kLauncherAppClose])
             {
                 _youtubeSession = launchSession;
                 [_youtubeButton setSelected:YES];

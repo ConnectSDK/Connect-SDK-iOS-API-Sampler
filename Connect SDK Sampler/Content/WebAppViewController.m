@@ -91,24 +91,24 @@
 
         if ([self.device hasCapability:kWebAppLauncherClose]) [_closeButton setEnabled:YES];
 
-        if ([self.device hasCapability:kWebAppLauncherMessage])
+        if ([self.device hasCapabilities:@[kWebAppLauncherMessageSend, kWebAppLauncherMessageReceive]])
         {
             [_webAppSession connectWithMessageCallback:^(id message)
             {
                 NSLog(@"web app received message: %@", message);
                 [self handleMessage:message];
-            } success:^(id responseObject)
+            }                                  success:^(id responseObject)
             {
                 NSLog(@"web app connect success");
 
-                if ([self.device hasCapability:kWebAppLauncherMessageSend]) [_sendButton setEnabled:YES];
+                [_sendButton setEnabled:YES];
                 if ([self.device hasCapability:kWebAppLauncherMessageSendJSON]) [_sendJSONButton setEnabled:YES];
-            } failure:^(NSError *error)
+            }                                  failure:^(NSError *error)
             {
                 NSLog(@"web app connect error: %@", error.localizedDescription);
             }];
         }
-    } failure:^(NSError *error)
+    }                                failure:^(NSError *error)
     {
         NSLog(@"web app launch error: %@", error.localizedDescription);
     }];
