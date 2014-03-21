@@ -34,33 +34,35 @@
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    __unsafe_unretained typeof(self) weakSelf = self;
+    
     _playStateHandler = ^(MediaControlPlayState playState)
     {
         NSLog(@"play state change %@", @(playState));
 
         if (playState == MediaControlPlayStatePlaying)
         {
-            if (_playTimer)
-                [_playTimer invalidate];
+            if (weakSelf->_playTimer)
+                [weakSelf->_playTimer invalidate];
 
-            if (_mediaInfoTimer)
-                [_mediaInfoTimer invalidate];
+            if (weakSelf->_mediaInfoTimer)
+                [weakSelf->_mediaInfoTimer invalidate];
 
-            if ([self.device hasCapability:kMediaControlDuration] && [self.device hasCapability:kMediaControlSeek])
-                [_seekSlider setEnabled:YES];
+            if ([weakSelf.device hasCapability:kMediaControlDuration] && [weakSelf.device hasCapability:kMediaControlSeek])
+                [weakSelf->_seekSlider setEnabled:YES];
 
-            _mediaInfoTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(updateMediaInfo) userInfo:nil repeats:YES];
-            _playTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updatePlayerControls) userInfo:nil repeats:YES];
+            weakSelf->_mediaInfoTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:weakSelf selector:@selector(updateMediaInfo) userInfo:nil repeats:YES];
+            weakSelf->_playTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:weakSelf selector:@selector(updatePlayerControls) userInfo:nil repeats:YES];
         } else if (playState == MediaControlPlayStateFinished)
         {
-            [self resetMediaControlComponents];
+            [weakSelf resetMediaControlComponents];
         } else
         {
-            if (_playTimer)
-                [_playTimer invalidate];
+            if (weakSelf->_playTimer)
+                [weakSelf->_playTimer invalidate];
 
-            [_seekSlider setEnabled:NO];
+            [weakSelf->_seekSlider setEnabled:NO];
         }
     };
 }
