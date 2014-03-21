@@ -56,7 +56,7 @@
 - (void) enableView
 {
     self.view.userInteractionEnabled = YES;
-    _connectToggleItem.title = @"Connected";
+    _connectToggleItem.title = _device.friendlyName ? _device.friendlyName : @"Disconnect";
     
     if (_disabledMessage == nil)
         return;
