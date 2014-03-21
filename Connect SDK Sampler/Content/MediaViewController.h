@@ -12,10 +12,12 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *displayPhotoButton;
 @property (weak, nonatomic) IBOutlet UIButton *displayVideoButton;
+@property (weak, nonatomic) IBOutlet UIButton *playAudioButton;
 @property (weak, nonatomic) IBOutlet UIButton *closeMediaButton;
 
 - (IBAction)displayPhoto:(id)sender;
 - (IBAction)displayVideo:(id)sender;
+- (IBAction)playAudio:(id)sender;
 - (IBAction)closeMedia:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIButton *playButton;

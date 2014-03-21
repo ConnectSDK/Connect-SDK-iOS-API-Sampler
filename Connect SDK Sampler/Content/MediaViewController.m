@@ -71,6 +71,7 @@
     {
         if ([self.device hasCapability:kMediaPlayerDisplayImage]) [_displayPhotoButton setEnabled:YES];
         if ([self.device hasCapability:kMediaPlayerDisplayVideo]) [_displayVideoButton setEnabled:YES];
+        if ([self.device hasCapability:kMediaPlayerDisplayAudio]) [_playAudioButton setEnabled:YES];
     } else
     {
         [self removeSubscriptions];
@@ -83,6 +84,7 @@
     
     [_displayPhotoButton setEnabled:NO];
     [_displayVideoButton setEnabled:NO];
+    [_playAudioButton setEnabled:NO];
 }
 
 - (void) resetMediaControlComponents
@@ -273,27 +275,66 @@
     NSString *description = @"Blender Open Movie Project";
     NSString *mimeType = @"video/mp4";
     BOOL shouldLoop = NO;
-    
-    [self.device.mediaPlayer displayVideo:mediaURL
-                                  iconURL:iconURL
-                                    title:title
-                              description:description
-                                 mimeType:mimeType
-                               shouldLoop:shouldLoop
-                                  success:^(LaunchSession *launchSession, id<MediaControl> mediaControl) {
-                                      NSLog(@"display video success");
 
-                                      _launchSession = launchSession;
-                                      _mediaControl = mediaControl;
-                                      
-                                      if ([self.device hasCapability:kMediaPlayerClose])
-                                          [_closeMediaButton setEnabled:YES];
-                                      
-                                      [self enableMediaControlComponents];
-                                  }
-                                  failure:^(NSError *error) {
-                                      NSLog(@"display video failure: %@", error.localizedDescription);
-                                  }];
+    [self.device.mediaPlayer playMedia:mediaURL
+                               iconURL:iconURL
+                                 title:title
+                           description:description
+                              mimeType:mimeType
+                            shouldLoop:shouldLoop
+                               success:^(LaunchSession *launchSession, id <MediaControl> mediaControl)
+                               {
+                                   NSLog(@"display video success");
+
+                                   _launchSession = launchSession;
+                                   _mediaControl = mediaControl;
+
+                                   if ([self.device hasCapability:kMediaPlayerClose])
+                                       [_closeMediaButton setEnabled:YES];
+
+                                   [self enableMediaControlComponents];
+                               }
+                               failure:^(NSError *error)
+                               {
+                                   NSLog(@"display video failure: %@", error.localizedDescription);
+                               }];
+}
+
+- (IBAction)playAudio:(id)sender {
+    if (_launchSession)
+        [_launchSession closeWithSuccess:nil failure:nil];
+    
+    [self resetMediaControlComponents];
+    
+    NSURL *mediaURL = [NSURL URLWithString:@"http://demo.idean.com/jeremy-white/cast/media/audio.mp3"];
+    NSURL *iconURL = [NSURL URLWithString:@"http://demo.idean.com/jeremy-white/cast/media/audioIcon.jpg"];
+    NSString *title = @"The Song That Doesn't End";
+    NSString *description = @"Lamb Chop's Play Along";
+    NSString *mimeType = @"audio/mp3";
+    BOOL shouldLoop = NO;
+    
+    [self.device.mediaPlayer playMedia:mediaURL
+                               iconURL:iconURL
+                                 title:title
+                           description:description
+                              mimeType:mimeType
+                            shouldLoop:shouldLoop
+                               success:^(LaunchSession *launchSession, id <MediaControl> mediaControl)
+     {
+         NSLog(@"display audio success");
+         
+         _launchSession = launchSession;
+         _mediaControl = mediaControl;
+         
+         if ([self.device hasCapability:kMediaPlayerClose])
+             [_closeMediaButton setEnabled:YES];
+         
+         [self enableMediaControlComponents];
+     }
+                               failure:^(NSError *error)
+     {
+         NSLog(@"display audio failure: %@", error.localizedDescription);
+     }];
 }
 
 - (IBAction)closeMedia:(id)sender
