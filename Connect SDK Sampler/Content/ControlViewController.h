@@ -1,5 +1,5 @@
 //
-//  FiveWayViewController.h
+//  ControlViewController.h
 //  Connect SDK Sampler App
 //
 //  Created by Andrew Longstaff on 9/19/13.

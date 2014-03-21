@@ -1,5 +1,5 @@
 //
-//  FiveWayViewController.m
+//  ControlViewController.m
 //  Connect SDK Sampler App
 //
 //  Created by Andrew Longstaff on 9/19/13.
@@ -32,9 +32,9 @@ typedef enum
 {
     if (self.device)
     {
-        if ([self.device hasCapability:kKeyboardControlSubscribe])
+        if ([self.device hasCapability:kTextInputControlSubscribe])
         {
-            _keyboardSubscription = [self.device.keyboardControl subscribeKeyboardStatusWithSuccess:^(KeyboardInfo *info)
+            _keyboardSubscription = [self.device.textInputControl subscribeTextInputStatusWithSuccess:^(TextInputStatusInfo *info)
             {
                 NSLog(@"keyboard status changed: visible:%@ type:%@", @(info.isVisible), @(info.keyboardType));
 
@@ -42,13 +42,13 @@ typedef enum
                     [self getKeyboardFocusWithType:info.keyboardType];
                 else
                     [self resignKeyboardFocus];
-            } failure:^(NSError *error)
+            }                                                                                 failure:^(NSError *error)
             {
                 NSLog(@"keyboard subscription error %@", error.localizedDescription);
             }];
         } else
         {
-            if ([self.device hasCapability:kKeyboardControlSend])
+            if ([self.device hasCapability:kTextInputControlSendText])
                 [_keyboardButton setEnabled:YES];
         }
 
@@ -66,13 +66,13 @@ typedef enum
             }];
         }
 
-        if ([self.device hasCapability:kFivewayControlUp]) [_upButton setEnabled:YES];
-        if ([self.device hasCapability:kFivewayControlDown]) [_downButton setEnabled:YES];
-        if ([self.device hasCapability:kFivewayControlLeft]) [_leftButton setEnabled:YES];
-        if ([self.device hasCapability:kFivewayControlRight]) [_rightButton setEnabled:YES];
-        if ([self.device hasCapability:kFivewayControlOK]) [_clickButton setEnabled:YES];
-        if ([self.device hasCapability:kFivewayControlHome]) [_homeButton setEnabled:YES];
-        if ([self.device hasCapability:kFivewayControlBack]) [_backButton setEnabled:YES];
+        if ([self.device hasCapability:kKeyControlUp]) [_upButton setEnabled:YES];
+        if ([self.device hasCapability:kKeyControlDown]) [_downButton setEnabled:YES];
+        if ([self.device hasCapability:kKeyControlLeft]) [_leftButton setEnabled:YES];
+        if ([self.device hasCapability:kKeyControlRight]) [_rightButton setEnabled:YES];
+        if ([self.device hasCapability:kKeyControlOK]) [_clickButton setEnabled:YES];
+        if ([self.device hasCapability:kKeyControlHome]) [_homeButton setEnabled:YES];
+        if ([self.device hasCapability:kKeyControlBack]) [_backButton setEnabled:YES];
     } else
     {
         [self removeSubscriptions];
@@ -104,22 +104,22 @@ typedef enum
 
 - (void)clickClicked:(id)sender
 {
-    [self.device.fivewayControl okWithSuccess:nil failure:nil];
+    [self.device.keyControl okWithSuccess:nil failure:nil];
 }
 
 - (void)homeClicked:(id)sender
 {
-    [self.device.fivewayControl homeWithSuccess:nil failure:nil];
+    [self.device.keyControl homeWithSuccess:nil failure:nil];
 }
 
 - (void)backClicked:(id)sender
 {
-    [self.device.fivewayControl backWithSuccess:nil failure:nil];
+    [self.device.keyControl backWithSuccess:nil failure:nil];
 }
 
 - (void)upDown:(id)sender
 {
-    [self.device.fivewayControl upWithSuccess:nil failure:nil];
+    [self.device.keyControl upWithSuccess:nil failure:nil];
 
     if(_timer != nil)
         [_timer invalidate];
@@ -129,7 +129,7 @@ typedef enum
 
 - (void)downDown:(id)sender
 {
-    [self.device.fivewayControl downWithSuccess:nil failure:nil];
+    [self.device.keyControl downWithSuccess:nil failure:nil];
 
     if(_timer != nil)
         [_timer invalidate];
@@ -139,7 +139,7 @@ typedef enum
 
 - (void)leftDown:(id)sender
 {
-    [self.device.fivewayControl leftWithSuccess:nil failure:nil];
+    [self.device.keyControl leftWithSuccess:nil failure:nil];
 
     if(_timer != nil)
         [_timer invalidate];
@@ -149,7 +149,7 @@ typedef enum
 
 - (void)rightDown:(id)sender
 {
-    [self.device.fivewayControl rightWithSuccess:nil failure:nil];
+    [self.device.keyControl rightWithSuccess:nil failure:nil];
 
     if(_timer != nil)
         [_timer invalidate];
@@ -179,10 +179,10 @@ typedef enum
 
     switch (buttonKey)
     {
-        case FivewayKeyUp: [self.device.fivewayControl upWithSuccess:nil failure:nil]; break;
-        case FivewayKeyDown: [self.device.fivewayControl downWithSuccess:nil failure:nil]; break;
-        case FivewayKeyLeft: [self.device.fivewayControl leftWithSuccess:nil failure:nil]; break;
-        case FivewayKeyRight: [self.device.fivewayControl rightWithSuccess:nil failure:nil]; break;
+        case FivewayKeyUp: [self.device.keyControl upWithSuccess:nil failure:nil]; break;
+        case FivewayKeyDown: [self.device.keyControl downWithSuccess:nil failure:nil]; break;
+        case FivewayKeyLeft: [self.device.keyControl leftWithSuccess:nil failure:nil]; break;
+        case FivewayKeyRight: [self.device.keyControl rightWithSuccess:nil failure:nil]; break;
         default:break;
     }
 }
@@ -207,10 +207,10 @@ typedef enum
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if ([self.device hasCapability:kKeyboardControlSendEnter])
-        [self.device.keyboardControl sendEnterWithSuccess:nil failure:nil];
+    if ([self.device hasCapability:kTextInputControlSendEnter])
+        [self.device.textInputControl sendEnterWithSuccess:nil failure:nil];
 
-    if (![self.device hasCapability:kKeyboardControlSubscribe])
+    if (![self.device hasCapability:kTextInputControlSubscribe])
         [self resignKeyboardFocus];
 
     return NO;
@@ -224,16 +224,16 @@ typedef enum
     {
         NSLog(@"Received delete key code");
 
-        if ([self.device hasCapability:kKeyboardControlSendDelete])
-            [self.device.keyboardControl sendDeleteWithSuccess:nil failure:nil];
+        if ([self.device hasCapability:kTextInputControlSendDelete])
+            [self.device.textInputControl sendDeleteWithSuccess:nil failure:nil];
     } else
     {
         NSString *stringToSend = [newString substringFromIndex:1];
 
         NSLog(@"Received string to send: %@", stringToSend);
 
-        if ([self.device hasCapability:kKeyboardControlSend])
-            [self.device.keyboardControl sendKeys:stringToSend success:nil failure:nil];
+        if ([self.device hasCapability:kTextInputControlSendText])
+            [self.device.textInputControl sendText:stringToSend success:nil failure:nil];
     }
 
     [_keyboard setText:@"*"];
