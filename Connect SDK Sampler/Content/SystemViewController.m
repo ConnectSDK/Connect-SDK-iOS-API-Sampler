@@ -124,12 +124,12 @@
     [_volumeStepper setValue:10];
     [_muteSwitch setEnabled:NO];
     
-    [_playButton setEnabled:YES];
-    [_pauseButton setEnabled:YES];
-    [_stopButton setEnabled:YES];
-    [_rewindButton setEnabled:YES];
-    [_fastForwardButton setEnabled:YES];
-    
+    [_playButton setEnabled:NO];
+    [_pauseButton setEnabled:NO];
+    [_stopButton setEnabled:NO];
+    [_rewindButton setEnabled:NO];
+    [_fastForwardButton setEnabled:NO];
+
     _inputList = [[NSArray alloc] init];
     [_inputs reloadData];
 
