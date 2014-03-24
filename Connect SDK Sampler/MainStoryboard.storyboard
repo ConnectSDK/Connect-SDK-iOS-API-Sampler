@@ -83,10 +83,10 @@
             </objects>
             <point key="canvasLocation" x="896" y="-254"/>
         </scene>
-        <!--Control View Controller - Five Way-->
+        <!--Control View Controller - Control-->
         <scene sceneID="40H-Sb-dZz">
             <objects>
-                <viewController title="Five Way" id="aPk-l6-Ae1" customClass="ControlViewController" sceneMemberID="viewController">
+                <viewController title="Control" id="aPk-l6-Ae1" customClass="ControlViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fDJ-xr-8Ax">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -393,10 +393,10 @@
             </objects>
             <point key="canvasLocation" x="519" y="-254"/>
         </scene>
-        <!--System View Controller - Inputs-->
+        <!--System View Controller - System-->
         <scene sceneID="Sco-M8-MvZ">
             <objects>
-                <viewController title="Inputs" id="jwQ-mp-yYL" customClass="SystemViewController" sceneMemberID="viewController">
+                <viewController title="System" id="jwQ-mp-yYL" customClass="SystemViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uLL-mb-gu2">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
