@@ -10,7 +10,7 @@
 #import <ConnectSDK/CastService.h>
 #import "WebAppViewController.h"
 
-@interface WebAppViewController ()
+@interface WebAppViewController () <WebAppSessionDelegate>
 {
     WebAppSession *_webAppSession;
 }
@@ -31,6 +31,8 @@
 {
     if (_webAppSession)
     {
+        _webAppSession.delegate = nil;
+
         [_webAppSession closeWithSuccess:^(id responseObject)
         {
             NSLog(@"web app close success");
@@ -51,27 +53,6 @@
     [_statusTextView setUserInteractionEnabled:NO];
 }
 
-- (void) handleMessage:(id)message
-{
-    NSString *messageString;
-
-    if ([message isKindOfClass:[NSString class]])
-        messageString = message;
-    else if ([message isKindOfClass:[NSDictionary class]] || [message isKindOfClass:[NSArray class]])
-    {
-        NSError *error;
-        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:message
-                                                           options:NSJSONWritingPrettyPrinted
-                                                             error:&error];
-
-        if (!error && jsonData)
-            messageString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    }
-
-    if (messageString)
-        _statusTextView.text = [NSString stringWithFormat:@"%@\n%@", message, _statusTextView.text];
-}
-
 #pragma mark - Connect SDK API sampler methods
 
 - (IBAction)launchWebApp:(id)sender
@@ -79,31 +60,28 @@
     NSString *webAppId;
 
     if ([self.device.webAppLauncher isMemberOfClass:[WebOSTVService class]])
-        webAppId = @"MediaPlayer";
+        webAppId = @"MediaPlayerTest";
     else if ([self.device.webAppLauncher isMemberOfClass:[CastService class]])
-        webAppId = @"4F6217BC";
+        webAppId = @"6F8A4929";
 
     [self.device.webAppLauncher launchWebApp:webAppId success:^(WebAppSession *webAppSession)
     {
         NSLog(@"web app launch success");
 
         _webAppSession = webAppSession;
+        _webAppSession.delegate = self;
 
         if ([self.device hasCapability:kWebAppLauncherClose]) [_closeButton setEnabled:YES];
 
         if ([self.device hasCapabilities:@[kWebAppLauncherMessageSend, kWebAppLauncherMessageReceive]])
         {
-            [_webAppSession connectWithMessageCallback:^(id message)
-            {
-                NSLog(@"web app received message: %@", message);
-                [self handleMessage:message];
-            }                                  success:^(id responseObject)
+            [_webAppSession connectWithSuccess:^(id responseObject)
             {
                 NSLog(@"web app connect success");
 
                 [_sendButton setEnabled:YES];
                 if ([self.device hasCapability:kWebAppLauncherMessageSendJSON]) [_sendJSONButton setEnabled:YES];
-            }                                  failure:^(NSError *error)
+            }                          failure:^(NSError *error)
             {
                 NSLog(@"web app connect error: %@", error.localizedDescription);
             }];
@@ -161,6 +139,34 @@
     [self removeSubscriptions];
 
     [_launchButton setEnabled:YES];
+}
+
+#pragma mark - WebAppSessionDelegate methods
+
+- (void) webAppSession:(WebAppSession *)webAppSession didReceiveMessage:(id)message
+{
+    NSString *messageString;
+
+    if ([message isKindOfClass:[NSString class]])
+        messageString = message;
+    else if ([message isKindOfClass:[NSDictionary class]] || [message isKindOfClass:[NSArray class]])
+    {
+        NSError *error;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:message
+                                                           options:NSJSONWritingPrettyPrinted
+                                                             error:&error];
+
+        if (!error && jsonData)
+            messageString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    }
+
+    if (messageString)
+        _statusTextView.text = [NSString stringWithFormat:@"%@\n%@", message, _statusTextView.text];
+}
+
+- (void) webAppSessionDidDisconnect:(WebAppSession *)webAppSession
+{
+    [self closeWebApp:self];
 }
 
 @end
