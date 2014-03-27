@@ -194,7 +194,11 @@
 
 - (void) connectableDeviceReady:(ConnectableDevice *)device
 {
-    [self enableView];
+    // TODO: this should be unnecessary
+    dispatch_async(dispatch_get_main_queue(), ^
+    {
+        [self enableView];
+    });
 }
 
 - (void) connectableDeviceDisconnected:(ConnectableDevice *)device withError:(NSError *)error
