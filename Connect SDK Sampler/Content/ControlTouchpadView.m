@@ -31,7 +31,7 @@
 
     if (self.mouseControl)
     {
-        CGPoint distance = CGPointMake(
+        CGVector distance = CGVectorMake(
             touchLocation.x - oldX,
             touchLocation.y - oldY
         );
