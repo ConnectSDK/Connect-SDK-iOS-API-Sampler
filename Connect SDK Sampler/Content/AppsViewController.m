@@ -20,6 +20,7 @@
 
     LaunchSession *_netflixSession;
     LaunchSession *_youtubeSession;
+    LaunchSession *_appStoreSession;
     LaunchSession *_browserSession;
 }
 
@@ -71,6 +72,7 @@
         if ([self.device hasCapability:kLauncherBrowser]) [_browserButton setEnabled:YES];
         if ([self.device hasCapability:kToastControlShowToast]) [_toastButton setEnabled:YES];
         if ([self.device hasCapability:kLauncherNetflix]) [_netflixButton setEnabled:YES];
+        if ([self.device hasCapability:kLauncherAppStore]) [_appStoreButton setEnabled:YES];
         if ([self.device hasCapability:kLauncherYouTube]) [_youtubeButton setEnabled:YES];
     }
 }
@@ -82,9 +84,11 @@
 
     _browserSession = nil;
     _netflixSession = nil;
+    _appStoreSession = nil;
     _youtubeSession = nil;
 
     [_browserButton setEnabled:NO];
+    [_appStoreButton setEnabled:NO];
     [_toastButton setEnabled:NO];
     [_netflixButton setEnabled:NO];
     [_youtubeButton setEnabled:NO];
@@ -221,6 +225,47 @@
         }];
     }
 
+}
+
+- (IBAction) appStorePressed:(id)sender
+{
+    if (_appStoreSession)
+    {
+        [_appStoreSession closeWithSuccess:^(id responseObject)
+        {
+            NSLog(@"app store close success");
+        } failure:^(NSError *error)
+        {
+            NSLog(@"app store close error: %@", error.localizedDescription);
+        }];
+
+        _appStoreSession = nil;
+        [_appStoreButton setSelected:NO];
+    } else
+    {
+        NSString *appId;
+
+        if ([self.device serviceWithName:@"Netcast TV"])
+            appId = @"4168";
+        else if ([self.device serviceWithName:@"webOS TV"])
+            appId = @"youtube.leanback.v4";
+        else if ([self.device serviceWithName:@"Roku"])
+            appId = @"13535";
+
+        [self.device.launcher launchAppStore:appId success:^(LaunchSession *launchSession)
+        {
+            NSLog(@"app store opened with data: %@", launchSession);
+
+            if ([self.device hasCapability:kLauncherAppClose])
+            {
+                _appStoreSession = launchSession;
+                [_appStoreButton setSelected:YES];
+            }
+        } failure:^(NSError *error)
+        {
+            NSLog(@"app store fail, %@", error);
+        }];
+    }
 }
 
 - (IBAction)youtubePressed:(id)sender
