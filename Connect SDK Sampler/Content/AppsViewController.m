@@ -21,6 +21,7 @@
     LaunchSession *_netflixSession;
     LaunchSession *_youtubeSession;
     LaunchSession *_appStoreSession;
+    LaunchSession *_myAppSession;
     LaunchSession *_browserSession;
 }
 
@@ -74,6 +75,7 @@
         if ([self.device hasCapability:kLauncherNetflix]) [_netflixButton setEnabled:YES];
         if ([self.device hasCapability:kLauncherAppStore]) [_appStoreButton setEnabled:YES];
         if ([self.device hasCapability:kLauncherYouTube]) [_youtubeButton setEnabled:YES];
+        if ([self.device hasCapability:@"Launcher.Levak"]) [_myAppButton setEnabled:YES];
     }
 }
 
@@ -86,12 +88,20 @@
     _netflixSession = nil;
     _appStoreSession = nil;
     _youtubeSession = nil;
-
+    _myAppSession = nil;
+    
     [_browserButton setEnabled:NO];
     [_appStoreButton setEnabled:NO];
     [_toastButton setEnabled:NO];
     [_netflixButton setEnabled:NO];
     [_youtubeButton setEnabled:NO];
+    [_myAppButton setEnabled:NO];
+    
+    [_browserButton setSelected:NO];
+    [_appStoreButton setSelected:NO];
+    [_netflixButton setSelected:NO];
+    [_youtubeButton setSelected:NO];
+    [_myAppButton setSelected:NO];
 
     if (_runningAppSubscription)
         [_runningAppSubscription unsubscribe];
@@ -297,6 +307,38 @@
         {
             NSLog(@"youtube fail, %@", error);
         }];
+    }
+}
+
+- (IBAction)myAppPressed:(id)sender
+{
+    if (_myAppSession)
+    {
+        [_myAppSession closeWithSuccess:^(id responseObject)
+         {
+             NSLog(@"my app close success");
+         } failure:^(NSError *error)
+         {
+             NSLog(@"my app close error: %@", error.localizedDescription);
+         }];
+        
+        _myAppSession = nil;
+        [_myAppButton setSelected:NO];
+    } else
+    {
+        [self.device.launcher launchApp:@"Levak" success:^(LaunchSession *launchSession)
+         {
+             NSLog(@"my app opened with data: %@", launchSession);
+             
+             if ([self.device hasCapability:kLauncherAppClose])
+             {
+                 _myAppSession = launchSession;
+                 [_myAppButton setSelected:YES];
+             }
+         } failure:^(NSError *error)
+         {
+             NSLog(@"my app fail, %@", error);
+         }];
     }
 }
 

@@ -556,7 +556,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hKc-WC-0Xi">
-                                <rect key="frame" x="52" y="20" width="83" height="30"/>
+                                <rect key="frame" x="16" y="20" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Browser">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -607,8 +607,21 @@
                                     <action selector="appStorePressed:" destination="pyF-HD-7Jf" eventType="touchUpInside" id="D9U-z2-qfR"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ahr-4H-KCh">
+                                <rect key="frame" x="118" y="20" width="85" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="My App">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleColor" red="0.82780655569999995" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="myAppPressed:" destination="pyF-HD-7Jf" eventType="touchUpInside" id="oV6-wJ-YMI"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mSu-pk-y7b">
-                                <rect key="frame" x="167" y="20" width="106" height="30"/>
+                                <rect key="frame" x="202" y="20" width="106" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Show Toast">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -626,6 +639,7 @@
                         <outlet property="appStoreButton" destination="vpI-r1-JKN" id="n33-Jz-yzP"/>
                         <outlet property="apps" destination="hZK-k1-W8u" id="e5q-1j-jh9"/>
                         <outlet property="browserButton" destination="hKc-WC-0Xi" id="VHg-GK-0yl"/>
+                        <outlet property="myAppButton" destination="Ahr-4H-KCh" id="H2g-m6-TMe"/>
                         <outlet property="netflixButton" destination="vJQ-O5-dw7" id="hGO-Py-fAk"/>
                         <outlet property="toastButton" destination="mSu-pk-y7b" id="zYR-DY-aA4"/>
                         <outlet property="youtubeButton" destination="8Mm-03-0cB" id="u9e-jS-njk"/>

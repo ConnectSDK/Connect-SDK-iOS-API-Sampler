@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *netflixButton;
 @property (weak, nonatomic) IBOutlet UIButton *appStoreButton;
 @property (weak, nonatomic) IBOutlet UIButton *youtubeButton;
+@property (weak, nonatomic) IBOutlet UIButton *myAppButton;
 
 @property (weak, nonatomic) IBOutlet UITableView *apps;
 
@@ -24,5 +25,6 @@
 - (IBAction)netflixPressed:(id)sender;
 - (IBAction)appStorePressed:(id)sender;
 - (IBAction)youtubePressed:(id)sender;
+- (IBAction)myAppPressed:(id)sender;
 
 @end
