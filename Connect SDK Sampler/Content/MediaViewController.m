@@ -72,8 +72,8 @@
     if (self.device)
     {
         if ([self.device hasCapability:kMediaPlayerDisplayImage]) [_displayPhotoButton setEnabled:YES];
-        if ([self.device hasCapability:kMediaPlayerDisplayVideo]) [_displayVideoButton setEnabled:YES];
-        if ([self.device hasCapability:kMediaPlayerDisplayAudio]) [_playAudioButton setEnabled:YES];
+        if ([self.device hasCapability:kMediaPlayerPlayVideo]) [_displayVideoButton setEnabled:YES];
+        if ([self.device hasCapability:kMediaPlayerPlayAudio]) [_playAudioButton setEnabled:YES];
     } else
     {
         [self removeSubscriptions];
