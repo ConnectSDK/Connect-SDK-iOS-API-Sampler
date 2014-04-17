@@ -67,9 +67,9 @@
     NSString *webAppId;
 
     if ([self.device.webAppLauncher isMemberOfClass:[WebOSTVService class]])
-        webAppId = @"MediaPlayer";
+        webAppId = @"SampleWebApp";
     else if ([self.device.webAppLauncher isMemberOfClass:[CastService class]])
-        webAppId = @"4F6217BC";
+        webAppId = @"DDCEDE96";
 
     [self.device.webAppLauncher launchWebApp:webAppId success:^(WebAppSession *webAppSession)
     {
