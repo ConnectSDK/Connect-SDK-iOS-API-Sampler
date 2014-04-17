@@ -15,6 +15,7 @@
 
 #import "SamplerViewController.h"
 #import "BaseViewController.h"
+#import <ConnectSDK/DIALService.h>
 
 @interface SamplerViewController ()
 
@@ -38,6 +39,7 @@
     self.title = @"Connect SDK Sampler";
 
     _discoveryManager = [DiscoveryManager sharedManager];
+    [DIALService registerApp:@"Levak"];
     _discoveryManager.pairingLevel = ConnectableDevicePairingLevelOn;
     [_discoveryManager startDiscovery];
 
@@ -201,7 +203,11 @@
 
 - (void) connectableDeviceReady:(ConnectableDevice *)device
 {
-    [self enableView];
+    // TODO: this should be unnecessary
+    dispatch_async(dispatch_get_main_queue(), ^
+    {
+        [self enableView];
+    });
 }
 
 - (void) connectableDeviceDisconnected:(ConnectableDevice *)device withError:(NSError *)error

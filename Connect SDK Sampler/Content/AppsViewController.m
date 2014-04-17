@@ -14,6 +14,7 @@
 //
 
 #import "AppsViewController.h"
+#import <ConnectSDK/DIALService.h>
 
 @interface AppsViewController ()
 
@@ -27,6 +28,8 @@
 
     LaunchSession *_netflixSession;
     LaunchSession *_youtubeSession;
+    LaunchSession *_appStoreSession;
+    LaunchSession *_myAppSession;
     LaunchSession *_browserSession;
 }
 
@@ -78,7 +81,9 @@
         if ([self.device hasCapability:kLauncherBrowser]) [_browserButton setEnabled:YES];
         if ([self.device hasCapability:kToastControlShowToast]) [_toastButton setEnabled:YES];
         if ([self.device hasCapability:kLauncherNetflix]) [_netflixButton setEnabled:YES];
+        if ([self.device hasCapability:kLauncherAppStore]) [_appStoreButton setEnabled:YES];
         if ([self.device hasCapability:kLauncherYouTube]) [_youtubeButton setEnabled:YES];
+        if ([self.device hasCapability:@"Launcher.Levak"]) [_myAppButton setEnabled:YES];
     }
 }
 
@@ -89,12 +94,22 @@
 
     _browserSession = nil;
     _netflixSession = nil;
+    _appStoreSession = nil;
     _youtubeSession = nil;
-
+    _myAppSession = nil;
+    
     [_browserButton setEnabled:NO];
+    [_appStoreButton setEnabled:NO];
     [_toastButton setEnabled:NO];
     [_netflixButton setEnabled:NO];
     [_youtubeButton setEnabled:NO];
+    [_myAppButton setEnabled:NO];
+    
+    [_browserButton setSelected:NO];
+    [_appStoreButton setSelected:NO];
+    [_netflixButton setSelected:NO];
+    [_youtubeButton setSelected:NO];
+    [_myAppButton setSelected:NO];
 
     if (_runningAppSubscription)
         [_runningAppSubscription unsubscribe];
@@ -230,6 +245,47 @@
 
 }
 
+- (IBAction) appStorePressed:(id)sender
+{
+    if (_appStoreSession)
+    {
+        [_appStoreSession closeWithSuccess:^(id responseObject)
+        {
+            NSLog(@"app store close success");
+        } failure:^(NSError *error)
+        {
+            NSLog(@"app store close error: %@", error.localizedDescription);
+        }];
+
+        _appStoreSession = nil;
+        [_appStoreButton setSelected:NO];
+    } else
+    {
+        NSString *appId;
+
+        if ([self.device serviceWithName:@"Netcast TV"])
+            appId = @"4168";
+        else if ([self.device serviceWithName:@"webOS TV"])
+            appId = @"youtube.leanback.v4";
+        else if ([self.device serviceWithName:@"Roku"])
+            appId = @"13535";
+
+        [self.device.launcher launchAppStore:appId success:^(LaunchSession *launchSession)
+        {
+            NSLog(@"app store opened with data: %@", launchSession);
+
+            if ([self.device hasCapability:kLauncherAppClose])
+            {
+                _appStoreSession = launchSession;
+                [_appStoreButton setSelected:YES];
+            }
+        } failure:^(NSError *error)
+        {
+            NSLog(@"app store fail, %@", error);
+        }];
+    }
+}
+
 - (IBAction)youtubePressed:(id)sender
 {
     if (_youtubeSession)
@@ -259,6 +315,46 @@
         {
             NSLog(@"youtube fail, %@", error);
         }];
+    }
+}
+
+- (IBAction)myAppPressed:(id)sender
+{
+    if (_myAppSession)
+    {
+        [_myAppSession closeWithSuccess:^(id responseObject)
+         {
+             NSLog(@"my app close success");
+         } failure:^(NSError *error)
+         {
+             NSLog(@"my app close error: %@", error.localizedDescription);
+         }];
+        
+        _myAppSession = nil;
+        [_myAppButton setSelected:NO];
+    } else
+    {
+        if (![self.device serviceWithName:@"DIAL"])
+        {
+            NSLog(@"my app fail, no DIAL service detected");
+            return;
+        }
+
+        DIALService *dialService = (DIALService *) [self.device serviceWithName:@"DIAL"];
+
+        [dialService.launcher launchApp:@"Levak" success:^(LaunchSession *launchSession)
+         {
+             NSLog(@"my app opened with data: %@", launchSession);
+             
+             if ([self.device hasCapability:kLauncherAppClose])
+             {
+                 _myAppSession = launchSession;
+                 [_myAppButton setSelected:YES];
+             }
+         } failure:^(NSError *error)
+         {
+             NSLog(@"my app fail, %@", error);
+         }];
     }
 }
 

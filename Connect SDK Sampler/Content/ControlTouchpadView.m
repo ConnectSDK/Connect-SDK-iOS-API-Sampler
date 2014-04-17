@@ -38,9 +38,14 @@
 
     if (self.mouseControl)
     {
+        CGVector distance = CGVectorMake(
+            touchLocation.x - oldX,
+            touchLocation.y - oldY
+        );
+        
         if (fingersDown >= 2)
         {
-            [self.mouseControl scrollWithX:(touchLocation.x - oldX) andY:(touchLocation.y - oldY) success:^(id responseObject)
+            [self.mouseControl scroll:distance success:^(id responseObject)
             {
 //            NSLog(@"mouse scrolled!");
             } failure:^(NSError *error)
@@ -49,7 +54,7 @@
             }];
         } else
         {
-            [self.mouseControl moveWithX:(touchLocation.x - oldX) andY:(touchLocation.y - oldY) success:^(id responseObject)
+            [self.mouseControl move:distance success:^(id responseObject)
             {
 //            NSLog(@"mouse moved!");
             } failure:^(NSError *error)
