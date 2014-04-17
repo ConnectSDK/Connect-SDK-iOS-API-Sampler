@@ -7,6 +7,7 @@
 //
 
 #import "AppsViewController.h"
+#import <ConnectSDK/DIALService.h>
 
 @interface AppsViewController ()
 
@@ -326,7 +327,15 @@
         [_myAppButton setSelected:NO];
     } else
     {
-        [self.device.launcher launchApp:@"Levak" success:^(LaunchSession *launchSession)
+        if (![self.device serviceWithName:@"DIAL"])
+        {
+            NSLog(@"my app fail, no DIAL service detected");
+            return;
+        }
+
+        DIALService *dialService = (DIALService *) [self.device serviceWithName:@"DIAL"];
+
+        [dialService.launcher launchApp:@"Levak" success:^(LaunchSession *launchSession)
          {
              NSLog(@"my app opened with data: %@", launchSession);
              
