@@ -248,8 +248,8 @@
 
     [self resetMediaControlComponents];
     
-    NSURL *mediaURL = [NSURL URLWithString:@"http://demo.idean.com/jeremy-white/cast/media/photo.jpg"];
-    NSURL *iconURL = [NSURL URLWithString:@"http://demo.idean.com/jeremy-white/cast/media/photoIcon.jpg"];
+    NSURL *mediaURL = [NSURL URLWithString:@"http://ec2-54-201-108-205.us-west-2.compute.amazonaws.com/samples/media/photo.jpg"];
+    NSURL *iconURL = [NSURL URLWithString:@"http://ec2-54-201-108-205.us-west-2.compute.amazonaws.com/samples/media/photoIcon.jpg"];
     NSString *title = @"Sintel Character Design";
     NSString *description = @"Blender Open Movie Project";
     NSString *mimeType = @"image/jpeg";
@@ -278,8 +278,8 @@
 
     [self resetMediaControlComponents];
     
-    NSURL *mediaURL = [NSURL URLWithString:@"http://demo.idean.com/jeremy-white/cast/media/video.mp4"];
-    NSURL *iconURL = [NSURL URLWithString:@"http://demo.idean.com/jeremy-white/cast/media/videoIcon.jpg"];
+    NSURL *mediaURL = [NSURL URLWithString:@"http://ec2-54-201-108-205.us-west-2.compute.amazonaws.com/samples/media/video.mp4"];
+    NSURL *iconURL = [NSURL URLWithString:@"http://ec2-54-201-108-205.us-west-2.compute.amazonaws.com/samples/media/videoIcon.jpg"];
     NSString *title = @"Sintel Trailer";
     NSString *description = @"Blender Open Movie Project";
     NSString *mimeType = @"video/mp4";
@@ -315,8 +315,8 @@
     
     [self resetMediaControlComponents];
     
-    NSURL *mediaURL = [NSURL URLWithString:@"http://demo.idean.com/jeremy-white/cast/media/audio.mp3"];
-    NSURL *iconURL = [NSURL URLWithString:@"http://demo.idean.com/jeremy-white/cast/media/audioIcon.jpg"];
+    NSURL *mediaURL = [NSURL URLWithString:@"http://ec2-54-201-108-205.us-west-2.compute.amazonaws.com/samples/media/audio.mp3"];
+    NSURL *iconURL = [NSURL URLWithString:@"http://ec2-54-201-108-205.us-west-2.compute.amazonaws.com/samples/media/audioIcon.jpg"];
     NSString *title = @"The Song That Doesn't End";
     NSString *description = @"Lamb Chop's Play Along";
     NSString *mimeType = @"audio/mp3";
