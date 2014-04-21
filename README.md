@@ -10,7 +10,6 @@ See https://github.com/ConnectSDK/Connect-SDK-iOS for setup instructions.
 For more information on using Connect SDK, we recommend you review the following material.
 
 - [Connect SDK iOS Framework](http://github.com/ConnectSDK/Connect-SDK-iOS-Framework)
-- [My First Connect SDK App](http://connectsdk.com/getting-started/my-first-iphone-app/)
 - [API Documentation](http://connectsdk.com/docs/iosapi/)
 
 ##License
