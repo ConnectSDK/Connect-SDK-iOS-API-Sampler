@@ -81,7 +81,7 @@
         if ([self.device hasCapability:kLauncherBrowser]) [_browserButton setEnabled:YES];
         if ([self.device hasCapability:kToastControlShowToast]) [_toastButton setEnabled:YES];
         if ([self.device hasCapability:kLauncherNetflix]) [_netflixButton setEnabled:YES];
-        if ([self.device hasCapability:kLauncherAppStore]) [_appStoreButton setEnabled:YES];
+        if ([self.device hasCapability:kLauncherAppStoreParams]) [_appStoreButton setEnabled:YES];
         if ([self.device hasCapability:kLauncherYouTube]) [_youtubeButton setEnabled:YES];
         if ([self.device hasCapability:@"Launcher.Levak"]) [_myAppButton setEnabled:YES];
     }
@@ -264,7 +264,7 @@
         NSString *appId;
 
         if ([self.device serviceWithName:@"Netcast TV"])
-            appId = @"4168";
+            appId = @"125071";
         else if ([self.device serviceWithName:@"webOS TV"])
             appId = @"youtube.leanback.v4";
         else if ([self.device serviceWithName:@"Roku"])
