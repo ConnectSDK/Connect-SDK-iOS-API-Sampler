@@ -17,11 +17,9 @@
 
 @interface TVViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIButton *incomingCallButton;
 @property (weak, nonatomic) IBOutlet UIButton *powerOffButton;
 @property (weak, nonatomic) IBOutlet UIButton *display3DButton;
 
-- (IBAction)incomingCall:(id)sender;
 - (IBAction)powerOff:(id)sender;
 - (IBAction)display3D:(id)sender;
 
