@@ -18,6 +18,7 @@
 @interface WebAppViewController : BaseViewController
 
 @property (weak, nonatomic) IBOutlet UIButton *launchButton;
+@property (weak, nonatomic) IBOutlet UIButton *joinButton;
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
 @property (weak, nonatomic) IBOutlet UIButton *sendJSONButton;
 @property (weak, nonatomic) IBOutlet UIButton *closeButton;
@@ -25,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *statusTextView;
 
 - (IBAction)launchWebApp:(id)sender;
+- (IBAction)joinWebApp:(id)sender;
 - (IBAction)sendMessage:(id)sender;
 - (IBAction)closeWebApp:(id)sender;
 

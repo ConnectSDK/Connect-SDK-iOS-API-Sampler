@@ -20,6 +20,7 @@
 @interface WebAppViewController () <WebAppSessionDelegate>
 {
     WebAppSession *_webAppSession;
+    NSString *_webAppId;
 }
 
 @end
@@ -31,6 +32,11 @@
     if (self.device)
     {
         if ([self.device hasCapability:kWebAppLauncherLaunch]) [_launchButton setEnabled:YES];
+        
+        if ([self.device.webAppLauncher isMemberOfClass:[WebOSTVService class]])
+            _webAppId = @"SampleWebApp";
+        else if ([self.device.webAppLauncher isMemberOfClass:[CastService class]])
+            _webAppId = @"DDCEDE96";
     }
 }
 
@@ -64,14 +70,14 @@
 
 - (IBAction)launchWebApp:(id)sender
 {
-    NSString *webAppId;
-
-    if ([self.device.webAppLauncher isMemberOfClass:[WebOSTVService class]])
-        webAppId = @"SampleWebApp";
-    else if ([self.device.webAppLauncher isMemberOfClass:[CastService class]])
-        webAppId = @"DDCEDE96";
-
-    [self.device.webAppLauncher launchWebApp:webAppId success:^(WebAppSession *webAppSession)
+    if (_webAppSession)
+    {
+        [_statusTextView setText:@""];
+        _webAppSession.delegate = nil;
+        [_webAppSession disconnectFromWebApp];
+    }
+    
+    [self.device.webAppLauncher launchWebApp:_webAppId success:^(WebAppSession *webAppSession)
     {
         NSLog(@"web app launch success");
 
@@ -96,6 +102,23 @@
     }                                failure:^(NSError *error)
     {
         NSLog(@"web app launch error: %@", error.localizedDescription);
+    }];
+}
+
+- (IBAction)joinWebApp:(id)sender
+{
+    [self.device.webAppLauncher joinWebAppWithId:_webAppId success:^(WebAppSession *webAppSession)
+    {
+        NSLog(@"web app join success");
+        
+        _webAppSession = webAppSession;
+        _webAppSession.delegate = self;
+        
+        [_sendButton setEnabled:YES];
+        if ([self.device hasCapability:kWebAppLauncherMessageSendJSON]) [_sendJSONButton setEnabled:YES];
+    } failure:^(NSError *error)
+    {
+        NSLog(@"web app join error: %@", error.localizedDescription);
     }];
 }
 
