@@ -27,6 +27,30 @@
 
 @implementation WebAppViewController
 
+- (void) appDidBecomeActive:(NSNotification *)notification
+{
+    if (_webAppSession)
+    {
+        [_webAppSession joinWithSuccess:^(id responseObject)
+        {
+            NSLog(@"web app re-join success");
+
+            [_sendButton setEnabled:YES];
+            if ([self.device hasCapability:kWebAppLauncherMessageSendJSON]) [_sendJSONButton setEnabled:YES];
+        }                          failure:^(NSError *error)
+        {
+            NSLog(@"web app re-join error: %@", error.localizedDescription);
+
+            _webAppSession.delegate = nil;
+            _webAppSession = nil;
+
+            [_sendButton setEnabled:NO];
+            [_sendJSONButton setEnabled:NO];
+            [_closeButton setEnabled:NO];
+        }];
+    }
+}
+
 - (void) addSubscriptions
 {
     if (self.device)
