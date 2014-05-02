@@ -71,14 +71,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
 }
 
 - (void) appDidBecomeActive:(NSNotification *)notification
 {
     [self viewDidAppear:NO];
 }
+
+- (void) appDidEnterBackground:(NSNotification *)notification { /* to be overridden */ }
 
 - (void) viewDidAppear:(BOOL)animated
 {
@@ -96,8 +99,9 @@
     [super viewDidDisappear:animated];
     
     [self removeSubscriptions];
-    
+
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
 }
 
 - (void) dealloc
