@@ -140,6 +140,7 @@
         
         [_sendButton setEnabled:YES];
         if ([self.device hasCapability:kWebAppLauncherMessageSendJSON]) [_sendJSONButton setEnabled:YES];
+        if ([self.device hasCapability:kWebAppLauncherClose]) [_closeButton setEnabled:YES];
     } failure:^(NSError *error)
     {
         NSLog(@"web app join error: %@", error.localizedDescription);
