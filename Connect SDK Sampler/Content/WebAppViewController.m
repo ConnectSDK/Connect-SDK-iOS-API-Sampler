@@ -171,7 +171,7 @@
     {
         [_webAppSession sendText:stringMessage success:^(id responseObject)
         {
-
+            NSLog(@"web app send text success");
         } failure:^(NSError *error)
         {
             NSLog(@"web app send text error: %@", error.localizedDescription);
@@ -180,7 +180,7 @@
     {
         [_webAppSession sendJSON:jsonMessage success:^(id responseObject)
         {
-
+            NSLog(@"web app send JSON success");
         } failure:^(NSError *error)
         {
             NSLog(@"web app send JSON error: %@", error.localizedDescription);
