@@ -266,7 +266,7 @@
         if ([self.device serviceWithName:@"Netcast TV"])
             appId = @"125071";
         else if ([self.device serviceWithName:@"webOS TV"])
-            appId = @"youtube.leanback.v4";
+            appId = @"redbox";
         else if ([self.device serviceWithName:@"Roku"])
             appId = @"26882";
 
