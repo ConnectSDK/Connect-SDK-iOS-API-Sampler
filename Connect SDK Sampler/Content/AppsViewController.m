@@ -302,7 +302,7 @@
         [_youtubeButton setSelected:NO];
     } else
     {
-        [self.device.launcher launchYouTube:@"eRsGyueVLvQ" success:^(LaunchSession *launchSession)
+        [self.device.launcher launchYouTube:@"dQw4w9WgXcQ" success:^(LaunchSession *launchSession)
         {
             NSLog(@"youtube opened with data: %@", launchSession);
 
