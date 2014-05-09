@@ -268,7 +268,7 @@
         else if ([self.device serviceWithName:@"webOS TV"])
             appId = @"youtube.leanback.v4";
         else if ([self.device serviceWithName:@"Roku"])
-            appId = @"13535";
+            appId = @"26882";
 
         [self.device.launcher launchAppStore:appId success:^(LaunchSession *launchSession)
         {
