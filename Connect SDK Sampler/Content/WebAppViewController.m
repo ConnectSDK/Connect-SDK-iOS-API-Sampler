@@ -221,7 +221,8 @@
 
 - (void) webAppSessionDidDisconnect:(WebAppSession *)webAppSession
 {
-    [self closeWebApp:self];
+    [_sendButton setEnabled:NO];
+    [_sendJSONButton setEnabled:NO];
 }
 
 @end
