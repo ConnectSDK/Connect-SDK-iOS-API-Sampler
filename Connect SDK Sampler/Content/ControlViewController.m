@@ -91,7 +91,7 @@ typedef enum
     if (_keyboardSubscription)
         [_keyboardSubscription unsubscribe];
 
-    if (self.device)
+    if (self.device && [self.device hasCapability:@"MouseControl.Any"])
         [self.device.mouseControl disconnectMouse];
 
     _touchpad.userInteractionEnabled = NO;
