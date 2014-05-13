@@ -69,15 +69,7 @@
     if (_webAppSession)
     {
         _webAppSession.delegate = nil;
-
-        [_webAppSession closeWithSuccess:^(id responseObject)
-        {
-            NSLog(@"web app close success");
-        } failure:^(NSError *error)
-        {
-            NSLog(@"web app close error: %@", error.localizedDescription);
-        }];
-
+        [_webAppSession disconnectFromWebApp];
         _webAppSession = nil;
     }
 
@@ -223,6 +215,7 @@
 {
     [_sendButton setEnabled:NO];
     [_sendJSONButton setEnabled:NO];
+    [_closeButton setEnabled:NO];
 }
 
 @end
