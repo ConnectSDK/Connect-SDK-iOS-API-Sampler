@@ -183,6 +183,8 @@
 
 - (IBAction)closeWebApp:(id)sender
 {
+    [_webAppSession closeWithSuccess:nil failure:nil];
+
     [self removeSubscriptions];
 
     [_launchButton setEnabled:YES];
