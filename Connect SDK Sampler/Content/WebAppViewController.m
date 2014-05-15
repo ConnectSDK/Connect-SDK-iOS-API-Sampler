@@ -20,17 +20,47 @@
 @interface WebAppViewController () <WebAppSessionDelegate>
 {
     WebAppSession *_webAppSession;
+    NSString *_webAppId;
 }
 
 @end
 
 @implementation WebAppViewController
 
+- (void) appDidBecomeActive:(NSNotification *)notification
+{
+    if (_webAppSession)
+    {
+        [_webAppSession joinWithSuccess:^(id responseObject)
+        {
+            NSLog(@"web app re-join success");
+
+            [_sendButton setEnabled:YES];
+            if ([self.device hasCapability:kWebAppLauncherMessageSendJSON]) [_sendJSONButton setEnabled:YES];
+        }                          failure:^(NSError *error)
+        {
+            NSLog(@"web app re-join error: %@", error.localizedDescription);
+
+            _webAppSession.delegate = nil;
+            _webAppSession = nil;
+
+            [_sendButton setEnabled:NO];
+            [_sendJSONButton setEnabled:NO];
+            [_closeButton setEnabled:NO];
+        }];
+    }
+}
+
 - (void) addSubscriptions
 {
     if (self.device)
     {
         if ([self.device hasCapability:kWebAppLauncherLaunch]) [_launchButton setEnabled:YES];
+        
+        if ([self.device.webAppLauncher isMemberOfClass:[WebOSTVService class]])
+            _webAppId = @"SampleWebApp";
+        else if ([self.device.webAppLauncher isMemberOfClass:[CastService class]])
+            _webAppId = @"DDCEDE96";
     }
 }
 
@@ -39,15 +69,7 @@
     if (_webAppSession)
     {
         _webAppSession.delegate = nil;
-
-        [_webAppSession closeWithSuccess:^(id responseObject)
-        {
-            NSLog(@"web app close success");
-        } failure:^(NSError *error)
-        {
-            NSLog(@"web app close error: %@", error.localizedDescription);
-        }];
-
+        [_webAppSession disconnectFromWebApp];
         _webAppSession = nil;
     }
 
@@ -64,14 +86,14 @@
 
 - (IBAction)launchWebApp:(id)sender
 {
-    NSString *webAppId;
-
-    if ([self.device.webAppLauncher isMemberOfClass:[WebOSTVService class]])
-        webAppId = @"SampleWebApp";
-    else if ([self.device.webAppLauncher isMemberOfClass:[CastService class]])
-        webAppId = @"DDCEDE96";
-
-    [self.device.webAppLauncher launchWebApp:webAppId success:^(WebAppSession *webAppSession)
+    if (_webAppSession)
+    {
+        [_statusTextView setText:@""];
+        _webAppSession.delegate = nil;
+        [_webAppSession disconnectFromWebApp];
+    }
+    
+    [self.device.webAppLauncher launchWebApp:_webAppId success:^(WebAppSession *webAppSession)
     {
         NSLog(@"web app launch success");
 
@@ -96,6 +118,24 @@
     }                                failure:^(NSError *error)
     {
         NSLog(@"web app launch error: %@", error.localizedDescription);
+    }];
+}
+
+- (IBAction)joinWebApp:(id)sender
+{
+    [self.device.webAppLauncher joinWebAppWithId:_webAppId success:^(WebAppSession *webAppSession)
+    {
+        NSLog(@"web app join success");
+        
+        _webAppSession = webAppSession;
+        _webAppSession.delegate = self;
+        
+        [_sendButton setEnabled:YES];
+        if ([self.device hasCapability:kWebAppLauncherMessageSendJSON]) [_sendJSONButton setEnabled:YES];
+        if ([self.device hasCapability:kWebAppLauncherClose]) [_closeButton setEnabled:YES];
+    } failure:^(NSError *error)
+    {
+        NSLog(@"web app join error: %@", error.localizedDescription);
     }];
 }
 
@@ -124,7 +164,7 @@
     {
         [_webAppSession sendText:stringMessage success:^(id responseObject)
         {
-
+            NSLog(@"web app send text success");
         } failure:^(NSError *error)
         {
             NSLog(@"web app send text error: %@", error.localizedDescription);
@@ -133,7 +173,7 @@
     {
         [_webAppSession sendJSON:jsonMessage success:^(id responseObject)
         {
-
+            NSLog(@"web app send JSON success");
         } failure:^(NSError *error)
         {
             NSLog(@"web app send JSON error: %@", error.localizedDescription);
@@ -143,6 +183,8 @@
 
 - (IBAction)closeWebApp:(id)sender
 {
+    [_webAppSession closeWithSuccess:nil failure:nil];
+
     [self removeSubscriptions];
 
     [_launchButton setEnabled:YES];
@@ -173,7 +215,9 @@
 
 - (void) webAppSessionDidDisconnect:(WebAppSession *)webAppSession
 {
-    [self closeWebApp:self];
+    [_sendButton setEnabled:NO];
+    [_sendJSONButton setEnabled:NO];
+    [_closeButton setEnabled:NO];
 }
 
 @end

@@ -81,7 +81,7 @@
         if ([self.device hasCapability:kLauncherBrowser]) [_browserButton setEnabled:YES];
         if ([self.device hasCapability:kToastControlShowToast]) [_toastButton setEnabled:YES];
         if ([self.device hasCapability:kLauncherNetflix]) [_netflixButton setEnabled:YES];
-        if ([self.device hasCapability:kLauncherAppStore]) [_appStoreButton setEnabled:YES];
+        if ([self.device hasCapability:kLauncherAppStoreParams]) [_appStoreButton setEnabled:YES];
         if ([self.device hasCapability:kLauncherYouTube]) [_youtubeButton setEnabled:YES];
         if ([self.device hasCapability:@"Launcher.Levak"]) [_myAppButton setEnabled:YES];
     }
@@ -264,11 +264,11 @@
         NSString *appId;
 
         if ([self.device serviceWithName:@"Netcast TV"])
-            appId = @"4168";
+            appId = @"125071";
         else if ([self.device serviceWithName:@"webOS TV"])
-            appId = @"youtube.leanback.v4";
+            appId = @"redbox";
         else if ([self.device serviceWithName:@"Roku"])
-            appId = @"13535";
+            appId = @"26882";
 
         [self.device.launcher launchAppStore:appId success:^(LaunchSession *launchSession)
         {
@@ -302,7 +302,7 @@
         [_youtubeButton setSelected:NO];
     } else
     {
-        [self.device.launcher launchYouTube:@"eRsGyueVLvQ" success:^(LaunchSession *launchSession)
+        [self.device.launcher launchYouTube:@"dQw4w9WgXcQ" success:^(LaunchSession *launchSession)
         {
             NSLog(@"youtube opened with data: %@", launchSession);
 
