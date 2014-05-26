@@ -94,7 +94,7 @@
     else if ([self.device.webAppLauncher isMemberOfClass:[CastService class]])
         webAppId = @"DDCEDE96";
     else if ([self.device.webAppLauncher isMemberOfClass:[AirPlayService class]])
-        webAppId = @"http://ec2-54-201-108-205.us-west-2.compute.amazonaws.com/MediaPlayer/";
+        webAppId = @"http://ec2-54-201-108-205.us-west-2.compute.amazonaws.com/samples/connect-bridge/";
 
     [self.device.webAppLauncher launchWebApp:webAppId success:^(WebAppSession *webAppSession)
     {
