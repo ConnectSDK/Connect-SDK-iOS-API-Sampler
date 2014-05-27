@@ -210,6 +210,12 @@
     });
 }
 
+- (void) connectableDevice:(ConnectableDevice *)device service:(DeviceService *)service pairingRequiredOfType:(int)pairingType withData:(id)pairingData
+{
+    if (pairingType == DeviceServicePairingTypeAirPlayMirroring)
+        [(UIAlertView *) pairingData show];
+}
+
 - (void) connectableDeviceDisconnected:(ConnectableDevice *)device withError:(NSError *)error
 {
     _device.delegate = nil;
