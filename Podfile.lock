@@ -1,0 +1,13 @@
+PODS:
+  - ConnectSDK (1.2.1):
+    - google-cast-sdk (= 2.2.1)
+  - google-cast-sdk (2.2.1)
+
+DEPENDENCIES:
+  - ConnectSDK
+
+SPEC CHECKSUMS:
+  ConnectSDK: 01818d164fe3874ab785b6cae1a05023d614233e
+  google-cast-sdk: e849781ee22e88ccbfab0c529cefa6feccc092b2
+
+COCOAPODS: 0.33.1

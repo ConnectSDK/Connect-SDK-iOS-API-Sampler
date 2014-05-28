@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE2498770E264193921053AB /* libPods-Connect SDK Sampler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 661AC3147AFD464EB8C2A4CE /* libPods-Connect SDK Sampler.a */; };
 		EA099895185146830072824C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EA099894185146830072824C /* libz.dylib */; };
 		EA0998A2185147070072824C /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0998A1185147070072824C /* libicucore.dylib */; };
 		EA09EFA61875E7EB008E6839 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA09EFA51875E7EB008E6839 /* MainStoryboard.storyboard */; };
@@ -39,9 +40,12 @@
 		EA9E48AA186DFCFD002DE134 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA9E489A186DFCFD002DE134 /* InfoPlist.strings */; };
 		EA9E48AB186DFCFD002DE134 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9E489C186DFCFD002DE134 /* Images.xcassets */; };
 		EA9E48B0186DFCFD002DE134 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9E48A5186DFCFD002DE134 /* main.m */; };
+		EAA4B7FA193657F0000BEE07 /* GoogleCast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA4B7F9193657F0000BEE07 /* GoogleCast.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		661AC3147AFD464EB8C2A4CE /* libPods-Connect SDK Sampler.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Connect SDK Sampler.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D17C7E9D9E4485EA99F5855 /* Pods-Connect SDK Sampler.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Connect SDK Sampler.xcconfig"; path = "Pods/Pods-Connect SDK Sampler.xcconfig"; sourceTree = "<group>"; };
 		EA099894185146830072824C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		EA0998A1185147070072824C /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		EA09EFA51875E7EB008E6839 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
@@ -95,6 +99,7 @@
 		EA9E48A5186DFCFD002DE134 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EA9E48A6186DFCFD002DE134 /* Connect SDK Sampler-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Connect SDK Sampler-Info.plist"; sourceTree = "<group>"; };
 		EA9E48A7186DFCFD002DE134 /* Connect SDK Sampler-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Connect SDK Sampler-Prefix.pch"; sourceTree = "<group>"; };
+		EAA4B7F9193657F0000BEE07 /* GoogleCast.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleCast.framework; path = "Pods/google-cast-sdk/GoogleCastFramework-2.2.1-Release/GoogleCast.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,11 +107,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAA4B7FA193657F0000BEE07 /* GoogleCast.framework in Frameworks */,
 				EA0998A2185147070072824C /* libicucore.dylib in Frameworks */,
 				EA099895185146830072824C /* libz.dylib in Frameworks */,
 				EA7E00B2184402B20089FA62 /* CoreGraphics.framework in Frameworks */,
 				EA7E00B4184402B20089FA62 /* UIKit.framework in Frameworks */,
 				EA7E00B0184402B20089FA62 /* Foundation.framework in Frameworks */,
+				DE2498770E264193921053AB /* libPods-Connect SDK Sampler.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,6 +233,7 @@
 				EA9E4895186DFCFD002DE134 /* Connect SDK Sampler */,
 				EA7E00AE184402B20089FA62 /* Frameworks */,
 				EA7E00AD184402B20089FA62 /* Products */,
+				7D17C7E9D9E4485EA99F5855 /* Pods-Connect SDK Sampler.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -240,12 +248,14 @@
 		EA7E00AE184402B20089FA62 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EAA4B7F9193657F0000BEE07 /* GoogleCast.framework */,
 				EA0998A1185147070072824C /* libicucore.dylib */,
 				EA099894185146830072824C /* libz.dylib */,
 				EA7E00AF184402B20089FA62 /* Foundation.framework */,
 				EA7E00B1184402B20089FA62 /* CoreGraphics.framework */,
 				EA7E00B3184402B20089FA62 /* UIKit.framework */,
 				EA7E00CE184402B20089FA62 /* XCTest.framework */,
+				661AC3147AFD464EB8C2A4CE /* libPods-Connect SDK Sampler.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -283,10 +293,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EA7E00DE184402B20089FA62 /* Build configuration list for PBXNativeTarget "Connect SDK Sampler" */;
 			buildPhases = (
+				1302155F4AA44F579E3B0272 /* Check Pods Manifest.lock */,
 				EA7E00A8184402B20089FA62 /* Sources */,
 				EA7E00AA184402B20089FA62 /* Resources */,
 				EA7E00A9184402B20089FA62 /* Frameworks */,
 				EA049F0118B29BB7000A1760 /* ShellScript */,
+				1C9C4422747A4599AF0ABB1C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -356,6 +368,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1302155F4AA44F579E3B0272 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		1C9C4422747A4599AF0ABB1C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-Connect SDK Sampler-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		EA049F0118B29BB7000A1760 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -481,13 +523,18 @@
 		};
 		EA7E00DF184402B20089FA62 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D17C7E9D9E4485EA99F5855 /* Pods-Connect SDK Sampler.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ConnectSDK/Frameworks",
+					"$(PROJECT_DIR)/Pods/google-cast-sdk/GoogleCastFramework-2.2.1-Release",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Connect SDK Sampler/Connect SDK Sampler-Prefix.pch";
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
@@ -497,25 +544,32 @@
 				);
 				INFOPLIST_FILE = "Connect SDK Sampler/Connect SDK Sampler-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TestFlight",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "Connect SDK Sampler";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
-				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		EA7E00E0184402B20089FA62 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D17C7E9D9E4485EA99F5855 /* Pods-Connect SDK Sampler.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ConnectSDK/Frameworks",
+					"$(PROJECT_DIR)/Pods/google-cast-sdk/GoogleCastFramework-2.2.1-Release",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Connect SDK Sampler/Connect SDK Sampler-Prefix.pch";
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
@@ -525,12 +579,14 @@
 				);
 				INFOPLIST_FILE = "Connect SDK Sampler/Connect SDK Sampler-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TestFlight",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "Connect SDK Sampler";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
-				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
