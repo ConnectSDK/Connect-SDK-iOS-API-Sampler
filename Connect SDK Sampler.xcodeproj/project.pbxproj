@@ -36,6 +36,7 @@
 		EA7E00B0184402B20089FA62 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA7E00AF184402B20089FA62 /* Foundation.framework */; };
 		EA7E00B2184402B20089FA62 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA7E00B1184402B20089FA62 /* CoreGraphics.framework */; };
 		EA7E00B4184402B20089FA62 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA7E00B3184402B20089FA62 /* UIKit.framework */; };
+		EA9AB00D193FD84500B72990 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EA9AB00C193FD84500B72990 /* Settings.bundle */; };
 		EA9E48AA186DFCFD002DE134 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA9E489A186DFCFD002DE134 /* InfoPlist.strings */; };
 		EA9E48AB186DFCFD002DE134 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9E489C186DFCFD002DE134 /* Images.xcassets */; };
 		EA9E48B0186DFCFD002DE134 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9E48A5186DFCFD002DE134 /* main.m */; };
@@ -90,6 +91,7 @@
 		EA7E00B1184402B20089FA62 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		EA7E00B3184402B20089FA62 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EA7E00CE184402B20089FA62 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		EA9AB00C193FD84500B72990 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		EA9E489B186DFCFD002DE134 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EA9E489C186DFCFD002DE134 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		EA9E48A5186DFCFD002DE134 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				EA9E48A5186DFCFD002DE134 /* main.m */,
 				EA9E48A6186DFCFD002DE134 /* Connect SDK Sampler-Info.plist */,
 				EA9E48A7186DFCFD002DE134 /* Connect SDK Sampler-Prefix.pch */,
+				EA9AB00C193FD84500B72990 /* Settings.bundle */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				EA0F2D4018BEACCB003B44E1 /* icon_3330.png in Resources */,
 				EA0F2D4718BEACCB003B44E1 /* icon_17183@2x.png in Resources */,
 				EA9E48AA186DFCFD002DE134 /* InfoPlist.strings in Resources */,
+				EA9AB00D193FD84500B72990 /* Settings.bundle in Resources */,
 				EA0F2D3D18BEACCB003B44E1 /* icon_17114.png in Resources */,
 				EA0F2D4418BEACCB003B44E1 /* icon_15307@2x.png in Resources */,
 				EA0F2D4318BEACCB003B44E1 /* icon_15307.png in Resources */,

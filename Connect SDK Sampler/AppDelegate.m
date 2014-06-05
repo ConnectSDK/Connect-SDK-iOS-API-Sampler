@@ -19,8 +19,47 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    id hasDefaults = [[NSUserDefaults standardUserDefaults] objectForKey:@"hasDefaults"];
+
+    if (hasDefaults == nil)
+        [self registerDefaultsFromSettingsBundle];
+
+    [[NSUserDefaults standardUserDefaults] setValue:@"1.3.0 (pre-release)" forKey:@"sdkVersion"];
+    [[NSUserDefaults standardUserDefaults] setValue:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"] forKey:@"samplerVersion"];
+
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
     return YES;
+}
+
+// credit: http://stackoverflow.com/a/18424554/2715
+- (void)registerDefaultsFromSettingsBundle
+{
+    // this function writes default settings as settings
+    NSString *settingsBundle = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"bundle"];
+
+    if(!settingsBundle)
+    {
+        NSLog(@"Could not find Settings.bundle");
+        return;
+    }
+
+    NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:[settingsBundle stringByAppendingPathComponent:@"Root.plist"]];
+    NSArray *preferences = [settings objectForKey:@"PreferenceSpecifiers"];
+
+    NSMutableDictionary *defaultsToRegister = [[NSMutableDictionary alloc] initWithCapacity:[preferences count]];
+    for(NSDictionary *prefSpecification in preferences) {
+        NSString *key = [prefSpecification objectForKey:@"Key"];
+        if(key) {
+            [defaultsToRegister setObject:[prefSpecification objectForKey:@"DefaultValue"] forKey:key];
+            NSLog(@"writing as default %@ to the key %@",[prefSpecification objectForKey:@"DefaultValue"],key);
+        }
+    }
+
+    [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"hasDefaults"];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsToRegister];
+
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
