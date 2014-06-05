@@ -19,10 +19,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    id hasDefaults = [[NSUserDefaults standardUserDefaults] objectForKey:@"hasDefaults"];
 
-    if (hasDefaults == nil)
-        [self registerDefaultsFromSettingsBundle];
+    [self registerDefaultsFromSettingsBundle];
 
     [[NSUserDefaults standardUserDefaults] setValue:@"1.3.0 (pre-release)" forKey:@"sdkVersion"];
     [[NSUserDefaults standardUserDefaults] setValue:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"] forKey:@"samplerVersion"];
