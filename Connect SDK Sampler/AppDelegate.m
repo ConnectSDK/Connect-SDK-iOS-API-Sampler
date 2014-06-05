@@ -54,7 +54,6 @@
         }
     }
 
-    [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"hasDefaults"];
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsToRegister];
 
     [[NSUserDefaults standardUserDefaults] synchronize];
