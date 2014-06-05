@@ -15,6 +15,7 @@
 
 #import "SamplerViewController.h"
 #import "BaseViewController.h"
+#import <ConnectSDK/AirPlayService.h>
 #import <ConnectSDK/DIALService.h>
 
 @interface SamplerViewController ()
@@ -39,7 +40,13 @@
     self.title = @"Connect SDK Sampler";
 
     _discoveryManager = [DiscoveryManager sharedManager];
-    [DIALService registerApp:@"Levak"];
+
+    AirPlayServiceMode airPlayServiceMode = (AirPlayServiceMode) [[NSUserDefaults standardUserDefaults] integerForKey:@"airPlayServiceMode"];
+    [AirPlayService setAirPlayServiceMode:airPlayServiceMode];
+    
+    NSString *dialAppName = [[NSUserDefaults standardUserDefaults] stringForKey:@"dialAppName"];
+    [DIALService registerApp:dialAppName];
+
     _discoveryManager.pairingLevel = ConnectableDevicePairingLevelOn;
     [_discoveryManager startDiscovery];
 

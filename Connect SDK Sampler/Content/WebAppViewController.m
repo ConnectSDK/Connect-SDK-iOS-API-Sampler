@@ -57,11 +57,13 @@
     if (self.device)
     {
         if ([self.device hasCapability:kWebAppLauncherLaunch]) [_launchButton setEnabled:YES];
-        
-        if ([self.device.webAppLauncher isMemberOfClass:[WebOSTVService class]])
-            _webAppId = @"SampleWebApp";
-        else if ([self.device.webAppLauncher isMemberOfClass:[CastService class]])
-            _webAppId = @"DDCEDE96";
+
+        if ([self.device serviceWithName:@"webOS TV"])
+            _webAppId = [[NSUserDefaults standardUserDefaults] stringForKey:@"webOSWebAppId"];
+        else if ([self.device serviceWithName:@"Chromecast"])
+            _webAppId = [[NSUserDefaults standardUserDefaults] stringForKey:@"castWebAppId"];
+        else if ([self.device serviceWithName:@"AirPlay"])
+            _webAppId = [[NSUserDefaults standardUserDefaults] stringForKey:@"airPlayWebAppId"];
     }
 }
 
@@ -87,16 +89,7 @@
 
 - (IBAction)launchWebApp:(id)sender
 {
-    NSString *webAppId;
-
-    if ([self.device serviceWithName:@"webOS TV"])
-        webAppId = @"SampleWebApp";
-    else if ([self.device serviceWithName:@"Chromecast"])
-        webAppId = @"DDCEDE96";
-    else if ([self.device serviceWithName:@"AirPlay"])
-        webAppId = @"http://ec2-54-201-108-205.us-west-2.compute.amazonaws.com/samples/connect-bridge/";
-
-    [self.device.webAppLauncher launchWebApp:webAppId success:^(WebAppSession *webAppSession)
+    [self.device.webAppLauncher launchWebApp:_webAppId success:^(WebAppSession *webAppSession)
     {
         NSLog(@"web app launch success");
 

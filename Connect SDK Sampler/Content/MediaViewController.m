@@ -248,11 +248,11 @@
 
     [self resetMediaControlComponents];
     
-    NSURL *mediaURL = [NSURL URLWithString:@"http://ec2-54-201-108-205.us-west-2.compute.amazonaws.com/samples/media/photo.jpg"];
-    NSURL *iconURL = [NSURL URLWithString:@"http://ec2-54-201-108-205.us-west-2.compute.amazonaws.com/samples/media/photoIcon.jpg"];
-    NSString *title = @"Sintel Character Design";
-    NSString *description = @"Blender Open Movie Project";
-    NSString *mimeType = @"image/jpeg";
+    NSURL *mediaURL = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] stringForKey:@"imagePath"]];
+    NSURL *iconURL = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] stringForKey:@"imageThumbPath"]];
+    NSString *title = [[NSUserDefaults standardUserDefaults] stringForKey:@"imageTitle"];
+    NSString *description = [[NSUserDefaults standardUserDefaults] stringForKey:@"imageDescription"];
+    NSString *mimeType = [[NSUserDefaults standardUserDefaults] stringForKey:@"imageMimeType"];
     
     [self.device.mediaPlayer displayImage:mediaURL
                                   iconURL:iconURL
@@ -277,12 +277,12 @@
         [_launchSession closeWithSuccess:nil failure:nil];
 
     [self resetMediaControlComponents];
-    
-    NSURL *mediaURL = [NSURL URLWithString:@"http://ec2-54-201-108-205.us-west-2.compute.amazonaws.com/samples/media/video.mp4"];
-    NSURL *iconURL = [NSURL URLWithString:@"http://ec2-54-201-108-205.us-west-2.compute.amazonaws.com/samples/media/videoIcon.jpg"];
-    NSString *title = @"Sintel Trailer";
-    NSString *description = @"Blender Open Movie Project";
-    NSString *mimeType = @"video/mp4";
+
+    NSURL *mediaURL = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] stringForKey:@"videoPath"]];
+    NSURL *iconURL = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] stringForKey:@"videoThumbPath"]];
+    NSString *title = [[NSUserDefaults standardUserDefaults] stringForKey:@"videoTitle"];
+    NSString *description = [[NSUserDefaults standardUserDefaults] stringForKey:@"videoDescription"];
+    NSString *mimeType = [[NSUserDefaults standardUserDefaults] stringForKey:@"videoMimeType"];
     BOOL shouldLoop = NO;
 
     [self.device.mediaPlayer playMedia:mediaURL
@@ -314,12 +314,12 @@
         [_launchSession closeWithSuccess:nil failure:nil];
     
     [self resetMediaControlComponents];
-    
-    NSURL *mediaURL = [NSURL URLWithString:@"http://ec2-54-201-108-205.us-west-2.compute.amazonaws.com/samples/media/audio.mp3"];
-    NSURL *iconURL = [NSURL URLWithString:@"http://ec2-54-201-108-205.us-west-2.compute.amazonaws.com/samples/media/audioIcon.jpg"];
-    NSString *title = @"The Song That Doesn't End";
-    NSString *description = @"Lamb Chop's Play Along";
-    NSString *mimeType = @"audio/mp3";
+
+    NSURL *mediaURL = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] stringForKey:@"audioPath"]];
+    NSURL *iconURL = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] stringForKey:@"audioThumbPath"]];
+    NSString *title = [[NSUserDefaults standardUserDefaults] stringForKey:@"audioTitle"];
+    NSString *description = [[NSUserDefaults standardUserDefaults] stringForKey:@"audioDescription"];
+    NSString *mimeType = [[NSUserDefaults standardUserDefaults] stringForKey:@"audioMimeType"];
     BOOL shouldLoop = NO;
     
     [self.device.mediaPlayer playMedia:mediaURL

@@ -68,6 +68,55 @@
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
+			<string>Apps</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>DIAL App Name</string>
+			<key>Key</key>
+			<string>dialAppName</string>
+			<key>DefaultValue</key>
+			<string>Levak</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Netcast App Store Deep Link Target</string>
+			<key>Key</key>
+			<string>netcastAppId</string>
+			<key>DefaultValue</key>
+			<string>125071</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Roku App Store Deep Link Target</string>
+			<key>Key</key>
+			<string>rokuAppId</string>
+			<key>DefaultValue</key>
+			<string>26882</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>webOS App Store Deep Link Target</string>
+			<key>Key</key>
+			<string>webOSAppId</string>
+			<key>DefaultValue</key>
+			<string>redbox</string>
+		</dict>
+
+
+
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
 			<string>Web App Ids</string>
 		</dict>
 		<dict>
