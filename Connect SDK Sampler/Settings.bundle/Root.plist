@@ -47,18 +47,16 @@
 			<key>Key</key>
 			<string>airPlayServiceMode</string>
 			<key>DefaultValue</key>
-			<integer>2</integer>
+			<integer>0</integer>
 			<key>Titles</key>
 			<array>
 				<string>Mirrored</string>
 				<string>HTTP</string>
-				<string>Mixed (recommended)</string>
 			</array>
 			<key>Values</key>
 			<array>
 				<integer>0</integer>
 				<integer>1</integer>
-				<integer>2</integer>
 			</array>
 		</dict>
 
