@@ -89,6 +89,17 @@
 
 - (IBAction)launchWebApp:(id)sender
 {
+    if (_webAppSession)
+    {
+        _webAppSession.delegate = nil;
+        [_webAppSession closeWithSuccess:nil failure:nil];
+        _webAppSession = nil;
+
+        [_sendButton setEnabled:NO];
+        [_sendJSONButton setEnabled:NO];
+        [_closeButton setEnabled:NO];
+    }
+
     [self.device.webAppLauncher launchWebApp:_webAppId success:^(WebAppSession *webAppSession)
     {
         NSLog(@"web app launch success");
