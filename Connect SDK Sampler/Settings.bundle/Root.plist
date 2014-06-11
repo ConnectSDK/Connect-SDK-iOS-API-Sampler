@@ -50,8 +50,8 @@
 			<integer>0</integer>
 			<key>Titles</key>
 			<array>
-				<string>Mirrored</string>
-				<string>HTTP</string>
+				<string>Web App</string>
+				<string>Media</string>
 			</array>
 			<key>Values</key>
 			<array>
