@@ -48,6 +48,7 @@
             [_sendButton setEnabled:NO];
             [_sendJSONButton setEnabled:NO];
             [_closeButton setEnabled:NO];
+            [_leaveButton setEnabled:NO];
         }];
     }
 }
@@ -80,6 +81,7 @@
     [_sendButton setEnabled:NO];
     [_sendJSONButton setEnabled:NO];
     [_closeButton setEnabled:NO];
+    [_leaveButton setEnabled:NO];
 
     [_statusTextView setText:@""];
     [_statusTextView setUserInteractionEnabled:NO];
@@ -98,6 +100,7 @@
         [_sendButton setEnabled:NO];
         [_sendJSONButton setEnabled:NO];
         [_closeButton setEnabled:NO];
+        [_leaveButton setEnabled:NO];
     }
 
     [self.device.webAppLauncher launchWebApp:_webAppId success:^(WebAppSession *webAppSession)
@@ -108,6 +111,8 @@
         _webAppSession.delegate = self;
 
         if ([self.device hasCapability:kWebAppLauncherClose]) [_closeButton setEnabled:YES];
+        
+        if ([self.device hasCapability:kWebAppLauncherClose]) [_leaveButton setEnabled:YES];
 
         if ([self.device hasCapabilities:@[kWebAppLauncherMessageSend, kWebAppLauncherMessageReceive]])
         {
@@ -140,6 +145,7 @@
         [_sendButton setEnabled:YES];
         if ([self.device hasCapability:kWebAppLauncherMessageSendJSON]) [_sendJSONButton setEnabled:YES];
         if ([self.device hasCapability:kWebAppLauncherClose]) [_closeButton setEnabled:YES];
+        if ([self.device hasCapability:kWebAppLauncherClose]) [_leaveButton setEnabled:YES];
     } failure:^(NSError *error)
     {
         NSLog(@"web app join error: %@", error.localizedDescription);
@@ -197,6 +203,14 @@
     [_launchButton setEnabled:YES];
 }
 
+- (IBAction)leaveWebApp:(id)sender
+{
+    [self removeSubscriptions];
+    
+    [_launchButton setEnabled:YES];
+    [_joinButton setEnabled:YES];
+}
+
 #pragma mark - WebAppSessionDelegate methods
 
 - (void) webAppSession:(WebAppSession *)webAppSession didReceiveMessage:(id)message
@@ -225,6 +239,7 @@
     [_sendButton setEnabled:NO];
     [_sendJSONButton setEnabled:NO];
     [_closeButton setEnabled:NO];
+    [_leaveButton setEnabled:NO];
 }
 
 @end
