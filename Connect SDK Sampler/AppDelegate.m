@@ -22,7 +22,7 @@
 
     [self registerDefaultsFromSettingsBundle];
 
-    [[NSUserDefaults standardUserDefaults] setValue:@"1.3.0 (pre-release)" forKey:@"sdkVersion"];
+    [[NSUserDefaults standardUserDefaults] setValue:@"1.3.0" forKey:@"sdkVersion"];
     [[NSUserDefaults standardUserDefaults] setValue:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"] forKey:@"samplerVersion"];
 
     [[NSUserDefaults standardUserDefaults] synchronize];
