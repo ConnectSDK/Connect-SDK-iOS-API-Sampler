@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="rWd-RT-4cr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="rWd-RT-4cr">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -34,13 +34,23 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5GJ-vz-2qo">
-                                <rect key="frame" x="96" y="152" width="129" height="30"/>
+                                <rect key="frame" x="165" y="152" width="129" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Close web app">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="closeWebApp:" destination="wbl-1H-d5x" eventType="touchUpInside" id="5Ux-X5-z8K"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3l8-cT-W9w">
+                                <rect key="frame" x="26" y="152" width="129" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Leave web app">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="leaveWebApp:" destination="wbl-1H-d5x" eventType="touchUpInside" id="azY-PU-keq"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="apm-Vh-4Rn">
@@ -85,6 +95,7 @@
                         <outlet property="closeButton" destination="5GJ-vz-2qo" id="ofo-D7-87A"/>
                         <outlet property="joinButton" destination="Xhi-G3-zCH" id="oWY-or-Rcs"/>
                         <outlet property="launchButton" destination="EYB-J2-agO" id="QGq-h5-LXJ"/>
+                        <outlet property="leaveButton" destination="3l8-cT-W9w" id="lux-7j-vkF"/>
                         <outlet property="sendButton" destination="apm-Vh-4Rn" id="UKf-s5-mIv"/>
                         <outlet property="sendJSONButton" destination="gFW-4c-jK1" id="mGk-LD-WSv"/>
                         <outlet property="statusTextView" destination="alC-uV-JtE" id="COm-Jm-TI3"/>

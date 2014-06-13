@@ -57,6 +57,7 @@
     if (self.device)
     {
         if ([self.device hasCapability:kWebAppLauncherLaunch]) [_launchButton setEnabled:YES];
+        if ([self.device hasCapability:kWebAppLauncherJoin]) [_joinButton setEnabled:YES];
 
         if ([self.device serviceWithName:@"webOS TV"])
             _webAppId = [[NSUserDefaults standardUserDefaults] stringForKey:@"webOSWebAppId"];
@@ -79,6 +80,8 @@
     [_launchButton setEnabled:NO];
     [_sendButton setEnabled:NO];
     [_sendJSONButton setEnabled:NO];
+    [_leaveButton setEnabled:NO];
+    [_joinButton setEnabled:NO];
     [_closeButton setEnabled:NO];
 
     [_statusTextView setText:@""];
@@ -108,6 +111,7 @@
         _webAppSession.delegate = self;
 
         if ([self.device hasCapability:kWebAppLauncherClose]) [_closeButton setEnabled:YES];
+        if ([self.device hasCapability:kWebAppLauncherDisconnect]) [_leaveButton setEnabled:YES];
 
         if ([self.device hasCapabilities:@[kWebAppLauncherMessageSend, kWebAppLauncherMessageReceive]])
         {
@@ -139,6 +143,7 @@
         
         [_sendButton setEnabled:YES];
         if ([self.device hasCapability:kWebAppLauncherMessageSendJSON]) [_sendJSONButton setEnabled:YES];
+        if ([self.device hasCapability:kWebAppLauncherDisconnect]) [_leaveButton setEnabled:YES];
         if ([self.device hasCapability:kWebAppLauncherClose]) [_closeButton setEnabled:YES];
     } failure:^(NSError *error)
     {
@@ -186,6 +191,18 @@
             NSLog(@"web app send JSON error: %@", error.localizedDescription);
         }];
     }
+}
+
+- (IBAction)leaveWebApp:(id)sender
+{
+    _webAppSession.delegate = nil;
+    [_webAppSession disconnectFromWebApp];
+    _webAppSession = nil;
+    
+    [self removeSubscriptions];
+    
+    [_launchButton setEnabled:YES];
+    if ([self.device hasCapability:kWebAppLauncherJoin]) [_joinButton setEnabled:YES];
 }
 
 - (IBAction)closeWebApp:(id)sender
