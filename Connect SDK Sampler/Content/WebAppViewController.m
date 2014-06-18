@@ -65,6 +65,8 @@
             _webAppId = [[NSUserDefaults standardUserDefaults] stringForKey:@"castWebAppId"];
         else if ([self.device serviceWithName:@"AirPlay"])
             _webAppId = [[NSUserDefaults standardUserDefaults] stringForKey:@"airPlayWebAppId"];
+        else if ([self.device serviceWithName:@"Samsung MultiScreen"])
+            _webAppId = @"ChatDemo";
     }
 }
 
