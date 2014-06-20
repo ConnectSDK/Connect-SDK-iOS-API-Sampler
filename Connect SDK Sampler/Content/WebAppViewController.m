@@ -95,13 +95,15 @@
     if (_webAppSession)
     {
         _webAppSession.delegate = nil;
-        [_webAppSession closeWithSuccess:nil failure:nil];
+        [_webAppSession disconnectFromWebApp];
         _webAppSession = nil;
 
         [_sendButton setEnabled:NO];
         [_sendJSONButton setEnabled:NO];
         [_closeButton setEnabled:NO];
     }
+
+    [_launchButton setEnabled:NO];
 
     [self.device.webAppLauncher launchWebApp:_webAppId success:^(WebAppSession *webAppSession)
     {
@@ -119,16 +121,17 @@
             {
                 NSLog(@"web app connect success");
 
-                [_sendButton setEnabled:YES];
+                if ([self.device hasCapability:kWebAppLauncherMessageSend]) [_sendButton setEnabled:YES];
                 if ([self.device hasCapability:kWebAppLauncherMessageSendJSON]) [_sendJSONButton setEnabled:YES];
             }                          failure:^(NSError *error)
             {
                 NSLog(@"web app connect error: %@", error.localizedDescription);
             }];
         }
-    }                                failure:^(NSError *error)
+    } failure:^(NSError *error)
     {
         NSLog(@"web app launch error: %@", error.localizedDescription);
+        [_launchButton setEnabled:YES];
     }];
 }
 
@@ -140,8 +143,9 @@
         
         _webAppSession = webAppSession;
         _webAppSession.delegate = self;
-        
-        [_sendButton setEnabled:YES];
+
+        [_launchButton setEnabled:NO];
+        if ([self.device hasCapability:kWebAppLauncherMessageSend]) [_sendButton setEnabled:YES];
         if ([self.device hasCapability:kWebAppLauncherMessageSendJSON]) [_sendJSONButton setEnabled:YES];
         if ([self.device hasCapability:kWebAppLauncherDisconnect]) [_leaveButton setEnabled:YES];
         if ([self.device hasCapability:kWebAppLauncherClose]) [_closeButton setEnabled:YES];
@@ -207,17 +211,30 @@
 
 - (IBAction)closeWebApp:(id)sender
 {
-    [_webAppSession closeWithSuccess:nil failure:nil];
+    _webAppSession.delegate = nil;
+
+    [_webAppSession closeWithSuccess:^(id responseObject) {
+        NSLog(@"close web app success");
+    } failure:^(NSError *error) {
+        NSLog(@"close web app failure, %@", error.localizedDescription);
+    }];
+
+    _webAppSession = nil;
 
     [self removeSubscriptions];
 
     [_launchButton setEnabled:YES];
+    if ([self.device hasCapability:kWebAppLauncherJoin]) [_joinButton setEnabled:YES];
 }
 
 #pragma mark - WebAppSessionDelegate methods
 
 - (void) webAppSession:(WebAppSession *)webAppSession didReceiveMessage:(id)message
 {
+    // check to see if we actually care about this delegate message
+    if (!_webAppSession || _webAppSession != webAppSession)
+        return;
+
     NSString *messageString;
 
     if ([message isKindOfClass:[NSString class]])
@@ -239,8 +256,17 @@
 
 - (void) webAppSessionDidDisconnect:(WebAppSession *)webAppSession
 {
+    // check to see if we actually care about this delegate message
+    if (!_webAppSession || _webAppSession != webAppSession)
+        return;
+
+    _webAppSession.delegate = nil;
+    _webAppSession = nil;
+
+    [_launchButton setEnabled:YES];
     [_sendButton setEnabled:NO];
     [_sendJSONButton setEnabled:NO];
+    [_leaveButton setEnabled:NO];
     [_closeButton setEnabled:NO];
 }
 
