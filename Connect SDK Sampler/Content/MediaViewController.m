@@ -110,11 +110,15 @@
         _mediaInfoTimer = nil;
     }
 
-    if (_playStateSubscription)
+    if (_playStateSubscription) {
         [_playStateSubscription unsubscribe];
+        _playStateSubscription = nil;
+    }
 
-    if (_volumeSubscription)
+    if (_volumeSubscription) {
         [_volumeSubscription unsubscribe];
+        _volumeSubscription = nil;
+    }
     
     _launchSession = nil;
     _mediaControl = nil;
@@ -243,8 +247,10 @@
 #pragma mark - Connect SDK API sampler methods
 
 - (IBAction)displayPhoto:(id)sender {
-    if (_launchSession)
+    if (_launchSession) {
         [_launchSession closeWithSuccess:nil failure:nil];
+        _launchSession = nil;
+    }
 
     [self resetMediaControlComponents];
     
@@ -273,8 +279,10 @@
 }
 
 - (IBAction)displayVideo:(id)sender {
-    if (_launchSession)
+    if (_launchSession) {
         [_launchSession closeWithSuccess:nil failure:nil];
+        _launchSession = nil;
+    }
 
     [self resetMediaControlComponents];
 
@@ -310,8 +318,10 @@
 }
 
 - (IBAction)playAudio:(id)sender {
-    if (_launchSession)
+    if (_launchSession) {
         [_launchSession closeWithSuccess:nil failure:nil];
+        _launchSession = nil;
+    }
     
     [self resetMediaControlComponents];
 
