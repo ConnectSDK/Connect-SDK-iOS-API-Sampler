@@ -19,6 +19,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *launchButton;
 @property (weak, nonatomic) IBOutlet UIButton *joinButton;
+@property (weak, nonatomic) IBOutlet UIButton *leaveButton;
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
 @property (weak, nonatomic) IBOutlet UIButton *sendJSONButton;
 @property (weak, nonatomic) IBOutlet UIButton *closeButton;
@@ -28,6 +29,7 @@
 - (IBAction)launchWebApp:(id)sender;
 - (IBAction)joinWebApp:(id)sender;
 - (IBAction)sendMessage:(id)sender;
+- (IBAction)leaveWebApp:(id)sender;
 - (IBAction)closeWebApp:(id)sender;
 
 @end

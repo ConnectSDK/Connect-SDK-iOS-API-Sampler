@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Versions</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>SDK</string>
+			<key>Key</key>
+			<string>sdkVersion</string>
+			<key>DefaultValue</key>
+			<string>Unknown</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Sampler</string>
+			<key>Key</key>
+			<string>samplerVersion</string>
+			<key>DefaultValue</key>
+			<string>Unknown</string>
+		</dict>
+
+
+
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>AirPlay</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>AirPlay Mode</string>
+			<key>Key</key>
+			<string>airPlayServiceMode</string>
+			<key>DefaultValue</key>
+			<integer>0</integer>
+			<key>Titles</key>
+			<array>
+				<string>Web App</string>
+				<string>Media</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+			</array>
+		</dict>
+
+
+
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Apps</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>DIAL App Name</string>
+			<key>Key</key>
+			<string>dialAppName</string>
+			<key>DefaultValue</key>
+			<string>Levak</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Netcast App Store Deep Link Target</string>
+			<key>Key</key>
+			<string>netcastAppId</string>
+			<key>DefaultValue</key>
+			<string>125071</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Roku App Store Deep Link Target</string>
+			<key>Key</key>
+			<string>rokuAppId</string>
+			<key>DefaultValue</key>
+			<string>26882</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>webOS App Store Deep Link Target</string>
+			<key>Key</key>
+			<string>webOSAppId</string>
+			<key>DefaultValue</key>
+			<string>redbox</string>
+		</dict>
+
+
+
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Web App Ids</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>AirPlay</string>
+			<key>Key</key>
+			<string>airPlayWebAppId</string>
+			<key>DefaultValue</key>
+			<string>http://ec2-54-201-108-205.us-west-2.compute.amazonaws.com/samples/connect-bridge/</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Chromecast</string>
+			<key>Key</key>
+			<string>castWebAppId</string>
+			<key>DefaultValue</key>
+			<string>DDCEDE96</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>webOS</string>
+			<key>Key</key>
+			<string>webOSWebAppId</string>
+			<key>DefaultValue</key>
+			<string>SampleWebApp</string>
+		</dict>
+
+
+
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Sample Audio File</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Audio Title</string>
+			<key>Key</key>
+			<string>audioTitle</string>
+			<key>DefaultValue</key>
+			<string>The Song That Doesn't End</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Audio Description</string>
+			<key>Key</key>
+			<string>audioDescription</string>
+			<key>DefaultValue</key>
+			<string>Lamb Chop's Play Along</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Audio URL</string>
+			<key>Key</key>
+			<string>audioPath</string>
+			<key>DefaultValue</key>
+			<string>http://ec2-54-201-108-205.us-west-2.compute.amazonaws.com/samples/media/audio.mp3</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Audio Thumbnail URL</string>
+			<key>Key</key>
+			<string>audioThumbPath</string>
+			<key>DefaultValue</key>
+			<string>http://ec2-54-201-108-205.us-west-2.compute.amazonaws.com/samples/media/audioIcon.jpg</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Audio Mime-type</string>
+			<key>Key</key>
+			<string>audioMimeType</string>
+			<key>DefaultValue</key>
+			<string>audio/mp3</string>
+		</dict>
+
+
+
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Sample Image File</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Image Title</string>
+			<key>Key</key>
+			<string>imageTitle</string>
+			<key>DefaultValue</key>
+			<string>Sintel Character Design</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Image Description</string>
+			<key>Key</key>
+			<string>imageDescription</string>
+			<key>DefaultValue</key>
+			<string>Blender Open Movie Project</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Image URL</string>
+			<key>Key</key>
+			<string>imagePath</string>
+			<key>DefaultValue</key>
+			<string>http://ec2-54-201-108-205.us-west-2.compute.amazonaws.com/samples/media/photo.jpg</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Image Thumbnail URL</string>
+			<key>Key</key>
+			<string>imageThumbPath</string>
+			<key>DefaultValue</key>
+			<string>http://ec2-54-201-108-205.us-west-2.compute.amazonaws.com/samples/media/photoIcon.jpg</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Image Mime-type</string>
+			<key>Key</key>
+			<string>imageMimeType</string>
+			<key>DefaultValue</key>
+			<string>image/jpeg</string>
+		</dict>
+
+
+
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Sample Video File</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Video Title</string>
+			<key>Key</key>
+			<string>videoTitle</string>
+			<key>DefaultValue</key>
+			<string>Sintel Character Design</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Video Description</string>
+			<key>Key</key>
+			<string>videoDescription</string>
+			<key>DefaultValue</key>
+			<string>Blender Open Movie Project</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Video URL</string>
+			<key>Key</key>
+			<string>videoPath</string>
+			<key>DefaultValue</key>
+			<string>http://ec2-54-201-108-205.us-west-2.compute.amazonaws.com/samples/media/video.mp4</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Video Thumbnail URL</string>
+			<key>Key</key>
+			<string>videoThumbPath</string>
+			<key>DefaultValue</key>
+			<string>http://ec2-54-201-108-205.us-west-2.compute.amazonaws.com/samples/media/videoIcon.jpg</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Video Mime-type</string>
+			<key>Key</key>
+			<string>videoMimeType</string>
+			<key>DefaultValue</key>
+			<string>video/mp4</string>
+		</dict>
+	</array>
+	<key>StringsTable</key>
+	<string>Root</string>
+</dict>
+</plist>

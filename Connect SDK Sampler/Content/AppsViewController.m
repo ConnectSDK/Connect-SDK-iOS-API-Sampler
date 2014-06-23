@@ -78,12 +78,15 @@
             }];
         }
         
+        NSString *dialAppName = [[NSUserDefaults standardUserDefaults] stringForKey:@"dialAppName"];
+        NSString *dialAppCapability = [NSString stringWithFormat:@"Launcher.%@", dialAppName];
+        
         if ([self.device hasCapability:kLauncherBrowser]) [_browserButton setEnabled:YES];
         if ([self.device hasCapability:kToastControlShowToast]) [_toastButton setEnabled:YES];
         if ([self.device hasCapability:kLauncherNetflix]) [_netflixButton setEnabled:YES];
         if ([self.device hasCapability:kLauncherAppStoreParams]) [_appStoreButton setEnabled:YES];
         if ([self.device hasCapability:kLauncherYouTube]) [_youtubeButton setEnabled:YES];
-        if ([self.device hasCapability:@"Launcher.Levak"]) [_myAppButton setEnabled:YES];
+        if ([self.device hasCapability:dialAppCapability]) [_myAppButton setEnabled:YES];
     }
 }
 
@@ -264,11 +267,11 @@
         NSString *appId;
 
         if ([self.device serviceWithName:@"Netcast TV"])
-            appId = @"125071";
+            appId = [[NSUserDefaults standardUserDefaults] stringForKey:@"netcastAppId"];
         else if ([self.device serviceWithName:@"webOS TV"])
-            appId = @"redbox";
+            appId = [[NSUserDefaults standardUserDefaults] stringForKey:@"webOSAppId"];
         else if ([self.device serviceWithName:@"Roku"])
-            appId = @"26882";
+            appId = [[NSUserDefaults standardUserDefaults] stringForKey:@"rokuAppId"];
 
         [self.device.launcher launchAppStore:appId success:^(LaunchSession *launchSession)
         {
@@ -341,8 +344,9 @@
         }
 
         DIALService *dialService = (DIALService *) [self.device serviceWithName:@"DIAL"];
+        NSString *dialAppName = [[NSUserDefaults standardUserDefaults] stringForKey:@"dialAppName"];
 
-        [dialService.launcher launchApp:@"Levak" success:^(LaunchSession *launchSession)
+        [dialService.launcher launchApp:dialAppName success:^(LaunchSession *launchSession)
          {
              NSLog(@"my app opened with data: %@", launchSession);
              

@@ -22,7 +22,7 @@
 @implementation TVViewController
 {
     NSArray *_channelList;
-    ChannelInfo *_currentChannel;
+    int _currentChannel;
     
     ServiceSubscription *_3DSubscription;
     ServiceSubscription *_channelInfoSubscription;
@@ -81,8 +81,19 @@
             _channelInfoSubscription = [self.device.tvControl subscribeCurrentChannelWithSuccess:^(ChannelInfo *channelInfo)
             {
                 NSLog(@"subscribe current channel success");
-                _currentChannel = channelInfo;
-                [self.channels reloadData];
+
+                [_channelList enumerateObjectsUsingBlock:^(ChannelInfo *channel, NSUInteger idx, BOOL *stop)
+                {
+                    if ([channel isEqual:channelInfo])
+                    {
+                        _currentChannel = idx;
+
+                        [self reloadData];
+                        [_channels scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:_currentChannel inSection:0] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+
+                        *stop = YES;
+                    }
+                }];
             }                                                                            failure:^(NSError *error)
             {
                 NSLog(@"Subscribe current ch Error %@", error.localizedDescription);
@@ -195,13 +206,16 @@
 
     cell.textLabel.text = channelInfo.number;
     cell.detailTextLabel.text = channelInfo.name;
-
-    if ([channelInfo isEqual:_currentChannel])
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    else
-        cell.accessoryType = UITableViewCellAccessoryNone;
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == _currentChannel)
+        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+    else
+        [cell setAccessoryType:UITableViewCellAccessoryNone];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
