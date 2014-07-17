@@ -137,16 +137,26 @@
 			<key>DefaultValue</key>
 			<string>DDCEDE96</string>
 		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSTextFieldSpecifier</string>
-			<key>Title</key>
-			<string>webOS</string>
-			<key>Key</key>
-			<string>webOSWebAppId</string>
-			<key>DefaultValue</key>
-			<string>SampleWebApp</string>
-		</dict>
+        <dict>
+            <key>Type</key>
+            <string>PSTextFieldSpecifier</string>
+            <key>Title</key>
+            <string>Samsung MultiScreen</string>
+            <key>Key</key>
+            <string>samsungMultiScreenWebAppId</string>
+            <key>DefaultValue</key>
+            <string>ConnectSDKSampler</string>
+        </dict>
+        <dict>
+            <key>Type</key>
+            <string>PSTextFieldSpecifier</string>
+            <key>Title</key>
+            <string>webOS</string>
+            <key>Key</key>
+            <string>webOSWebAppId</string>
+            <key>DefaultValue</key>
+            <string>SampleWebApp</string>
+        </dict>
 
 
 
