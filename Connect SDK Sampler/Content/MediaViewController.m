@@ -61,7 +61,7 @@
 
             weakSelf->_mediaInfoTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:weakSelf selector:@selector(updateMediaInfo) userInfo:nil repeats:YES];
             weakSelf->_playTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:weakSelf selector:@selector(updatePlayerControls) userInfo:nil repeats:YES];
-        } else if (playState == MediaControlPlayStateFinished || playState == MediaControlPlayStateIdle)
+        } else if (playState == MediaControlPlayStateFinished)
         {
             [weakSelf resetMediaControlComponents];
         } else
