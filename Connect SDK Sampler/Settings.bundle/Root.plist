@@ -174,7 +174,7 @@
 			<key>Key</key>
 			<string>audioTitle</string>
 			<key>DefaultValue</key>
-			<string>The Song That Doesn't End</string>
+			<string>The Song That Doesn&apos;t End</string>
 		</dict>
 		<dict>
 			<key>Type</key>
@@ -184,7 +184,7 @@
 			<key>Key</key>
 			<string>audioDescription</string>
 			<key>DefaultValue</key>
-			<string>Lamb Chop's Play Along</string>
+			<string>Lamb Chop&apos;s Play Along</string>
 		</dict>
 		<dict>
 			<key>Type</key>
