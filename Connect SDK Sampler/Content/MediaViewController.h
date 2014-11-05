@@ -43,6 +43,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *durationLabel;
 @property (weak, nonatomic) IBOutlet UISlider *seekSlider;
 @property (weak, nonatomic) IBOutlet UISlider *volumeSlider;
+@property (weak, nonatomic) IBOutlet UILabel *mediaTitle;
+@property (weak, nonatomic) IBOutlet UILabel *artistName;
+
+@property (weak, nonatomic) IBOutlet UIImageView *mediaIcon;
 
 - (IBAction)startSeeking:(id)sender;
 - (IBAction)seekChanged:(id)sender;
