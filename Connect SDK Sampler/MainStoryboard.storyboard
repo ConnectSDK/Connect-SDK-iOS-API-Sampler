@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="rWd-RT-4cr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="rWd-RT-4cr">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
-        <!--Web App View Controller - Web App-->
+        <!--Web App-->
         <scene sceneID="EaK-ms-x1W">
             <objects>
                 <viewController title="Web App" id="wbl-1H-d5x" customClass="WebAppViewController" sceneMemberID="viewController">
@@ -105,7 +105,7 @@
             </objects>
             <point key="canvasLocation" x="896" y="-254"/>
         </scene>
-        <!--Control View Controller - Control-->
+        <!--Control-->
         <scene sceneID="40H-Sb-dZz">
             <objects>
                 <viewController title="Control" id="aPk-l6-Ae1" customClass="ControlViewController" sceneMemberID="viewController">
@@ -249,7 +249,7 @@
             </objects>
             <point key="canvasLocation" x="1270" y="-254"/>
         </scene>
-        <!--Media View Controller - Media Player-->
+        <!--Media Player-->
         <scene sceneID="yxu-UI-0Bg">
             <objects>
                 <viewController title="Media Player" id="wHY-Js-EUt" customClass="MediaViewController" sceneMemberID="viewController">
@@ -348,21 +348,21 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--:--" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ajk-00-ICk">
-                                <rect key="frame" x="20" y="182" width="100" height="21"/>
+                                <rect key="frame" x="20" y="153" width="100" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--:--" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XeI-cd-9bl">
-                                <rect key="frame" x="200" y="182" width="100" height="21"/>
+                                <rect key="frame" x="200" y="153" width="100" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" id="4G9-x6-uVY">
-                                <rect key="frame" x="18" y="211" width="284" height="31"/>
+                                <rect key="frame" x="18" y="182" width="284" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="seekChanged:" destination="wHY-Js-EUt" eventType="valueChanged" id="XsQ-AS-mRf"/>
@@ -372,36 +372,64 @@
                                 </connections>
                             </slider>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" continuous="NO" id="CQX-KG-adi">
-                                <rect key="frame" x="18" y="292" width="284" height="31"/>
+                                <rect key="frame" x="18" y="238" width="284" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="volumeChanged:" destination="wHY-Js-EUt" eventType="valueChanged" id="iiA-Mj-wNX"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volume" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QHd-w2-82D">
-                                <rect key="frame" x="102" y="274" width="116" height="21"/>
+                                <rect key="frame" x="102" y="220" width="116" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seek" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ve3-m6-aKn">
-                                <rect key="frame" x="141" y="182" width="39" height="21"/>
+                                <rect key="frame" x="141" y="153" width="39" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" id="uOg-su-RJD">
+                                <rect key="frame" x="16" y="289" width="288" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="sf3-nZ-dKl">
+                                        <rect key="frame" x="4" y="9" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AIo-jH-05H">
+                                        <rect key="frame" x="60" y="11" width="220" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hce-MA-JNK">
+                                        <rect key="frame" x="60" y="34" width="220" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.84734059343434343" green="0.84734059343434343" blue="0.84734059343434343" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Media" image="icon_15307.png" id="i0i-az-hKz"/>
                     <connections>
+                        <outlet property="artistName" destination="hce-MA-JNK" id="inv-BT-20n"/>
                         <outlet property="closeMediaButton" destination="VZW-P1-nZA" id="mmH-vF-AIP"/>
                         <outlet property="currentTimeLabel" destination="ajk-00-ICk" id="Nie-gq-2Wb"/>
                         <outlet property="displayPhotoButton" destination="1qj-E5-DAO" id="SiM-jz-vYC"/>
                         <outlet property="displayVideoButton" destination="oN5-T4-2VZ" id="WLd-dK-ZYB"/>
                         <outlet property="durationLabel" destination="XeI-cd-9bl" id="7zT-sr-TU7"/>
                         <outlet property="fastForwardButton" destination="t7P-Cr-aNE" id="Ahk-23-aw8"/>
+                        <outlet property="mediaIcon" destination="sf3-nZ-dKl" id="kJk-Xe-MVu"/>
+                        <outlet property="mediaTitle" destination="AIo-jH-05H" id="W1F-Gn-DpI"/>
                         <outlet property="pauseButton" destination="qhf-xs-vfO" id="GM9-rV-1bC"/>
                         <outlet property="playAudioButton" destination="sVA-2H-p00" id="mlh-kG-j2A"/>
                         <outlet property="playButton" destination="UFe-8W-6XQ" id="FTn-MR-6Sh"/>
@@ -415,7 +443,7 @@
             </objects>
             <point key="canvasLocation" x="519" y="-254"/>
         </scene>
-        <!--System View Controller - System-->
+        <!--System-->
         <scene sceneID="Sco-M8-MvZ">
             <objects>
                 <viewController title="System" id="jwQ-mp-yYL" customClass="SystemViewController" sceneMemberID="viewController">
@@ -560,7 +588,7 @@
             </objects>
             <point key="canvasLocation" x="896" y="321"/>
         </scene>
-        <!--Apps View Controller - Apps-->
+        <!--Apps-->
         <scene sceneID="meF-mr-wIc">
             <objects>
                 <viewController title="Apps" id="pyF-HD-7Jf" customClass="AppsViewController" sceneMemberID="viewController">
@@ -712,7 +740,7 @@
             </objects>
             <point key="canvasLocation" x="36" y="54"/>
         </scene>
-        <!--View Controller - TV-->
+        <!--TV-->
         <scene sceneID="qbQ-Ns-sIy">
             <objects>
                 <viewController title="TV" id="R5e-Zm-0dj" customClass="TVViewController" sceneMemberID="viewController">
