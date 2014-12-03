@@ -1,7 +1,7 @@
 #Connect SDK Sampler App
 
 ##About
-For information on Connect SDK, visit [connectsdk.com/about](http://www.connectsdk.com/about/).
+For information on Connect SDK, visit [connectsdk.com/discover](http://connectsdk.com/discover/).
 
 ##Setup
 See https://github.com/ConnectSDK/Connect-SDK-iOS for setup instructions.
@@ -9,8 +9,8 @@ See https://github.com/ConnectSDK/Connect-SDK-iOS for setup instructions.
 ##See also
 For more information on using Connect SDK, we recommend you review the following material.
 
-- [Connect SDK iOS Framework](http://github.com/ConnectSDK/Connect-SDK-iOS-Framework)
-- [API Documentation](http://connectsdk.com/docs/iosapi/)
+- [Connect SDK iOS Docs](http://connectsdk.com/docs/ios)
+- [API Documentation](http://connectsdk.com/apis/ios/)
 
 ##License
 Connect SDK Sample App by LG Electronics

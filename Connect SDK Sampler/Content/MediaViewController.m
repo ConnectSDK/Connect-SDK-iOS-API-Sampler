@@ -96,6 +96,25 @@
     [_playAudioButton setEnabled:NO];
 }
 
+-(void)addMediaInfoSubscription {
+    
+    if ([self.device hasCapability:kMediaControlMetadataSubscribe]){
+        [_mediaControl subscribeMediaInfoWithSuccess:^(NSDictionary *responseObject) {
+            
+            self.mediaTitle.text = [responseObject objectForKey:@"title"];
+            self.artistName.text = [responseObject objectForKey:@"subtitle"];
+            NSURL *url = [NSURL URLWithString:[responseObject objectForKey:@"iconURL"]];
+            NSData *data = [NSData dataWithContentsOfURL:url];
+            UIImage *img = [[UIImage alloc] initWithData:data];
+            self.mediaIcon.image = img;
+            
+        }  failure:^(NSError *error)
+         {
+             NSLog(@"subscribe media info subscribe failure: %@", error.localizedDescription);
+         }];
+    }
+}
+
 - (void) resetMediaControlComponents
 {
     if (_playTimer)
@@ -142,6 +161,9 @@
     
     [_seekSlider setValue:0 animated:NO];
     [_volumeSlider setValue:0 animated:NO];
+    _mediaTitle.text = @"";
+    _artistName.text = @"";
+    _mediaIcon.image = nil;
 }
 
 - (void) enableMediaControlComponents
@@ -188,6 +210,7 @@
             NSLog(@"Get Vol Error %@", error.localizedDescription);
         }];
     }
+    [self addMediaInfoSubscription];
 }
 
 - (void) updateMediaInfo
@@ -206,6 +229,22 @@
         {
             _estimatedMediaPosition = position;
         } failure:nil];
+    }
+    
+    if ([self.device hasCapability:kMediaControlMetadata]){
+        
+        if([_mediaControl respondsToSelector:@selector(getMediaMetaDataWithSuccess:failure:)]){
+        [_mediaControl getMediaMetaDataWithSuccess:^(NSDictionary* responseObject) {
+        
+            self.mediaTitle.text = [responseObject objectForKey:@"title"];
+            self.artistName.text = [responseObject objectForKey:@"subtitle"];
+            NSURL *url = [NSURL URLWithString:[responseObject objectForKey:@"iconURL"]];
+            NSData *data = [NSData dataWithContentsOfURL:url];
+            UIImage *img = [[UIImage alloc] initWithData:data];
+            self.mediaIcon.image = img;
+        }failure:nil];
+        }
+        
     }
 }
 
@@ -302,7 +341,6 @@
                                success:^(LaunchSession *launchSession, id <MediaControl> mediaControl)
                                {
                                    NSLog(@"display video success");
-
                                    _launchSession = launchSession;
                                    _mediaControl = mediaControl;
 
@@ -341,7 +379,6 @@
                                success:^(LaunchSession *launchSession, id <MediaControl> mediaControl)
      {
          NSLog(@"display audio success");
-         
          _launchSession = launchSession;
          _mediaControl = mediaControl;
          
