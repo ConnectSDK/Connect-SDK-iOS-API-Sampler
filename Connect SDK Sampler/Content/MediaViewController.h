@@ -53,4 +53,15 @@
 - (IBAction)stopSeeking:(id)sender;
 - (IBAction)volumeChanged:(id)sender;
 
+//Playlist controls
+@property (weak, nonatomic) IBOutlet UIButton *playListButton;
+@property (weak, nonatomic) IBOutlet UIButton *playNextButton;
+@property (weak, nonatomic) IBOutlet UIButton *playPreviousButton;
+@property (weak, nonatomic) IBOutlet UIButton *jumpTrackButton;
+
+-(IBAction)playListClicked:(id)sender;
+-(IBAction)playNextClicked:(id)sender;
+-(IBAction)playPreviousClicked:(id)sender;
+-(IBAction)jumpTrackClicked:(id)sender;
+
 @end
