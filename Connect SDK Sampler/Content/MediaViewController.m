@@ -659,14 +659,14 @@
 
 -(IBAction)jumpTrackClicked:(id)sender{
     
-    NSInteger trackNumber = [[NSUserDefaults standardUserDefaults] integerForKey:@"playListJumpToTrackNumber"];
+    NSInteger trackIndex = [[NSUserDefaults standardUserDefaults] integerForKey:@"playListJumpToTrackNumber"];
     if (!_mediaControl)
     {
         [self resetMediaControlComponents];
         return;
     }
     
-    [_mediaControl jumptoTrack:trackNumber success:^(id responseObject)
+    [_mediaControl jumpToTrackWithIndex:trackIndex success:^(id responseObject)
      {
          NSLog(@"jump success");
      } failure:^(NSError *error)

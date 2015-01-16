@@ -370,7 +370,7 @@
 			<key>Key</key>
 			<string>playListJumpToTrackNumber</string>
 			<key>DefaultValue</key>
-			<integer>3</integer>
+			<integer>2</integer>
 		</dict>
 	</array>
 	<key>StringsTable</key>
