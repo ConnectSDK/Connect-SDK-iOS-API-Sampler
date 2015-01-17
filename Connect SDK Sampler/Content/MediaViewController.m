@@ -540,6 +540,10 @@
 
             if (![self.device hasCapability:kMediaControlPlayStateSubscribe])
                 _mediaInfoTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(updateMediaInfo) userInfo:nil repeats:YES];
+
+            // we don't receive a PLAYING state notification on xbox, so fake it
+            // to reenable the seekSlider
+            self->_playStateHandler(MediaControlPlayStatePlaying);
         } failure:^(NSError *error)
         {
             NSLog(@"seek failure: %@", error.localizedDescription);
