@@ -30,9 +30,6 @@
 			<key>DefaultValue</key>
 			<string>Unknown</string>
 		</dict>
-
-
-
 		<dict>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
@@ -59,9 +56,6 @@
 				<integer>1</integer>
 			</array>
 		</dict>
-
-
-
 		<dict>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
@@ -108,9 +102,6 @@
 			<key>DefaultValue</key>
 			<string>redbox</string>
 		</dict>
-
-
-
 		<dict>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
@@ -137,19 +128,16 @@
 			<key>DefaultValue</key>
 			<string>DDCEDE96</string>
 		</dict>
-        <dict>
-            <key>Type</key>
-            <string>PSTextFieldSpecifier</string>
-            <key>Title</key>
-            <string>webOS</string>
-            <key>Key</key>
-            <string>webOSWebAppId</string>
-            <key>DefaultValue</key>
-            <string>SampleWebApp</string>
-        </dict>
-
-
-
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>webOS</string>
+			<key>Key</key>
+			<string>webOSWebAppId</string>
+			<key>DefaultValue</key>
+			<string>SampleWebApp</string>
+		</dict>
 		<dict>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
@@ -206,9 +194,6 @@
 			<key>DefaultValue</key>
 			<string>audio/mp3</string>
 		</dict>
-
-
-
 		<dict>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
@@ -265,9 +250,6 @@
 			<key>DefaultValue</key>
 			<string>image/jpeg</string>
 		</dict>
-
-
-
 		<dict>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
@@ -323,6 +305,72 @@
 			<string>videoMimeType</string>
 			<key>DefaultValue</key>
 			<string>video/mp4</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Sample Playlist File</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Playlist Title</string>
+			<key>Key</key>
+			<string>playlistTitle</string>
+			<key>DefaultValue</key>
+			<string>Playlist</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Playlist Description</string>
+			<key>Key</key>
+			<string>playlistDescription</string>
+			<key>DefaultValue</key>
+			<string>Description</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Playlist URL</string>
+			<key>Key</key>
+			<string>playlistPath</string>
+			<key>DefaultValue</key>
+			<string>http://ec2-54-201-108-205.us-west-2.compute.amazonaws.com/samples/media/example-m3u-playlist.m3u</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Playlist Thumbnail URL</string>
+			<key>Key</key>
+			<string>playlistThumbPath</string>
+			<key>DefaultValue</key>
+			<string>http://ec2-54-201-108-205.us-west-2.compute.amazonaws.com/samples/media/audioIcon.jpg</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Playlist Mime-type</string>
+			<key>Key</key>
+			<string>playlistMimeType</string>
+			<key>DefaultValue</key>
+			<string>audio/x-mpegurl</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Jump to track</string>
+			<key>Key</key>
+			<string>playListJumpToTrackNumber</string>
+			<key>DefaultValue</key>
+			<integer>2</integer>
 		</dict>
 	</array>
 	<key>StringsTable</key>
