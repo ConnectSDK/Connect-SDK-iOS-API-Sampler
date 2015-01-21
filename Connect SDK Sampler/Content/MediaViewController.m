@@ -23,7 +23,7 @@
 {
     LaunchSession *_launchSession;
     id<MediaControl> _mediaControl;
-    
+    id<PlayListControl> _playListControl;
     ServiceSubscription *_playStateSubscription;
     ServiceSubscription *_volumeSubscription;
 
@@ -81,7 +81,7 @@
         if ([self.device hasCapability:kMediaPlayerDisplayImage]) [_displayPhotoButton setEnabled:YES];
         if ([self.device hasCapability:kMediaPlayerPlayVideo]) [_displayVideoButton setEnabled:YES];
         if ([self.device hasCapability:kMediaPlayerPlayAudio]) [_playAudioButton setEnabled:YES];
-        if ([self.device hasCapability:kMediaPlayerPlayAudio]) [_playListButton setEnabled:YES];
+        if ([self.device hasCapability:kMediaPlayerPlayPlaylist]) [_playListButton setEnabled:YES];
     } else
     {
         [self removeSubscriptions];
@@ -310,10 +310,10 @@
     ImageInfo *imageInfo = [[ImageInfo alloc] initWithURL:iconURL type:ImageTypeThumb];
     [mediaInfo addImage:imageInfo];
     
-    [self.device.mediaPlayer displayImage:mediaInfo
-                                  success:^(LaunchSession *launchSession, id<MediaControl> mediaControl) {
+    [self.device.mediaPlayer displayImageWithMediaInfo:mediaInfo
+                                  success:^(MediaLaunchObject *launchObject) {
                                       NSLog(@"display photo success");
-                                      _launchSession = launchSession;
+                                      _launchSession = launchObject.session;
                                       if ([self.device hasCapability:kMediaPlayerClose])
                                           [_closeMediaButton setEnabled:YES];
                                   } failure:^(NSError *error) {
@@ -343,11 +343,11 @@
     ImageInfo *imageInfo = [[ImageInfo alloc] initWithURL:iconURL type:ImageTypeThumb];
     [mediaInfo addImage:imageInfo];
     
-    [self.device.mediaPlayer playMedia:mediaInfo shouldLoop:shouldLoop
-                               success:^(LaunchSession *launchSession, id<MediaControl> mediaControl) {
+    [self.device.mediaPlayer playMediaWithMediaInfo:mediaInfo shouldLoop:shouldLoop
+                               success:^(MediaLaunchObject *launchObject) {
                                    NSLog(@"display video success");
-                                   _launchSession = launchSession;
-                                   _mediaControl = mediaControl;
+                                   _launchSession = launchObject.session;
+                                   _mediaControl = launchObject.mediaControl;
 
                                    if ([self.device hasCapability:kMediaPlayerClose])
                                        [_closeMediaButton setEnabled:YES];
@@ -379,12 +379,12 @@
     ImageInfo *imageInfo = [[ImageInfo alloc] initWithURL:iconURL type:ImageTypeThumb];
     [mediaInfo addImage:imageInfo];
     
-    [self.device.mediaPlayer playMedia:mediaInfo shouldLoop:shouldLoop
-                               success:^(LaunchSession *launchSession, id<MediaControl> mediaControl) {
+    [self.device.mediaPlayer playMediaWithMediaInfo:mediaInfo shouldLoop:shouldLoop
+                               success:^(MediaLaunchObject *launchObject) {
                                    NSLog(@"display audio success");
                                    
-                                   _launchSession = launchSession;
-                                   _mediaControl = mediaControl;
+                                   _launchSession = launchObject.session;
+                                   _mediaControl = launchObject.mediaControl;
                                    
                                    if ([self.device hasCapability:kMediaPlayerClose])
                                        [_closeMediaButton setEnabled:YES];
@@ -605,19 +605,20 @@
     ImageInfo *imageInfo = [[ImageInfo alloc] initWithURL:iconURL type:ImageTypeThumb];
     [mediaInfo addImage:imageInfo];
     
-    [self.device.mediaPlayer playMedia:mediaInfo shouldLoop:shouldLoop
-                               success:^(LaunchSession *launchSession, id<MediaControl> mediaControl) {
+    [self.device.mediaPlayer playMediaWithMediaInfo:mediaInfo shouldLoop:shouldLoop
+                               success:^(MediaLaunchObject *launchObject) {
                                    NSLog(@"display audio success");
                                    
-                                   _launchSession = launchSession;
-                                   _mediaControl = mediaControl;
+                                   _launchSession = launchObject.session;
+                                   _mediaControl = launchObject.mediaControl;
+                                   _playListControl = launchObject.playListControl;
                                    
                                    if ([self.device hasCapability:kMediaPlayerClose])
                                        [_closeMediaButton setEnabled:YES];
                                   
-                                   if ([self.device hasCapability:kMediaControlNext]) [_playNextButton setEnabled:YES];
-                                   if ([self.device hasCapability:kMediaControlPrevious]) [_playPreviousButton setEnabled:YES];
-                                   if ([self.device hasCapability:kMediaControlJumpTrack]) [_jumpTrackButton setEnabled:YES];
+                                   if ([self.device hasCapability:kPlayListControlNext]) [_playNextButton setEnabled:YES];
+                                   if ([self.device hasCapability:kPlayListControlPrevious]) [_playPreviousButton setEnabled:YES];
+                                   if ([self.device hasCapability:kPlayListControlJumpTrack]) [_jumpTrackButton setEnabled:YES];
                                    
                                    [self enableMediaControlComponents];
                                } failure:^(NSError *error) {
@@ -626,13 +627,13 @@
 }
 
 -(IBAction)playNextClicked:(id)sender{
-    if (!_mediaControl)
+    if (!_playListControl)
     {
         [self resetMediaControlComponents];
         return;
     }
     
-    [_mediaControl playNextWithSuccess:^(id responseObject)
+    [_playListControl playNextWithSuccess:^(id responseObject)
      {
          NSLog(@"next success");
      } failure:^(NSError *error)
@@ -642,13 +643,13 @@
 }
 
 -(IBAction)playPreviousClicked:(id)sender{
-    if (!_mediaControl)
+    if (!_playListControl)
     {
         [self resetMediaControlComponents];
         return;
     }
     
-    [_mediaControl playPreviousWithSuccess:^(id responseObject)
+    [_playListControl playPreviousWithSuccess:^(id responseObject)
      {
          NSLog(@"previous success");
      } failure:^(NSError *error)
@@ -660,13 +661,13 @@
 -(IBAction)jumpTrackClicked:(id)sender{
     
     NSInteger trackIndex = [[NSUserDefaults standardUserDefaults] integerForKey:@"playListJumpToTrackNumber"];
-    if (!_mediaControl)
+    if (!_playListControl)
     {
         [self resetMediaControlComponents];
         return;
     }
     
-    [_mediaControl jumpToTrackWithIndex:trackIndex success:^(id responseObject)
+    [_playListControl jumpToTrackWithIndex:trackIndex success:^(id responseObject)
      {
          NSLog(@"jump success");
      } failure:^(NSError *error)
