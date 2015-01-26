@@ -136,7 +136,7 @@
 			<key>Key</key>
 			<string>webOSWebAppId</string>
 			<key>DefaultValue</key>
-			<string>SampleWebApp</string>
+			<string>WebAppTester</string>
 		</dict>
 		<dict>
 			<key>Type</key>
