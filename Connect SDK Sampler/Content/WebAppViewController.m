@@ -19,6 +19,7 @@
 {
     WebAppSession *_webAppSession;
     NSString *_webAppId;
+    ServiceSubscription *_isWebAppPinnedSubscription;
 }
 
 @end
@@ -35,6 +36,7 @@
 
             [_sendButton setEnabled:YES];
             if ([self.device hasCapability:kWebAppLauncherMessageSendJSON]) [_sendJSONButton setEnabled:YES];
+
         }                          failure:^(NSError *error)
         {
             NSLog(@"web app re-join error: %@", error.localizedDescription);
@@ -45,7 +47,12 @@
             [_sendButton setEnabled:NO];
             [_sendJSONButton setEnabled:NO];
             [_closeButton setEnabled:NO];
+            [_pinButton setEnabled:NO];
+            [_unPinButton setEnabled:NO];
         }];
+    }
+    if ([self.device hasCapability:kWebAppLauncherPin]){
+        [self checkIfWebAppIsPinned];
     }
 }
 
@@ -55,13 +62,17 @@
     {
         if ([self.device hasCapability:kWebAppLauncherLaunch]) [_launchButton setEnabled:YES];
         if ([self.device hasCapability:kWebAppLauncherJoin]) [_joinButton setEnabled:YES];
-
         if ([self.device serviceWithName:@"webOS TV"])
             _webAppId = [[NSUserDefaults standardUserDefaults] stringForKey:@"webOSWebAppId"];
         else if ([self.device serviceWithName:@"Chromecast"])
             _webAppId = [[NSUserDefaults standardUserDefaults] stringForKey:@"castWebAppId"];
         else if ([self.device serviceWithName:@"AirPlay"])
             _webAppId = [[NSUserDefaults standardUserDefaults] stringForKey:@"airPlayWebAppId"];
+        
+        if ([self.device hasCapability:kWebAppLauncherPin]){
+            [self checkIfWebAppIsPinned];
+            [self subscribeIfWebAppIsPinned];
+        }
     }
 }
 
@@ -80,9 +91,14 @@
     [_leaveButton setEnabled:NO];
     [_joinButton setEnabled:NO];
     [_closeButton setEnabled:NO];
-
+    [_pinButton setEnabled:NO];
+    [_unPinButton setEnabled:NO];
     [_statusTextView setText:@""];
     [_statusTextView setUserInteractionEnabled:NO];
+    if(_isWebAppPinnedSubscription){
+        [_isWebAppPinnedSubscription unsubscribe];
+        _isWebAppPinnedSubscription = nil;
+    }
 }
 
 #pragma mark - Connect SDK API sampler methods
@@ -98,6 +114,8 @@
         [_sendButton setEnabled:NO];
         [_sendJSONButton setEnabled:NO];
         [_closeButton setEnabled:NO];
+        [_pinButton setEnabled:NO];
+        [_unPinButton setEnabled:NO];
     }
 
     [_launchButton setEnabled:NO];
@@ -111,7 +129,9 @@
 
         if ([self.device hasCapability:kWebAppLauncherClose]) [_closeButton setEnabled:YES];
         if ([self.device hasCapability:kWebAppLauncherDisconnect]) [_leaveButton setEnabled:YES];
-
+        if ([self.device hasCapability:kWebAppLauncherPin]) {
+            [self checkIfWebAppIsPinned];
+        }
         if ([self.device hasCapabilities:@[kWebAppLauncherMessageSend, kWebAppLauncherMessageReceive]])
         {
             [_webAppSession connectWithSuccess:^(id responseObject)
@@ -146,6 +166,7 @@
         if ([self.device hasCapability:kWebAppLauncherMessageSendJSON]) [_sendJSONButton setEnabled:YES];
         if ([self.device hasCapability:kWebAppLauncherDisconnect]) [_leaveButton setEnabled:YES];
         if ([self.device hasCapability:kWebAppLauncherClose]) [_closeButton setEnabled:YES];
+        if ([self.device hasCapability:kWebAppLauncherPin]) [_pinButton setEnabled:YES];
     } failure:^(NSError *error)
     {
         NSLog(@"web app join error: %@", error.localizedDescription);
@@ -222,6 +243,56 @@
 
     [_launchButton setEnabled:YES];
     if ([self.device hasCapability:kWebAppLauncherJoin]) [_joinButton setEnabled:YES];
+}
+
+- (IBAction)pinWebApp:(id)sender
+{
+    [_webAppSession pinWebAppWithSuccess:^(id responseObject) {
+        NSLog(@"pin web app success");
+        [self checkIfWebAppIsPinned];
+    } failure:^(NSError *error) {
+        NSLog(@"pin web app failure, %@", error.localizedDescription);
+    }];
+    
+}
+
+- (IBAction)unPinWebApp:(id)sender{
+    [self.device.webAppLauncher unPinWebApp:_webAppId success:^(id responseObject) {
+        NSLog(@"un pin web app success");
+        [self checkIfWebAppIsPinned];
+    } failure:^(NSError *error) {
+        NSLog(@"un pin web app failure, %@", error.localizedDescription);
+    }];
+}
+
+-(void)checkIfWebAppIsPinned{
+    
+    [self.device.webAppLauncher isWebAppPinned:_webAppId success:^(BOOL status) {
+        [self updatePinButton:status];
+    } failure:^(NSError *error) {
+        NSLog(@" isWebAppPinned failure, %@", error.localizedDescription);
+    }];
+}
+
+-(void)subscribeIfWebAppIsPinned{
+    
+   _isWebAppPinnedSubscription = [self.device.webAppLauncher subscribeIsWebAppPinned:_webAppId success:^(BOOL status) {
+        [self updatePinButton:status];
+    } failure:^(NSError *error) {
+        NSLog(@" isWebAppPinned failure, %@", error.localizedDescription);
+    }];
+}
+
+-(void)updatePinButton:(BOOL)status{
+    if(status){
+        _pinButton.enabled = NO;
+        _unPinButton.enabled = YES;
+    }else{
+        if(_webAppSession){
+         _pinButton.enabled = YES;
+        }
+        _unPinButton.enabled = NO;
+    }
 }
 
 #pragma mark - WebAppSessionDelegate methods
