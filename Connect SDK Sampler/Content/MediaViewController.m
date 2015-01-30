@@ -299,11 +299,7 @@
 #pragma mark - Connect SDK API sampler methods
 
 - (IBAction)displayPhoto:(id)sender {
-    if (_launchSession) {
-        [_launchSession closeWithSuccess:nil failure:nil];
-        _launchSession = nil;
-    }
-
+    
     [self resetMediaControlComponents];
     
     NSURL *mediaURL = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] stringForKey:@"imagePath"]];
@@ -331,11 +327,7 @@
 }
 
 - (IBAction)displayVideo:(id)sender {
-    if (_launchSession) {
-        [_launchSession closeWithSuccess:nil failure:nil];
-        _launchSession = nil;
-    }
-
+    
     [self resetMediaControlComponents];
 
     NSURL *mediaURL = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] stringForKey:@"videoPath"]];
@@ -367,10 +359,6 @@
 }
 
 - (IBAction)playAudio:(id)sender {
-    if (_launchSession) {
-        [_launchSession closeWithSuccess:nil failure:nil];
-        _launchSession = nil;
-    }
     
     [self resetMediaControlComponents];
 
