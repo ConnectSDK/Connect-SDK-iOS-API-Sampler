@@ -47,7 +47,7 @@
     NSString *dialAppName = [[NSUserDefaults standardUserDefaults] stringForKey:@"dialAppName"];
     [DIALService registerApp:dialAppName];
 
-    _discoveryManager.pairingLevel = ConnectableDevicePairingLevelOn;
+    _discoveryManager.pairingLevel = DeviceServicePairingLevelOn;
     [_discoveryManager startDiscovery];
 
     self.delegate = self;
