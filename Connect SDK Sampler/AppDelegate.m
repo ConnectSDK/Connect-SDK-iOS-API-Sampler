@@ -22,8 +22,9 @@
 
     [self registerDefaultsFromSettingsBundle];
 
-    [[NSUserDefaults standardUserDefaults] setValue:@"1.3.0" forKey:@"sdkVersion"];
+    [[NSUserDefaults standardUserDefaults] setValue:@"1.4.2" forKey:@"sdkVersion"];
     [[NSUserDefaults standardUserDefaults] setValue:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"] forKey:@"samplerVersion"];
+    [[NSUserDefaults standardUserDefaults] setValue:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"GitInfo"] forKey:@"gitInfo"];
 
     [[NSUserDefaults standardUserDefaults] synchronize];
 
