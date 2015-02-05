@@ -247,7 +247,7 @@
 
 - (IBAction)pinWebApp:(id)sender
 {
-    [_webAppSession pinWebAppWithSuccess:^(id responseObject) {
+    [self.device.webAppLauncher pinWebApp:_webAppId success:^(id responseObject){
         NSLog(@"pin web app success");
         [self checkIfWebAppIsPinned];
     } failure:^(NSError *error) {
@@ -270,7 +270,7 @@
     [self.device.webAppLauncher isWebAppPinned:_webAppId success:^(BOOL status) {
         [self updatePinButton:status];
     } failure:^(NSError *error) {
-        NSLog(@" isWebAppPinned failure, %@", error.localizedDescription);
+        NSLog(@" Subscribe isWebAppPinned failure, %@", error.localizedDescription);
     }];
 }
 
@@ -288,9 +288,7 @@
         _pinButton.enabled = NO;
         _unPinButton.enabled = YES;
     }else{
-        if(_webAppSession){
-         _pinButton.enabled = YES;
-        }
+        _pinButton.enabled = YES;
         _unPinButton.enabled = NO;
     }
 }
