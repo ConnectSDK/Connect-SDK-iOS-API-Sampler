@@ -588,10 +588,6 @@
 }
 
 - (IBAction)playListClicked:(id)sender {
-    if (_launchSession) {
-        [_launchSession closeWithSuccess:nil failure:nil];
-        _launchSession = nil;
-    }
     
     [self resetMediaControlComponents];
     
