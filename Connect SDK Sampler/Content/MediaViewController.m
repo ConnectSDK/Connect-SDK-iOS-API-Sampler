@@ -14,7 +14,6 @@
 //
 
 #import "MediaViewController.h"
-#import <ConnectSDK/CastService.h>
 
 @interface MediaViewController ()
 
@@ -83,13 +82,17 @@
         if ([self.device hasCapability:kMediaPlayerPlayVideo]) [_displayVideoButton setEnabled:YES];
         if ([self.device hasCapability:kMediaPlayerPlayAudio]) [_playAudioButton setEnabled:YES];
         if ([self.device hasCapability:kMediaPlayerPlayPlaylist]) [_playListButton setEnabled:YES];
-        
-        // Set your own web app id for chromecast.The Default webapp id is kGCKMediaDefaultReceiverApplicationID
-        if([self.device serviceWithName:kConnectSDKCastServiceId]){
-            CastService *service = (CastService*)[self.device serviceWithName:kConnectSDKCastServiceId];
-            service.castWebAppId = kGCKMediaDefaultReceiverApplicationID;
-        }
-        
+
+        /*
+         // You can set your own web app id for chromecast.
+         // The default webapp id is kGCKMediaDefaultReceiverApplicationID.
+
+         // #import <ConnectSDK/CastService.h>
+         if ([self.device serviceWithName:kConnectSDKCastServiceId]) {
+             CastService *service = (CastService *)[self.device serviceWithName:kConnectSDKCastServiceId];
+             service.castWebAppId = kGCKMediaDefaultReceiverApplicationID;
+         }
+        */
     } else
     {
         [self removeSubscriptions];
