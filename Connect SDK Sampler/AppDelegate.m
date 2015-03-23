@@ -22,7 +22,7 @@
 
     [self registerDefaultsFromSettingsBundle];
 
-    [[NSUserDefaults standardUserDefaults] setValue:@"1.4.2" forKey:@"sdkVersion"];
+    [[NSUserDefaults standardUserDefaults] setValue:@"1.4.3" forKey:@"sdkVersion"];
     [[NSUserDefaults standardUserDefaults] setValue:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"] forKey:@"samplerVersion"];
     [[NSUserDefaults standardUserDefaults] setValue:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"GitInfo"] forKey:@"gitInfo"];
 
