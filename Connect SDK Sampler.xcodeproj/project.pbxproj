@@ -289,8 +289,8 @@
 				EA7E00A8184402B20089FA62 /* Sources */,
 				EA7E00AA184402B20089FA62 /* Resources */,
 				EA7E00A9184402B20089FA62 /* Frameworks */,
-				EA049F0118B29BB7000A1760 /* ShellScript */,
-				0F0347D21A83EEE600825C36 /* ShellScript */,
+				EA049F0118B29BB7000A1760 /* Bump version for Release builds */,
+				0F0347D21A83EEE600825C36 /* Save git info */,
 			);
 			buildRules = (
 			);
@@ -361,26 +361,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0F0347D21A83EEE600825C36 /* ShellScript */ = {
+		0F0347D21A83EEE600825C36 /* Save git info */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Save git info";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/sh\n\ngit_version=$(git log -1 --format=\"%h\")\ngit_branch=$(git symbolic-ref --short -q HEAD)\ngit_tag=$(git describe --tags --exact-match 2>/dev/null)\n\nbuild_time=$(date)\ngit_branch_or_tag=\"${git_branch:-${git_tag}}\"\n\ninfo_plist=\"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_FOLDER_PATH}/Info.plist\"\n/usr/libexec/PlistBuddy -c \"Set :GitInfo '${git_branch_or_tag}-${git_version}'\" \"${info_plist}\"";
 		};
-		EA049F0118B29BB7000A1760 /* ShellScript */ = {
+		EA049F0118B29BB7000A1760 /* Bump version for Release builds */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Bump version for Release builds";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
