@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EA7E00AB184402B20089FA62"
-               BuildableName = "Connect SDK Sampler.app"
-               BlueprintName = "Connect SDK Sampler"
-               ReferencedContainer = "container:Connect SDK Sampler.xcodeproj">
+               BuildableName = "ConnectSDKSampler.app"
+               BlueprintName = "ConnectSDKSampler"
+               ReferencedContainer = "container:ConnectSDKSampler.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EA7E00AB184402B20089FA62"
-            BuildableName = "Connect SDK Sampler.app"
-            BlueprintName = "Connect SDK Sampler"
-            ReferencedContainer = "container:Connect SDK Sampler.xcodeproj">
+            BuildableName = "ConnectSDKSampler.app"
+            BlueprintName = "ConnectSDKSampler"
+            ReferencedContainer = "container:ConnectSDKSampler.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -52,9 +52,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EA7E00AB184402B20089FA62"
-            BuildableName = "Connect SDK Sampler.app"
-            BlueprintName = "Connect SDK Sampler"
-            ReferencedContainer = "container:Connect SDK Sampler.xcodeproj">
+            BuildableName = "ConnectSDKSampler.app"
+            BlueprintName = "ConnectSDKSampler"
+            ReferencedContainer = "container:ConnectSDKSampler.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EA7E00AB184402B20089FA62"
-            BuildableName = "Connect SDK Sampler.app"
-            BlueprintName = "Connect SDK Sampler"
-            ReferencedContainer = "container:Connect SDK Sampler.xcodeproj">
+            BuildableName = "ConnectSDKSampler.app"
+            BlueprintName = "ConnectSDKSampler"
+            ReferencedContainer = "container:ConnectSDKSampler.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

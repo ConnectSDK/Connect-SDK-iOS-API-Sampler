@@ -86,7 +86,7 @@
 		EA0F2D3C18BEACCB003B44E1 /* license.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
 		EA66B7CA187611D300669EAF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EA66B7CB187611D300669EAF /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		EA7E00AC184402B20089FA62 /* Connect SDK Sampler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Connect SDK Sampler.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA7E00AC184402B20089FA62 /* ConnectSDKSampler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConnectSDKSampler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA7E00AF184402B20089FA62 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EA7E00B1184402B20089FA62 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		EA7E00B3184402B20089FA62 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -95,8 +95,8 @@
 		EA9E489B186DFCFD002DE134 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EA9E489C186DFCFD002DE134 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		EA9E48A5186DFCFD002DE134 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		EA9E48A6186DFCFD002DE134 /* Connect SDK Sampler-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Connect SDK Sampler-Info.plist"; sourceTree = "<group>"; };
-		EA9E48A7186DFCFD002DE134 /* Connect SDK Sampler-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Connect SDK Sampler-Prefix.pch"; sourceTree = "<group>"; };
+		EA9E48A6186DFCFD002DE134 /* ConnectSDKSampler-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ConnectSDKSampler-Info.plist"; sourceTree = "<group>"; };
+		EA9E48A7186DFCFD002DE134 /* ConnectSDKSampler-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ConnectSDKSampler-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,7 +138,7 @@
 			path = Content;
 			sourceTree = "<group>";
 		};
-		EA09EFB61875E82A008E6839 /* Control Flow */ = {
+		EA09EFB61875E82A008E6839 /* ControlFlow */ = {
 			isa = PBXGroup;
 			children = (
 				EA09EFB71875E82A008E6839 /* SamplerNavigationViewController.h */,
@@ -146,7 +146,7 @@
 				EA09EFB91875E82A008E6839 /* SamplerViewController.h */,
 				EA09EFBA1875E82A008E6839 /* SamplerViewController.m */,
 			);
-			path = "Control Flow";
+			path = ControlFlow;
 			sourceTree = "<group>";
 		};
 		EA09EFBD1875E82A008E6839 /* Resources */ = {
@@ -157,7 +157,7 @@
 				EA0F2D2D18BEACCB003B44E1 /* media */,
 				EA0F2D3118BEACCB003B44E1 /* system */,
 				EA0F2D3518BEACCB003B44E1 /* tv */,
-				EA0F2D3918BEACCB003B44E1 /* web apps */,
+				EA0F2D3918BEACCB003B44E1 /* webapps */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -212,20 +212,20 @@
 			path = tv;
 			sourceTree = "<group>";
 		};
-		EA0F2D3918BEACCB003B44E1 /* web apps */ = {
+		EA0F2D3918BEACCB003B44E1 /* webapps */ = {
 			isa = PBXGroup;
 			children = (
 				EA0F2D3A18BEACCB003B44E1 /* icon_12676.png */,
 				EA0F2D3B18BEACCB003B44E1 /* icon_12676@2x.png */,
 				EA0F2D3C18BEACCB003B44E1 /* license.txt */,
 			);
-			path = "web apps";
+			path = webapps;
 			sourceTree = "<group>";
 		};
 		EA7E00A3184402B20089FA62 = {
 			isa = PBXGroup;
 			children = (
-				EA9E4895186DFCFD002DE134 /* Connect SDK Sampler */,
+				EA9E4895186DFCFD002DE134 /* ConnectSDKSampler */,
 				EA7E00AE184402B20089FA62 /* Frameworks */,
 				EA7E00AD184402B20089FA62 /* Products */,
 			);
@@ -234,7 +234,7 @@
 		EA7E00AD184402B20089FA62 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EA7E00AC184402B20089FA62 /* Connect SDK Sampler.app */,
+				EA7E00AC184402B20089FA62 /* ConnectSDKSampler.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -252,15 +252,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		EA9E4895186DFCFD002DE134 /* Connect SDK Sampler */ = {
+		EA9E4895186DFCFD002DE134 /* ConnectSDKSampler */ = {
 			isa = PBXGroup;
 			children = (
 				EA09EFA71875E82A008E6839 /* Content */,
-				EA09EFB61875E82A008E6839 /* Control Flow */,
+				EA09EFB61875E82A008E6839 /* ControlFlow */,
 				EA9E489C186DFCFD002DE134 /* Images.xcassets */,
 				EA9E48EB186DFD1D002DE134 /* Supporting Files */,
 			);
-			path = "Connect SDK Sampler";
+			path = ConnectSDKSampler;
 			sourceTree = "<group>";
 		};
 		EA9E48EB186DFD1D002DE134 /* Supporting Files */ = {
@@ -272,8 +272,8 @@
 				EA09EFA51875E7EB008E6839 /* MainStoryboard.storyboard */,
 				EA9E489A186DFCFD002DE134 /* InfoPlist.strings */,
 				EA9E48A5186DFCFD002DE134 /* main.m */,
-				EA9E48A6186DFCFD002DE134 /* Connect SDK Sampler-Info.plist */,
-				EA9E48A7186DFCFD002DE134 /* Connect SDK Sampler-Prefix.pch */,
+				EA9E48A6186DFCFD002DE134 /* ConnectSDKSampler-Info.plist */,
+				EA9E48A7186DFCFD002DE134 /* ConnectSDKSampler-Prefix.pch */,
 				EA9AB00C193FD84500B72990 /* Settings.bundle */,
 			);
 			name = "Supporting Files";
@@ -282,9 +282,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EA7E00AB184402B20089FA62 /* Connect SDK Sampler */ = {
+		EA7E00AB184402B20089FA62 /* ConnectSDKSampler */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EA7E00DE184402B20089FA62 /* Build configuration list for PBXNativeTarget "Connect SDK Sampler" */;
+			buildConfigurationList = EA7E00DE184402B20089FA62 /* Build configuration list for PBXNativeTarget "ConnectSDKSampler" */;
 			buildPhases = (
 				EA7E00A8184402B20089FA62 /* Sources */,
 				EA7E00AA184402B20089FA62 /* Resources */,
@@ -296,9 +296,9 @@
 			);
 			dependencies = (
 			);
-			name = "Connect SDK Sampler";
+			name = ConnectSDKSampler;
 			productName = ROAPTest;
-			productReference = EA7E00AC184402B20089FA62 /* Connect SDK Sampler.app */;
+			productReference = EA7E00AC184402B20089FA62 /* ConnectSDKSampler.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -316,7 +316,7 @@
 					};
 				};
 			};
-			buildConfigurationList = EA7E00A7184402B20089FA62 /* Build configuration list for PBXProject "Connect SDK Sampler" */;
+			buildConfigurationList = EA7E00A7184402B20089FA62 /* Build configuration list for PBXProject "ConnectSDKSampler" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -329,7 +329,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EA7E00AB184402B20089FA62 /* Connect SDK Sampler */,
+				EA7E00AB184402B20089FA62 /* ConnectSDKSampler */,
 			);
 		};
 /* End PBXProject section */
@@ -509,20 +509,20 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Connect SDK Sampler/Connect SDK Sampler-Prefix.pch";
+				GCC_PREFIX_HEADER = "ConnectSDKSampler/ConnectSDKSampler-Prefix.pch";
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
-				INFOPLIST_FILE = "Connect SDK Sampler/Connect SDK Sampler-Info.plist";
+				INFOPLIST_FILE = "ConnectSDKSampler/ConnectSDKSampler-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"$(inherited)",
 				);
-				PRODUCT_NAME = "Connect SDK Sampler";
+				PRODUCT_NAME = ConnectSDKSampler;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -540,20 +540,20 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Connect SDK Sampler/Connect SDK Sampler-Prefix.pch";
+				GCC_PREFIX_HEADER = "ConnectSDKSampler/ConnectSDKSampler-Prefix.pch";
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
-				INFOPLIST_FILE = "Connect SDK Sampler/Connect SDK Sampler-Info.plist";
+				INFOPLIST_FILE = "ConnectSDKSampler/ConnectSDKSampler-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"$(inherited)",
 				);
-				PRODUCT_NAME = "Connect SDK Sampler";
+				PRODUCT_NAME = ConnectSDKSampler;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -564,7 +564,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EA7E00A7184402B20089FA62 /* Build configuration list for PBXProject "Connect SDK Sampler" */ = {
+		EA7E00A7184402B20089FA62 /* Build configuration list for PBXProject "ConnectSDKSampler" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EA7E00DC184402B20089FA62 /* Debug */,
@@ -573,7 +573,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EA7E00DE184402B20089FA62 /* Build configuration list for PBXNativeTarget "Connect SDK Sampler" */ = {
+		EA7E00DE184402B20089FA62 /* Build configuration list for PBXNativeTarget "ConnectSDKSampler" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EA7E00DF184402B20089FA62 /* Debug */,
