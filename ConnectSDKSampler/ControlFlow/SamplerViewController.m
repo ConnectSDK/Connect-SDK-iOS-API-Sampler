@@ -17,6 +17,7 @@
 #import "BaseViewController.h"
 #import <ConnectSDK/AirPlayService.h>
 #import <ConnectSDK/DIALService.h>
+#import <ConnectSDK/WebOSTVService.h>
 
 @interface SamplerViewController ()
 
@@ -48,6 +49,7 @@
     [DIALService registerApp:dialAppName];
 
     _discoveryManager.pairingLevel = DeviceServicePairingLevelOn;
+    [WebOSTVService setPairingType:DeviceServicePairingTypePinCode];
     [_discoveryManager startDiscovery];
 
     self.delegate = self;
