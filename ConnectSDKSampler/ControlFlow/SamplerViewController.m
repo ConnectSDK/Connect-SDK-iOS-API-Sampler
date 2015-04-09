@@ -49,7 +49,6 @@
     [DIALService registerApp:dialAppName];
 
     _discoveryManager.pairingLevel = DeviceServicePairingLevelOn;
-    [WebOSTVService setPairingType:DeviceServicePairingTypePinCode];
     [_discoveryManager startDiscovery];
 
     self.delegate = self;
@@ -205,6 +204,7 @@
 {
     _device = device;
     _device.delegate = self;
+    [_device setPairingType:DeviceServicePairingTypeMixed];
     [_device connect];
 }
 
