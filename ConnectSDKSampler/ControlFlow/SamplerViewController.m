@@ -204,7 +204,8 @@
 {
     _device = device;
     _device.delegate = self;
-    [_device setPairingType:DeviceServicePairingTypeMixed];
+    /* When pairing level is on, by default pairing type is DeviceServicePairingTypeFirstScreen.You can also set pairing type to DeviceServicePairingTypePinCode/DeviceServicePairingTypeMixed */
+    [_device setPairingType:DeviceServicePairingTypeFirstScreen];
     [_device connect];
 }
 
