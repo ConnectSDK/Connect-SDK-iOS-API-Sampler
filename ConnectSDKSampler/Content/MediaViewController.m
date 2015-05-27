@@ -202,7 +202,9 @@
         _playTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updatePlayerControls) userInfo:nil repeats:YES];
     }
 
-    if ([self.device hasCapability:kVolumeControlMuteSet]) [_volumeSlider setEnabled:YES];
+    if ([self.device hasCapability:kVolumeControlVolumeSet]) {
+        [_volumeSlider setEnabled:YES];
+    }
 
     if ([self.device hasCapability:kVolumeControlVolumeSubscribe])
     {
