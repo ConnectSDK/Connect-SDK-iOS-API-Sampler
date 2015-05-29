@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *displayVideoButton;
 @property (weak, nonatomic) IBOutlet UIButton *playAudioButton;
 @property (weak, nonatomic) IBOutlet UIButton *closeMediaButton;
+@property (weak, nonatomic) IBOutlet UISwitch *loopSwicth;
 
 - (IBAction)displayPhoto:(id)sender;
 - (IBAction)displayVideo:(id)sender;
