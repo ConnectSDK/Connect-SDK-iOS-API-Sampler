@@ -82,7 +82,7 @@
         if ([self.device hasCapability:kMediaPlayerPlayVideo]) [_displayVideoButton setEnabled:YES];
         if ([self.device hasCapability:kMediaPlayerPlayAudio]) [_playAudioButton setEnabled:YES];
         if ([self.device hasCapability:kMediaPlayerPlayPlaylist]) [_playListButton setEnabled:YES];
-
+        if ([self.device hasCapability:kMediaPlayerLoop]) [_loopSwicth setEnabled:YES];
         /*
          // You can set your own web app id for chromecast.
          // The default webapp id is kGCKMediaDefaultReceiverApplicationID.
@@ -107,6 +107,7 @@
     [_displayVideoButton setEnabled:NO];
     [_playAudioButton setEnabled:NO];
     [_playListButton setEnabled:NO];
+    [_loopSwicth setEnabled:NO];
 }
 
 -(void)addMediaInfoSubscription {
@@ -202,7 +203,9 @@
         _playTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updatePlayerControls) userInfo:nil repeats:YES];
     }
 
-    if ([self.device hasCapability:kVolumeControlMuteSet]) [_volumeSlider setEnabled:YES];
+    if ([self.device hasCapability:kVolumeControlVolumeSet]) {
+        [_volumeSlider setEnabled:YES];
+    }
 
     if ([self.device hasCapability:kVolumeControlVolumeSubscribe])
     {
@@ -338,7 +341,7 @@
     NSString *title = [[NSUserDefaults standardUserDefaults] stringForKey:@"videoTitle"];
     NSString *description = [[NSUserDefaults standardUserDefaults] stringForKey:@"videoDescription"];
     NSString *mimeType = [[NSUserDefaults standardUserDefaults] stringForKey:@"videoMimeType"];
-    BOOL shouldLoop = NO;
+    BOOL shouldLoop = self.loopSwicth.on;
 
     MediaInfo *mediaInfo = [[MediaInfo alloc] initWithURL:mediaURL mimeType:mimeType];
     mediaInfo.title = title;
@@ -370,7 +373,7 @@
     NSString *title = [[NSUserDefaults standardUserDefaults] stringForKey:@"audioTitle"];
     NSString *description = [[NSUserDefaults standardUserDefaults] stringForKey:@"audioDescription"];
     NSString *mimeType = [[NSUserDefaults standardUserDefaults] stringForKey:@"audioMimeType"];
-    BOOL shouldLoop = NO;
+    BOOL shouldLoop = self.loopSwicth.on;
     
     MediaInfo *mediaInfo = [[MediaInfo alloc] initWithURL:mediaURL mimeType:mimeType];
     mediaInfo.title = title;
@@ -596,7 +599,7 @@
     NSString *title = [[NSUserDefaults standardUserDefaults] stringForKey:@"playlistTitle"];
     NSString *description = [[NSUserDefaults standardUserDefaults] stringForKey:@"playlistDescription"];
     NSString *mimeType = [[NSUserDefaults standardUserDefaults] stringForKey:@"playlistMimeType"];
-    BOOL shouldLoop = NO;
+    BOOL shouldLoop = self.loopSwicth.on;
     
     MediaInfo *mediaInfo = [[MediaInfo alloc] initWithURL:mediaURL mimeType:mimeType];
     mediaInfo.title = title;
