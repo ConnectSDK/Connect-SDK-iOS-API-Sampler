@@ -351,7 +351,8 @@
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults boolForKey:@"subtitlesEnabled"] &&
-        [self.device hasCapability:kMediaPlayerSubtitleSRT]) {
+        [self.device hasAnyCapability:@[kMediaPlayerSubtitleSRT,
+                                        kMediaPlayerSubtitleVTT]]) {
         NSURL *subtitlesURL = [NSURL URLWithString:[defaults stringForKey:@"subtitlesURL"]];
         SubtitleTrack *subtitleTrack = [SubtitleTrack trackWithURL:subtitlesURL
                                                           andBlock:^(SubtitleTrackBuilder *builder) {
