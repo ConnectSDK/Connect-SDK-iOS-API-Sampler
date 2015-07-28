@@ -348,6 +348,20 @@
     mediaInfo.description = description;
     ImageInfo *imageInfo = [[ImageInfo alloc] initWithURL:iconURL type:ImageTypeThumb];
     [mediaInfo addImage:imageInfo];
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults boolForKey:@"subtitlesEnabled"] &&
+        [self.device hasAnyCapability:@[kMediaPlayerSubtitleSRT,
+                                        kMediaPlayerSubtitleVTT]]) {
+        NSURL *subtitlesURL = [NSURL URLWithString:[defaults stringForKey:@"subtitlesURL"]];
+        SubtitleTrack *subtitleTrack = [SubtitleTrack trackWithURL:subtitlesURL
+                                                          andBlock:^(SubtitleTrackBuilder *builder) {
+                                                              builder.mimeType = [defaults stringForKey:@"subtitlesMimeType"];
+                                                              builder.language = [defaults stringForKey:@"subtitlesLanguage"];
+                                                              builder.label = [defaults stringForKey:@"subtitlesLabel"];
+                                                          }];
+        mediaInfo.subtitleTrack = subtitleTrack;
+    }
     
     [self.device.mediaPlayer playMediaWithMediaInfo:mediaInfo shouldLoop:shouldLoop
                                success:^(MediaLaunchObject *launchObject) {
