@@ -318,6 +318,58 @@
 		</dict>
 		<dict>
 			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Subtitles Enabled</string>
+			<key>Key</key>
+			<string>subtitlesEnabled</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Subtitles URL</string>
+			<key>Key</key>
+			<string>subtitlesURL</string>
+			<key>DefaultValue</key>
+			<string>http://ec2-54-201-108-205.us-west-2.compute.amazonaws.com/samples/media/sintel_en.srt</string>
+			<key>KeyboardType</key>
+			<string>URL</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Subtitles MIME-Type</string>
+			<key>Key</key>
+			<string>subtitlesMimeType</string>
+			<key>DefaultValue</key>
+			<string>text/srt</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Subtitles Language</string>
+			<key>Key</key>
+			<string>subtitlesLanguage</string>
+			<key>DefaultValue</key>
+			<string>en</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Subtitles Label</string>
+			<key>Key</key>
+			<string>subtitlesLabel</string>
+			<key>DefaultValue</key>
+			<string>English Subtitles</string>
+		</dict>
+		<dict>
+			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
 			<string>Sample Playlist File</string>
